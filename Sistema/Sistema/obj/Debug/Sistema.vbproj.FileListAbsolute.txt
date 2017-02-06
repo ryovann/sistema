@@ -21,3 +21,6 @@ C:\Users\PC\Documents\Visual Studio 2008\Projects\Sistema\Sistema\obj\Debug\Sist
 C:\Users\PC\Documents\Visual Studio 2008\Projects\Sistema\Sistema\obj\Debug\Sistema.Inicio.resources
 C:\Users\PC\Documents\Visual Studio 2008\Projects\Sistema\Sistema\obj\Debug\Sistema.Resources.resources
 C:\Users\PC\Documents\Visual Studio 2008\Projects\Sistema\Sistema\obj\Debug\Sistema.vbproj.GenerateResource.Cache
+C:\Users\Diego\Documents\GitHub\sistema\Sistema\Sistema\obj\Debug\Sistema.exe
+C:\Users\Diego\Documents\GitHub\sistema\Sistema\Sistema\obj\Debug\Sistema.xml
+C:\Users\Diego\Documents\GitHub\sistema\Sistema\Sistema\obj\Debug\Sistema.pdb
