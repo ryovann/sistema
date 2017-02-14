@@ -22,79 +22,79 @@ Partial Class Inicio
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Me.btnConfig = New System.Windows.Forms.Button
-        Me.btnConectar = New System.Windows.Forms.Button
-        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip
-        Me.lblConEstado = New System.Windows.Forms.ToolStripStatusLabel
-        Me.DataGrid = New System.Windows.Forms.DataGridView
+        Me.components = New System.ComponentModel.Container()
+        Me.btnConfig = New System.Windows.Forms.Button()
+        Me.btnConectar = New System.Windows.Forms.Button()
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.lblConEstado = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.DataGrid = New System.Windows.Forms.DataGridView()
         Me.Contex1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.btnActualizarProducto = New System.Windows.Forms.ToolStripMenuItem
-        Me.btnBuscar = New System.Windows.Forms.Button
-        Me.txtBusqueda = New System.Windows.Forms.TextBox
-        Me.grpFiltros = New System.Windows.Forms.GroupBox
-        Me.txtPrecioUnitario = New System.Windows.Forms.TextBox
-        Me.txtCantidad = New System.Windows.Forms.TextBox
-        Me.txtDescripccion = New System.Windows.Forms.TextBox
-        Me.txtTipo = New System.Windows.Forms.TextBox
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.btnAgregar = New System.Windows.Forms.Button
-        Me.Button1 = New System.Windows.Forms.Button
-        Me.grpAgregarProductos = New System.Windows.Forms.GroupBox
-        Me.lblMoneda = New System.Windows.Forms.Label
-        Me.cmbMoneda = New System.Windows.Forms.ComboBox
-        Me.txtModelo = New System.Windows.Forms.TextBox
-        Me.Label8 = New System.Windows.Forms.Label
-        Me.txtMarca = New System.Windows.Forms.TextBox
-        Me.Label7 = New System.Windows.Forms.Label
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.txtCantidadProd = New System.Windows.Forms.TextBox
-        Me.PanelAgregar = New System.Windows.Forms.Panel
-        Me.PanelFiltros = New System.Windows.Forms.Panel
-        Me.btnFiltros = New System.Windows.Forms.Button
-        Me.PanelBusqueda = New System.Windows.Forms.Panel
-        Me.Button2 = New System.Windows.Forms.Button
-        Me.lblTotalPesos = New System.Windows.Forms.Label
-        Me.lblCantidadDisponible = New System.Windows.Forms.Label
-        Me.btnSeleccionar = New System.Windows.Forms.Button
-        Me.btnVender = New System.Windows.Forms.Button
-        Me.lblTotal = New System.Windows.Forms.Label
-        Me.lblPrecioUnitario = New System.Windows.Forms.Label
-        Me.lblFlete = New System.Windows.Forms.Label
-        Me.lblPorcentaje = New System.Windows.Forms.Label
-        Me.btnAgregarMostrar = New System.Windows.Forms.Button
-        Me.txtCotizacion = New System.Windows.Forms.TextBox
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.btnOKCotizacion = New System.Windows.Forms.Button
-        Me.PanelEditarProducto = New System.Windows.Forms.Panel
-        Me.grpEditarProd = New System.Windows.Forms.GroupBox
-        Me.btnCancelarEdicion = New System.Windows.Forms.Button
-        Me.Label9 = New System.Windows.Forms.Label
-        Me.cmbEditarMoneda = New System.Windows.Forms.ComboBox
-        Me.txtEditarModelo = New System.Windows.Forms.TextBox
-        Me.Label10 = New System.Windows.Forms.Label
-        Me.txtEditarMarca = New System.Windows.Forms.TextBox
-        Me.Label11 = New System.Windows.Forms.Label
-        Me.txtEditarTipo = New System.Windows.Forms.TextBox
-        Me.btnGuardarCambios = New System.Windows.Forms.Button
-        Me.txtEditarPrecioUnitario = New System.Windows.Forms.TextBox
-        Me.Label12 = New System.Windows.Forms.Label
-        Me.txtEditarCantidad = New System.Windows.Forms.TextBox
-        Me.Label13 = New System.Windows.Forms.Label
-        Me.txtEditarDescripcion = New System.Windows.Forms.TextBox
-        Me.Label14 = New System.Windows.Forms.Label
-        Me.Label15 = New System.Windows.Forms.Label
-        Me.Label16 = New System.Windows.Forms.Label
-        Me.txtPorcentajeNew = New System.Windows.Forms.TextBox
-        Me.Label17 = New System.Windows.Forms.Label
-        Me.txtFleteNew = New System.Windows.Forms.TextBox
-        Me.txtFlete = New System.Windows.Forms.TextBox
-        Me.Label18 = New System.Windows.Forms.Label
-        Me.txtPorcentaje = New System.Windows.Forms.TextBox
-        Me.Label19 = New System.Windows.Forms.Label
+        Me.btnActualizarProducto = New System.Windows.Forms.ToolStripMenuItem()
+        Me.btnBuscar = New System.Windows.Forms.Button()
+        Me.txtBusqueda = New System.Windows.Forms.TextBox()
+        Me.grpFiltros = New System.Windows.Forms.GroupBox()
+        Me.txtPrecioUnitario = New System.Windows.Forms.TextBox()
+        Me.txtCantidad = New System.Windows.Forms.TextBox()
+        Me.txtDescripccion = New System.Windows.Forms.TextBox()
+        Me.txtTipo = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.btnAgregar = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.grpAgregarProductos = New System.Windows.Forms.GroupBox()
+        Me.txtFlete = New System.Windows.Forms.TextBox()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.txtPorcentaje = New System.Windows.Forms.TextBox()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.lblMoneda = New System.Windows.Forms.Label()
+        Me.cmbMoneda = New System.Windows.Forms.ComboBox()
+        Me.txtModelo = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.txtMarca = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.txtCantidadProd = New System.Windows.Forms.TextBox()
+        Me.PanelAgregar = New System.Windows.Forms.Panel()
+        Me.PanelFiltros = New System.Windows.Forms.Panel()
+        Me.btnFiltros = New System.Windows.Forms.Button()
+        Me.PanelBusqueda = New System.Windows.Forms.Panel()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.lblTotalPesos = New System.Windows.Forms.Label()
+        Me.lblCantidadDisponible = New System.Windows.Forms.Label()
+        Me.btnSeleccionar = New System.Windows.Forms.Button()
+        Me.btnVender = New System.Windows.Forms.Button()
+        Me.lblTotal = New System.Windows.Forms.Label()
+        Me.lblPrecioUnitario = New System.Windows.Forms.Label()
+        Me.lblFlete = New System.Windows.Forms.Label()
+        Me.lblPorcentaje = New System.Windows.Forms.Label()
+        Me.btnAgregarMostrar = New System.Windows.Forms.Button()
+        Me.txtCotizacion = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.btnOKCotizacion = New System.Windows.Forms.Button()
+        Me.PanelEditarProducto = New System.Windows.Forms.Panel()
+        Me.grpEditarProd = New System.Windows.Forms.GroupBox()
+        Me.txtFleteNew = New System.Windows.Forms.TextBox()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.txtPorcentajeNew = New System.Windows.Forms.TextBox()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.btnCancelarEdicion = New System.Windows.Forms.Button()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.cmbEditarMoneda = New System.Windows.Forms.ComboBox()
+        Me.txtEditarModelo = New System.Windows.Forms.TextBox()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.txtEditarMarca = New System.Windows.Forms.TextBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.txtEditarTipo = New System.Windows.Forms.TextBox()
+        Me.btnGuardarCambios = New System.Windows.Forms.Button()
+        Me.txtEditarPrecioUnitario = New System.Windows.Forms.TextBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.txtEditarCantidad = New System.Windows.Forms.TextBox()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.txtEditarDescripcion = New System.Windows.Forms.TextBox()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.DataGrid, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Contex1.SuspendLayout()
@@ -161,12 +161,12 @@ Partial Class Inicio
         '
         Me.Contex1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnActualizarProducto})
         Me.Contex1.Name = "Contex1"
-        Me.Contex1.Size = New System.Drawing.Size(168, 26)
+        Me.Contex1.Size = New System.Drawing.Size(179, 26)
         '
         'btnActualizarProducto
         '
         Me.btnActualizarProducto.Name = "btnActualizarProducto"
-        Me.btnActualizarProducto.Size = New System.Drawing.Size(167, 22)
+        Me.btnActualizarProducto.Size = New System.Drawing.Size(178, 22)
         Me.btnActualizarProducto.Text = "Actualizar Producto"
         '
         'btnBuscar
@@ -306,6 +306,38 @@ Partial Class Inicio
         Me.grpAgregarProductos.TabIndex = 19
         Me.grpAgregarProductos.TabStop = False
         Me.grpAgregarProductos.Text = "Agregar Productos"
+        '
+        'txtFlete
+        '
+        Me.txtFlete.Location = New System.Drawing.Point(188, 253)
+        Me.txtFlete.Name = "txtFlete"
+        Me.txtFlete.Size = New System.Drawing.Size(54, 20)
+        Me.txtFlete.TabIndex = 33
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Location = New System.Drawing.Point(149, 256)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(30, 13)
+        Me.Label18.TabIndex = 32
+        Me.Label18.Text = "Flete"
+        '
+        'txtPorcentaje
+        '
+        Me.txtPorcentaje.Location = New System.Drawing.Point(89, 253)
+        Me.txtPorcentaje.Name = "txtPorcentaje"
+        Me.txtPorcentaje.Size = New System.Drawing.Size(54, 20)
+        Me.txtPorcentaje.TabIndex = 31
+        '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Location = New System.Drawing.Point(9, 256)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(61, 13)
+        Me.Label19.TabIndex = 30
+        Me.Label19.Text = "Porcentaje:"
         '
         'lblMoneda
         '
@@ -588,6 +620,39 @@ Partial Class Inicio
         Me.grpEditarProd.TabStop = False
         Me.grpEditarProd.Text = "Editar Producto"
         '
+        'txtFleteNew
+        '
+        Me.txtFleteNew.Location = New System.Drawing.Point(216, 246)
+        Me.txtFleteNew.Name = "txtFleteNew"
+        Me.txtFleteNew.Size = New System.Drawing.Size(54, 20)
+        Me.txtFleteNew.TabIndex = 29
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Location = New System.Drawing.Point(149, 249)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(30, 13)
+        Me.Label17.TabIndex = 28
+        Me.Label17.Text = "Flete"
+        '
+        'txtPorcentajeNew
+        '
+        Me.txtPorcentajeNew.BackColor = System.Drawing.SystemColors.Window
+        Me.txtPorcentajeNew.Location = New System.Drawing.Point(89, 246)
+        Me.txtPorcentajeNew.Name = "txtPorcentajeNew"
+        Me.txtPorcentajeNew.Size = New System.Drawing.Size(54, 20)
+        Me.txtPorcentajeNew.TabIndex = 27
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Location = New System.Drawing.Point(9, 249)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(61, 13)
+        Me.Label16.TabIndex = 26
+        Me.Label16.Text = "Porcentaje:"
+        '
         'btnCancelarEdicion
         '
         Me.btnCancelarEdicion.Location = New System.Drawing.Point(167, 294)
@@ -721,71 +786,6 @@ Partial Class Inicio
         Me.Label15.TabIndex = 13
         Me.Label15.Text = "Precio unitario:"
         '
-        'Label16
-        '
-        Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(9, 249)
-        Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(61, 13)
-        Me.Label16.TabIndex = 26
-        Me.Label16.Text = "Porcentaje:"
-        '
-        'txtPorcentajeNew
-        '
-        Me.txtPorcentajeNew.BackColor = System.Drawing.SystemColors.Window
-        Me.txtPorcentajeNew.Location = New System.Drawing.Point(89, 246)
-        Me.txtPorcentajeNew.Name = "txtPorcentajeNew"
-        Me.txtPorcentajeNew.Size = New System.Drawing.Size(54, 20)
-        Me.txtPorcentajeNew.TabIndex = 27
-        '
-        'Label17
-        '
-        Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(149, 249)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(30, 13)
-        Me.Label17.TabIndex = 28
-        Me.Label17.Text = "Flete"
-        '
-        'txtFleteNew
-        '
-        Me.txtFleteNew.Location = New System.Drawing.Point(216, 246)
-        Me.txtFleteNew.Name = "txtFleteNew"
-        Me.txtFleteNew.Size = New System.Drawing.Size(54, 20)
-        Me.txtFleteNew.TabIndex = 29
-        '
-        'txtFlete
-        '
-        Me.txtFlete.Location = New System.Drawing.Point(188, 253)
-        Me.txtFlete.Name = "txtFlete"
-        Me.txtFlete.Size = New System.Drawing.Size(54, 20)
-        Me.txtFlete.TabIndex = 33
-        '
-        'Label18
-        '
-        Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(149, 256)
-        Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(30, 13)
-        Me.Label18.TabIndex = 32
-        Me.Label18.Text = "Flete"
-        '
-        'txtPorcentaje
-        '
-        Me.txtPorcentaje.Location = New System.Drawing.Point(89, 253)
-        Me.txtPorcentaje.Name = "txtPorcentaje"
-        Me.txtPorcentaje.Size = New System.Drawing.Size(54, 20)
-        Me.txtPorcentaje.TabIndex = 31
-        '
-        'Label19
-        '
-        Me.Label19.AutoSize = True
-        Me.Label19.Location = New System.Drawing.Point(9, 256)
-        Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(61, 13)
-        Me.Label19.TabIndex = 30
-        Me.Label19.Text = "Porcentaje:"
-        '
         'Inicio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -805,6 +805,7 @@ Partial Class Inicio
         Me.Controls.Add(Me.PanelBusqueda)
         Me.Name = "Inicio"
         Me.Text = "Inicio"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
         CType(Me.DataGrid, System.ComponentModel.ISupportInitialize).EndInit()
