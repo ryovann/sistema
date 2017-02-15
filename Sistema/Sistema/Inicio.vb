@@ -6,8 +6,8 @@ Public Class Inicio
     Dim conn As MySqlConnection = New MySqlConnection
     Dim Comando As New MySqlCommand
     Dim DataGridOk As Boolean
-    Dim PorcentajeDeGanancia = 20
-    Dim CosteDeFlete = 150
+    Dim ProGanancia
+    Dim ProFlete
     Public Dir, User, Pass As String
 
 
@@ -15,6 +15,7 @@ Public Class Inicio
 
     Public Sub Inicio_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Dim path As String = "C:\Sistema\Data\Config\config.dat"
+
 
 
         txtCantidadProd.Text = "1"
@@ -70,16 +71,18 @@ Public Class Inicio
                 PanelBusqueda.Enabled = True
                 btnAgregarMostrar.Enabled = True
                 btnFiltros.Enabled = True
+                txtCotizacion.Enabled = True
+                btnOKCotizacion.Enabled = True
 
                 '----------------------------------------
                 'Falta programar impuestos en bd
 
-                PorcentajeDeGanancia = 20
-                CosteDeFlete = 150
+                'PorcentajeDeGanancia = 20
+                'CosteDeFlete = 150
 
 
-                lblFlete.Text = "Costes por Flete: " & CosteDeFlete & " Pesos"
-                lblPorcentaje.Text = "Porcentaje de Ganancia: " & PorcentajeDeGanancia & "%"
+                'lblFlete.Text = "Costes por Flete: " & CosteDeFlete & " Pesos"
+                'lblPorcentaje.Text = "Porcentaje de Ganancia: " & PorcentajeDeGanancia & "%"
 
                 '''-------------------------------------
 
@@ -126,6 +129,8 @@ Public Class Inicio
                 a.Columns.Item(7).ColumnName = "Descripción"
                 DataGrid.DataSource = a
                 DataGrid.Columns.Item(0).Visible = False
+                DataGrid.Columns.Item(8).Visible = False
+                DataGrid.Columns.Item(9).Visible = False
                 DataGridOk = True
                 DataGrid.Rows.Item(0).Selected = True
 
@@ -277,12 +282,16 @@ Public Class Inicio
             PanelAgregar.Height = 350
             PanelBusqueda.Enabled = False
             btnFiltros.Enabled = False
+            txtCotizacion.Enabled = False
+            btnOKCotizacion.Enabled = False
 
-            
+
         Else
             PanelAgregar.Visible = False
             PanelBusqueda.Enabled = True
             btnFiltros.Enabled = True
+            txtCotizacion.Enabled = True
+            btnOKCotizacion.Enabled = True
 
         End If
     End Sub
@@ -308,24 +317,12 @@ Public Class Inicio
 
     Private Sub DataGrid_RowContextMenuStripNeeded(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewRowContextMenuStripNeededEventArgs) Handles DataGrid.RowContextMenuStripNeeded
         DataGrid.Rows.Item(e.RowIndex).Selected = True
-
-
-        
-
-
-
-
-
-
-
-
-
-
     End Sub
 
-  
+
 
     Private Sub DataGrid_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGrid.SelectionChanged
+
         Try
             If (DataGridOk = True) Then
                 If (DataGrid.SelectedRows.Item(0).Cells.Item(4).Value = 0) Then
@@ -357,7 +354,13 @@ Public Class Inicio
 
                             Dim PrecioUnitario As Integer = DataGrid.SelectedRows.Item(0).Cells.Item(6).Value
                             Dim Moneda As String = DataGrid.SelectedRows.Item(0).Cells.Item(5).Value
+                            ProGanancia = DataGrid.SelectedRows.Item(0).Cells.Item(9).Value
+                            ProFlete = DataGrid.SelectedRows.Item(0).Cells.Item(8).Value
                             lblPrecioUnitario.Text = "Precio Unitario:  " & PrecioUnitario & " " & Moneda
+
+                            lblPorcentaje.Text = "Porcentaje de Ganancia: " & ProGanancia & "%"
+                            lblFlete.Text = "Coste por Flete: " & ProFlete & " Pesos"
+
 
                             Dim Cantidad
                             If (txtCantidadProd.Text = "") Then
@@ -371,13 +374,14 @@ Public Class Inicio
                             If (Moneda = "Dolares") Then
                                 Dim a1 As Double = PrecioUnitario * Cantidad
                                 total = a1
-                                Dim PorcentajeDeGananciaTotal = PorcentajeDeGanancia
+                                Dim PorcentajeDeGananciaTotal = ProGanancia * Cantidad
+
                                 total = total + ((total * PorcentajeDeGananciaTotal) / 100)
 
 
 
 
-                                total = total + (CosteDeFlete / txtCotizacion.Text)
+                                total = total + ((ProFlete * Cantidad) / txtCotizacion.Text)
 
 
 
@@ -401,9 +405,11 @@ Public Class Inicio
                                 '-------------------PESOS---------------------------------------
                                 Dim a1 As Double = PrecioUnitario * Cantidad
                                 total = a1
-                                Dim PorcentajeDeGananciaTotal = PorcentajeDeGanancia
+                                Dim PorcentajeDeGananciaTotal = ProGanancia * Cantidad
                                 total = total + ((total * PorcentajeDeGananciaTotal) / 100)
-                                total = total + CosteDeFlete
+                                total = total + (ProFlete * Cantidad)
+
+
 
 
 
@@ -430,7 +436,7 @@ Public Class Inicio
 
 
 
-        
+
 
 
     End Sub
@@ -505,6 +511,7 @@ Public Class Inicio
             Comando.ExecuteReader()
             MessageBox.Show("Venta correctamente realizada", "Sistema")
             conn.Close()
+            btnBuscar_Click(Nothing, Nothing)
         Catch ex As Exception
             MessageBox.Show("Error al concretar la venta. Codigo de error:" & ex.Message, "Sistema")
         End Try
@@ -525,7 +532,8 @@ Public Class Inicio
         Dim Moneda As String = DataGrid.SelectedRows.Item(0).Cells.Item(5).Value
         Dim ProPrecioUnitario As Integer = DataGrid.SelectedRows.Item(0).Cells.Item(6).Value
         Dim ProDescripccion As String = DataGrid.SelectedRows.Item(0).Cells.Item(7).Value
-
+        Dim ProFlete As Integer = DataGrid.SelectedRows.Item(0).Cells.Item(8).Value
+        Dim ProGanancia As Integer = DataGrid.SelectedRows.Item(0).Cells.Item(9).Value
 
 
         'Bloqueo otros paneles
@@ -552,6 +560,8 @@ Public Class Inicio
         End If
 
         txtEditarPrecioUnitario.Text = ProPrecioUnitario
+        txtFleteNew.Text = ProFlete
+        txtPorcentajeNew.Text = ProGanancia
 
 
 
@@ -577,7 +587,7 @@ Public Class Inicio
         Comando.Connection = conn
         Dim Moneda As String = cmbEditarMoneda.SelectedItem.ToString
         Dim ProCodigo As Integer = DataGrid.SelectedRows.Item(0).Cells.Item(0).Value
-        Comando.CommandText = "UPDATE PRODUCTOS SET ProTipo = '" & txtEditarTipo.Text & "' , ProMarca = '" & txtEditarMarca.Text & "' , ProModelo = '" & txtEditarModelo.Text & "' , ProCant=" & txtEditarCantidad.Text & " , Moneda='" & Moneda & "' , ProPrecioUnitario=" & txtEditarPrecioUnitario.Text & " , ProDescripccion='" & txtEditarDescripcion.Text & "' where ProCod=" & ProCodigo
+        Comando.CommandText = "UPDATE PRODUCTOS SET ProTipo = '" & txtEditarTipo.Text & "' , ProMarca = '" & txtEditarMarca.Text & "' , ProModelo = '" & txtEditarModelo.Text & "' , ProCant=" & txtEditarCantidad.Text & " , Moneda='" & Moneda & "' , ProPrecioUnitario=" & txtEditarPrecioUnitario.Text & " , ProDescripccion='" & txtEditarDescripcion.Text & "', ProFlete=" & txtFleteNew.Text & ", ProGanancia=" & txtPorcentajeNew.Text & " where ProCod=" & ProCodigo
         Try
             conn.Open()
             Comando.ExecuteReader()
@@ -585,10 +595,18 @@ Public Class Inicio
             MessageBox.Show("Producto editado correctamente", "Sistema")
 
             btnCancelarEdicion_Click(Nothing, Nothing)
+            btnBuscar_Click(Nothing, Nothing)
         Catch ex As Exception
             MessageBox.Show(ex.Message)
 
         End Try
 
+    End Sub
+
+    Private Sub DataGrid_KeyUp(sender As Object, e As KeyEventArgs) Handles DataGrid.KeyUp
+        If (e.KeyCode = Keys.Enter) Then
+            DataGrid_SelectionChanged(Nothing, Nothing)
+
+        End If
     End Sub
 End Class

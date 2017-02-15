@@ -27,3 +27,12 @@ C:\Users\Diego\Documents\GitHub\sistema\Sistema\Sistema\obj\Debug\Sistema.pdb
 C:\Users\Ryovann\Documents\GitHub\sistema\Sistema\Sistema\obj\Debug\Sistema.exe
 C:\Users\Ryovann\Documents\GitHub\sistema\Sistema\Sistema\obj\Debug\Sistema.xml
 C:\Users\Ryovann\Documents\GitHub\sistema\Sistema\Sistema\obj\Debug\Sistema.pdb
+C:\Users\Ryovann\Documents\GitHub\sistema\Sistema\Sistema\bin\Debug\Sistema.exe
+C:\Users\Ryovann\Documents\GitHub\sistema\Sistema\Sistema\bin\Debug\Sistema.pdb
+C:\Users\Ryovann\Documents\GitHub\sistema\Sistema\Sistema\bin\Debug\Sistema.xml
+C:\Users\Ryovann\Documents\GitHub\sistema\Sistema\Sistema\obj\Debug\Sistema.vbprojResolveAssemblyReference.cache
+C:\Users\Ryovann\Documents\GitHub\sistema\Sistema\Sistema\obj\Debug\Sistema.Cfg.resources
+C:\Users\Ryovann\Documents\GitHub\sistema\Sistema\Sistema\obj\Debug\Sistema.Inicio.resources
+C:\Users\Ryovann\Documents\GitHub\sistema\Sistema\Sistema\obj\Debug\Sistema.Resources.resources
+C:\Users\Ryovann\Documents\GitHub\sistema\Sistema\Sistema\obj\Debug\Sistema.vbproj.GenerateResource.Cache
+C:\Users\Ryovann\Documents\GitHub\sistema\Sistema\Sistema\obj\Debug\Sistema.Splash.resources

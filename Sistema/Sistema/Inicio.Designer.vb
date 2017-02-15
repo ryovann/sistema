@@ -127,9 +127,9 @@ Partial Class Inicio
         'StatusStrip1
         '
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.lblConEstado})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 615)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 659)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(838, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(1264, 22)
         Me.StatusStrip1.TabIndex = 2
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -147,6 +147,7 @@ Partial Class Inicio
         Me.DataGrid.AllowUserToResizeColumns = False
         Me.DataGrid.AllowUserToResizeRows = False
         Me.DataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.DataGrid.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark
         Me.DataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGrid.Location = New System.Drawing.Point(3, 5)
         Me.DataGrid.MultiSelect = False
@@ -154,7 +155,7 @@ Partial Class Inicio
         Me.DataGrid.ReadOnly = True
         Me.DataGrid.RowHeadersVisible = False
         Me.DataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGrid.Size = New System.Drawing.Size(569, 441)
+        Me.DataGrid.Size = New System.Drawing.Size(802, 441)
         Me.DataGrid.TabIndex = 3
         '
         'Contex1
@@ -171,7 +172,7 @@ Partial Class Inicio
         '
         'btnBuscar
         '
-        Me.btnBuscar.Location = New System.Drawing.Point(383, 450)
+        Me.btnBuscar.Location = New System.Drawing.Point(566, 3)
         Me.btnBuscar.Name = "btnBuscar"
         Me.btnBuscar.Size = New System.Drawing.Size(96, 23)
         Me.btnBuscar.TabIndex = 1
@@ -181,7 +182,7 @@ Partial Class Inicio
         'txtBusqueda
         '
         Me.txtBusqueda.AcceptsReturn = True
-        Me.txtBusqueda.Location = New System.Drawing.Point(3, 452)
+        Me.txtBusqueda.Location = New System.Drawing.Point(186, 5)
         Me.txtBusqueda.Name = "txtBusqueda"
         Me.txtBusqueda.Size = New System.Drawing.Size(374, 20)
         Me.txtBusqueda.TabIndex = 0
@@ -262,7 +263,7 @@ Partial Class Inicio
         '
         'btnAgregar
         '
-        Me.btnAgregar.Location = New System.Drawing.Point(248, 294)
+        Me.btnAgregar.Location = New System.Drawing.Point(309, 251)
         Me.btnAgregar.Name = "btnAgregar"
         Me.btnAgregar.Size = New System.Drawing.Size(75, 23)
         Me.btnAgregar.TabIndex = 7
@@ -271,7 +272,7 @@ Partial Class Inicio
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(167, 294)
+        Me.Button1.Location = New System.Drawing.Point(308, 222)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 8
@@ -300,9 +301,9 @@ Partial Class Inicio
         Me.grpAgregarProductos.Controls.Add(Me.txtDescripccion)
         Me.grpAgregarProductos.Controls.Add(Me.Label3)
         Me.grpAgregarProductos.Controls.Add(Me.Label4)
-        Me.grpAgregarProductos.Location = New System.Drawing.Point(12, 14)
+        Me.grpAgregarProductos.Location = New System.Drawing.Point(13, 1)
         Me.grpAgregarProductos.Name = "grpAgregarProductos"
-        Me.grpAgregarProductos.Size = New System.Drawing.Size(329, 325)
+        Me.grpAgregarProductos.Size = New System.Drawing.Size(393, 287)
         Me.grpAgregarProductos.TabIndex = 19
         Me.grpAgregarProductos.TabStop = False
         Me.grpAgregarProductos.Text = "Agregar Productos"
@@ -393,7 +394,7 @@ Partial Class Inicio
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(581, 351)
+        Me.Label5.Location = New System.Drawing.Point(1024, 478)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(52, 13)
         Me.Label5.TabIndex = 21
@@ -401,7 +402,7 @@ Partial Class Inicio
         '
         'txtCantidadProd
         '
-        Me.txtCantidadProd.Location = New System.Drawing.Point(639, 348)
+        Me.txtCantidadProd.Location = New System.Drawing.Point(1082, 475)
         Me.txtCantidadProd.Name = "txtCantidadProd"
         Me.txtCantidadProd.Size = New System.Drawing.Size(100, 20)
         Me.txtCantidadProd.TabIndex = 1
@@ -409,9 +410,9 @@ Partial Class Inicio
         'PanelAgregar
         '
         Me.PanelAgregar.Controls.Add(Me.grpAgregarProductos)
-        Me.PanelAgregar.Location = New System.Drawing.Point(123, 235)
+        Me.PanelAgregar.Location = New System.Drawing.Point(817, 34)
         Me.PanelAgregar.Name = "PanelAgregar"
-        Me.PanelAgregar.Size = New System.Drawing.Size(356, 344)
+        Me.PanelAgregar.Size = New System.Drawing.Size(423, 294)
         Me.PanelAgregar.TabIndex = 23
         Me.PanelAgregar.Visible = False
         '
@@ -420,16 +421,16 @@ Partial Class Inicio
         Me.PanelFiltros.BackColor = System.Drawing.Color.Transparent
         Me.PanelFiltros.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.PanelFiltros.Controls.Add(Me.grpFiltros)
-        Me.PanelFiltros.Location = New System.Drawing.Point(120, 388)
+        Me.PanelFiltros.Location = New System.Drawing.Point(124, 605)
         Me.PanelFiltros.Name = "PanelFiltros"
-        Me.PanelFiltros.Size = New System.Drawing.Size(344, 191)
+        Me.PanelFiltros.Size = New System.Drawing.Size(344, 51)
         Me.PanelFiltros.TabIndex = 24
         Me.PanelFiltros.Visible = False
         '
         'btnFiltros
         '
         Me.btnFiltros.Enabled = False
-        Me.btnFiltros.Location = New System.Drawing.Point(9, 551)
+        Me.btnFiltros.Location = New System.Drawing.Point(10, 604)
         Me.btnFiltros.Name = "btnFiltros"
         Me.btnFiltros.Size = New System.Drawing.Size(108, 23)
         Me.btnFiltros.TabIndex = 0
@@ -438,6 +439,7 @@ Partial Class Inicio
         '
         'PanelBusqueda
         '
+        Me.PanelBusqueda.BackColor = System.Drawing.Color.Transparent
         Me.PanelBusqueda.Controls.Add(Me.Button2)
         Me.PanelBusqueda.Controls.Add(Me.lblTotalPesos)
         Me.PanelBusqueda.Controls.Add(Me.lblCantidadDisponible)
@@ -449,13 +451,11 @@ Partial Class Inicio
         Me.PanelBusqueda.Controls.Add(Me.lblPorcentaje)
         Me.PanelBusqueda.Controls.Add(Me.txtCantidadProd)
         Me.PanelBusqueda.Controls.Add(Me.Label5)
-        Me.PanelBusqueda.Controls.Add(Me.txtBusqueda)
         Me.PanelBusqueda.Controls.Add(Me.DataGrid)
-        Me.PanelBusqueda.Controls.Add(Me.btnBuscar)
         Me.PanelBusqueda.Enabled = False
         Me.PanelBusqueda.Location = New System.Drawing.Point(0, 27)
         Me.PanelBusqueda.Name = "PanelBusqueda"
-        Me.PanelBusqueda.Size = New System.Drawing.Size(828, 509)
+        Me.PanelBusqueda.Size = New System.Drawing.Size(1252, 572)
         Me.PanelBusqueda.TabIndex = 26
         '
         'Button2
@@ -466,7 +466,7 @@ Partial Class Inicio
         Me.Button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White
         Me.Button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White
         Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Button2.Location = New System.Drawing.Point(717, 348)
+        Me.Button2.Location = New System.Drawing.Point(1160, 475)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(22, 20)
         Me.Button2.TabIndex = 29
@@ -477,7 +477,7 @@ Partial Class Inicio
         '
         Me.lblTotalPesos.AutoSize = True
         Me.lblTotalPesos.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTotalPesos.Location = New System.Drawing.Point(579, 421)
+        Me.lblTotalPesos.Location = New System.Drawing.Point(812, 533)
         Me.lblTotalPesos.Name = "lblTotalPesos"
         Me.lblTotalPesos.Size = New System.Drawing.Size(66, 25)
         Me.lblTotalPesos.TabIndex = 28
@@ -486,14 +486,14 @@ Partial Class Inicio
         'lblCantidadDisponible
         '
         Me.lblCantidadDisponible.AutoSize = True
-        Me.lblCantidadDisponible.Location = New System.Drawing.Point(745, 351)
+        Me.lblCantidadDisponible.Location = New System.Drawing.Point(1182, 478)
         Me.lblCantidadDisponible.Name = "lblCantidadDisponible"
         Me.lblCantidadDisponible.Size = New System.Drawing.Size(0, 13)
         Me.lblCantidadDisponible.TabIndex = 27
         '
         'btnSeleccionar
         '
-        Me.btnSeleccionar.Location = New System.Drawing.Point(581, 5)
+        Me.btnSeleccionar.Location = New System.Drawing.Point(683, 452)
         Me.btnSeleccionar.Name = "btnSeleccionar"
         Me.btnSeleccionar.Size = New System.Drawing.Size(122, 23)
         Me.btnSeleccionar.TabIndex = 0
@@ -502,9 +502,9 @@ Partial Class Inicio
         '
         'btnVender
         '
-        Me.btnVender.Location = New System.Drawing.Point(685, 464)
+        Me.btnVender.Location = New System.Drawing.Point(1082, 516)
         Me.btnVender.Name = "btnVender"
-        Me.btnVender.Size = New System.Drawing.Size(140, 42)
+        Me.btnVender.Size = New System.Drawing.Size(155, 42)
         Me.btnVender.TabIndex = 2
         Me.btnVender.Text = "Vender Producto"
         Me.btnVender.UseVisualStyleBackColor = True
@@ -513,7 +513,7 @@ Partial Class Inicio
         '
         Me.lblTotal.AutoSize = True
         Me.lblTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTotal.Location = New System.Drawing.Point(578, 386)
+        Me.lblTotal.Location = New System.Drawing.Point(811, 498)
         Me.lblTotal.Name = "lblTotal"
         Me.lblTotal.Size = New System.Drawing.Size(66, 25)
         Me.lblTotal.TabIndex = 26
@@ -522,7 +522,7 @@ Partial Class Inicio
         'lblPrecioUnitario
         '
         Me.lblPrecioUnitario.AutoSize = True
-        Me.lblPrecioUnitario.Location = New System.Drawing.Point(578, 316)
+        Me.lblPrecioUnitario.Location = New System.Drawing.Point(814, 433)
         Me.lblPrecioUnitario.Name = "lblPrecioUnitario"
         Me.lblPrecioUnitario.Size = New System.Drawing.Size(79, 13)
         Me.lblPrecioUnitario.TabIndex = 25
@@ -531,7 +531,7 @@ Partial Class Inicio
         'lblFlete
         '
         Me.lblFlete.AutoSize = True
-        Me.lblFlete.Location = New System.Drawing.Point(578, 281)
+        Me.lblFlete.Location = New System.Drawing.Point(814, 398)
         Me.lblFlete.Name = "lblFlete"
         Me.lblFlete.Size = New System.Drawing.Size(86, 13)
         Me.lblFlete.TabIndex = 24
@@ -540,7 +540,7 @@ Partial Class Inicio
         'lblPorcentaje
         '
         Me.lblPorcentaje.AutoSize = True
-        Me.lblPorcentaje.Location = New System.Drawing.Point(578, 246)
+        Me.lblPorcentaje.Location = New System.Drawing.Point(814, 363)
         Me.lblPorcentaje.Name = "lblPorcentaje"
         Me.lblPorcentaje.Size = New System.Drawing.Size(125, 13)
         Me.lblPorcentaje.TabIndex = 23
@@ -549,7 +549,7 @@ Partial Class Inicio
         'btnAgregarMostrar
         '
         Me.btnAgregarMostrar.Enabled = False
-        Me.btnAgregarMostrar.Location = New System.Drawing.Point(8, 580)
+        Me.btnAgregarMostrar.Location = New System.Drawing.Point(9, 633)
         Me.btnAgregarMostrar.Name = "btnAgregarMostrar"
         Me.btnAgregarMostrar.Size = New System.Drawing.Size(109, 23)
         Me.btnAgregarMostrar.TabIndex = 1
@@ -558,7 +558,8 @@ Partial Class Inicio
         '
         'txtCotizacion
         '
-        Me.txtCotizacion.Location = New System.Drawing.Point(748, 583)
+        Me.txtCotizacion.Enabled = False
+        Me.txtCotizacion.Location = New System.Drawing.Point(1171, 636)
         Me.txtCotizacion.Name = "txtCotizacion"
         Me.txtCotizacion.Size = New System.Drawing.Size(44, 20)
         Me.txtCotizacion.TabIndex = 27
@@ -567,7 +568,7 @@ Partial Class Inicio
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(641, 586)
+        Me.Label6.Location = New System.Drawing.Point(1064, 639)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(99, 13)
         Me.Label6.TabIndex = 28
@@ -575,7 +576,8 @@ Partial Class Inicio
         '
         'btnOKCotizacion
         '
-        Me.btnOKCotizacion.Location = New System.Drawing.Point(798, 580)
+        Me.btnOKCotizacion.Enabled = False
+        Me.btnOKCotizacion.Location = New System.Drawing.Point(1221, 633)
         Me.btnOKCotizacion.Name = "btnOKCotizacion"
         Me.btnOKCotizacion.Size = New System.Drawing.Size(31, 23)
         Me.btnOKCotizacion.TabIndex = 29
@@ -585,9 +587,9 @@ Partial Class Inicio
         'PanelEditarProducto
         '
         Me.PanelEditarProducto.Controls.Add(Me.grpEditarProd)
-        Me.PanelEditarProducto.Location = New System.Drawing.Point(111, 72)
+        Me.PanelEditarProducto.Location = New System.Drawing.Point(817, 34)
         Me.PanelEditarProducto.Name = "PanelEditarProducto"
-        Me.PanelEditarProducto.Size = New System.Drawing.Size(356, 345)
+        Me.PanelEditarProducto.Size = New System.Drawing.Size(424, 294)
         Me.PanelEditarProducto.TabIndex = 24
         Me.PanelEditarProducto.Visible = False
         '
@@ -613,9 +615,9 @@ Partial Class Inicio
         Me.grpEditarProd.Controls.Add(Me.txtEditarDescripcion)
         Me.grpEditarProd.Controls.Add(Me.Label14)
         Me.grpEditarProd.Controls.Add(Me.Label15)
-        Me.grpEditarProd.Location = New System.Drawing.Point(12, 14)
+        Me.grpEditarProd.Location = New System.Drawing.Point(12, 6)
         Me.grpEditarProd.Name = "grpEditarProd"
-        Me.grpEditarProd.Size = New System.Drawing.Size(329, 328)
+        Me.grpEditarProd.Size = New System.Drawing.Size(394, 278)
         Me.grpEditarProd.TabIndex = 19
         Me.grpEditarProd.TabStop = False
         Me.grpEditarProd.Text = "Editar Producto"
@@ -655,7 +657,7 @@ Partial Class Inicio
         '
         'btnCancelarEdicion
         '
-        Me.btnCancelarEdicion.Location = New System.Drawing.Point(167, 294)
+        Me.btnCancelarEdicion.Location = New System.Drawing.Point(310, 218)
         Me.btnCancelarEdicion.Name = "btnCancelarEdicion"
         Me.btnCancelarEdicion.Size = New System.Drawing.Size(75, 23)
         Me.btnCancelarEdicion.TabIndex = 25
@@ -722,7 +724,7 @@ Partial Class Inicio
         '
         'btnGuardarCambios
         '
-        Me.btnGuardarCambios.Location = New System.Drawing.Point(248, 294)
+        Me.btnGuardarCambios.Location = New System.Drawing.Point(310, 243)
         Me.btnGuardarCambios.Name = "btnGuardarCambios"
         Me.btnGuardarCambios.Size = New System.Drawing.Size(75, 23)
         Me.btnGuardarCambios.TabIndex = 7
@@ -790,10 +792,12 @@ Partial Class Inicio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(838, 637)
+        Me.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.ClientSize = New System.Drawing.Size(1264, 681)
+        Me.Controls.Add(Me.PanelFiltros)
         Me.Controls.Add(Me.PanelAgregar)
         Me.Controls.Add(Me.PanelEditarProducto)
-        Me.Controls.Add(Me.PanelFiltros)
         Me.Controls.Add(Me.btnOKCotizacion)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.btnAgregarMostrar)
@@ -801,11 +805,12 @@ Partial Class Inicio
         Me.Controls.Add(Me.btnFiltros)
         Me.Controls.Add(Me.btnConectar)
         Me.Controls.Add(Me.StatusStrip1)
+        Me.Controls.Add(Me.txtBusqueda)
         Me.Controls.Add(Me.btnConfig)
+        Me.Controls.Add(Me.btnBuscar)
         Me.Controls.Add(Me.PanelBusqueda)
         Me.Name = "Inicio"
         Me.Text = "Inicio"
-        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
         CType(Me.DataGrid, System.ComponentModel.ISupportInitialize).EndInit()
