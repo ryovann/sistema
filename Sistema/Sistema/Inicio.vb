@@ -16,7 +16,7 @@ Public Class Inicio
 
     Public Sub Inicio_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Dim path As String = "C:\Sistema\Data\Config\config.dat"
-
+        ChbClienteFinal.Checked = True
 
 
         txtCantidadProd.Text = "1"
@@ -74,7 +74,9 @@ Public Class Inicio
                 btnFiltros.Enabled = True
                 txtCotizacion.Enabled = True
                 btnOKCotizacion.Enabled = True
-
+                txtBusqueda.Enabled = True
+                btnBuscar.Enabled = True
+                btnConectar.Enabled = False
                 '----------------------------------------
                 'Falta programar impuestos en bd
 
@@ -110,6 +112,7 @@ Public Class Inicio
     Private Sub btnBuscar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBuscar.Click
         DataGridOk = False
         txtCantidadProd.Text = 1
+        btnSeleccionar.Enabled = True
 
 
         Comando.Connection = conn
@@ -161,6 +164,7 @@ Public Class Inicio
                 MessageBox.Show(ex.Message)
                 conn.Close()
                 DataGridOk = False
+                btnSeleccionar.Enabled = False
 
             End Try
 
@@ -264,9 +268,6 @@ Public Class Inicio
             PanelFiltros.Visible = True
             btnAgregarMostrar.Enabled = False
             PanelBusqueda.Enabled = False
-            PanelFiltros.Width = 344
-            PanelFiltros.Height = 191
-
 
         Else
             PanelFiltros.Visible = False
@@ -278,24 +279,34 @@ Public Class Inicio
 
     Private Sub btnAgregarMostrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAgregarMostrar.Click
         If (PanelAgregar.Visible = False) Then
+            'Muestro panel agregar
             PanelAgregar.Visible = True
-
+            PanelAgregar.BringToFront()
+            'Oculto lo demas
             PanelBusqueda.Enabled = False
             btnFiltros.Enabled = False
             txtCotizacion.Enabled = False
             btnOKCotizacion.Enabled = False
-            PanelAgregar.BringToFront()
-
+            PanelInfoProducto.Visible = False
+            PanelClientes.Visible = False
+            btnBuscar.Enabled = False
+            txtBusqueda.Enabled = False
+            btnSeleccionar.Enabled = False
 
         Else
+            'Oculto panel Agregar
             PanelAgregar.Visible = False
             PanelAgregar.SendToBack()
-
+            'Muestro todo lo demas
             PanelBusqueda.Enabled = True
+            btnBuscar.Enabled = True
+            txtBusqueda.Enabled = True
             btnFiltros.Enabled = True
             txtCotizacion.Enabled = True
             btnOKCotizacion.Enabled = True
-
+            PanelClientes.Visible = True
+            PanelInfoProducto.Visible = True
+            btnSeleccionar.Enabled = True
         End If
     End Sub
 
@@ -412,12 +423,6 @@ Public Class Inicio
                                 total = total + ((total * PorcentajeDeGananciaTotal) / 100)
                                 total = total + (ProFlete * Cantidad)
 
-
-
-
-
-
-
                                 lblTotal.Text = "Total: " & total / txtCotizacion.Text & " Dolares"
                                 lblTotalPesos.Text = "Total: " & total & " " & Moneda
 
@@ -425,6 +430,17 @@ Public Class Inicio
 
 
                             End If
+
+
+
+
+                            '''SE MUESTRA LA INFORMACION EN EL GRP
+
+                            lblCodigo.Text = "Codigo: " & DataGrid.SelectedRows.Item(0).Cells.Item(0).Value
+                            lblTipo.Text = "Tipo: " & DataGrid.SelectedRows.Item(0).Cells.Item(1).Value
+                            lblMarca.Text = "Marca: " & DataGrid.SelectedRows.Item(0).Cells.Item(2).Value
+                            lblModelo.Text = "Modelo: " & DataGrid.SelectedRows.Item(0).Cells.Item(3).Value
+                            lblDescripcion.Text = "Descripcion: " & DataGrid.SelectedRows.Item(0).Cells.Item(7).Value
                         Catch ex As Exception
                             MessageBox.Show(ex.Message)
                         End Try
@@ -545,6 +561,12 @@ Public Class Inicio
         btnAgregarMostrar.Enabled = False
         txtCotizacion.Enabled = False
         btnOKCotizacion.Enabled = False
+        btnBuscar.Enabled = False
+        txtBusqueda.Enabled = False
+        btnSeleccionar.Enabled = False
+        'Oculto paneles de informacion y clientes
+        PanelInfoProducto.Visible = False
+        PanelClientes.Visible = False
         '------------------------------------------
         'Muestro panel
         PanelEditarProducto.Visible = True
@@ -579,6 +601,11 @@ Public Class Inicio
         btnAgregarMostrar.Enabled = True
         txtCotizacion.Enabled = True
         btnOKCotizacion.Enabled = True
+        PanelClientes.Visible = True
+        PanelInfoProducto.Visible = True
+        btnBuscar.Enabled = True
+        txtBusqueda.Enabled = True
+        btnSeleccionar.Enabled = True
         '------------------------------------------
         'Oculto panel
         PanelEditarProducto.Visible = False
@@ -592,6 +619,36 @@ Public Class Inicio
 
     Private Sub PanelBusqueda_Paint(sender As Object, e As PaintEventArgs) Handles PanelBusqueda.Paint
 
+    End Sub
+
+    Private Sub ChbClienteFinal_CheckedChanged(sender As Object, e As EventArgs) Handles ChbClienteFinal.CheckedChanged
+        If (ChbClienteFinal.Checked = True) Then
+            chbClienteOtro.Checked = False
+            PanelDatosCliente.Visible = False
+
+
+
+
+
+        Else
+            chbClienteOtro.Checked = True
+            PanelDatosCliente.Visible = True
+        End If
+    End Sub
+
+    Private Sub chbClienteOtro_CheckedChanged(sender As Object, e As EventArgs) Handles chbClienteOtro.CheckedChanged
+        If (chbClienteOtro.Checked = True) Then
+            ChbClienteFinal.Checked = False
+            PanelDatosCliente.Visible = True
+
+
+
+
+
+        Else
+            ChbClienteFinal.Checked = True
+            PanelDatosCliente.Visible = False
+        End If
     End Sub
 
     Private Sub btnGuardarCambios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGuardarCambios.Click
