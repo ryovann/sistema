@@ -1,4 +1,5 @@
 ﻿Imports MySql.Data.MySqlClient
+Imports scripting
 
 
 Public Class Inicio
@@ -278,16 +279,18 @@ Public Class Inicio
     Private Sub btnAgregarMostrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAgregarMostrar.Click
         If (PanelAgregar.Visible = False) Then
             PanelAgregar.Visible = True
-            PanelAgregar.Width = 353
-            PanelAgregar.Height = 350
+
             PanelBusqueda.Enabled = False
             btnFiltros.Enabled = False
             txtCotizacion.Enabled = False
             btnOKCotizacion.Enabled = False
+            PanelAgregar.BringToFront()
 
 
         Else
             PanelAgregar.Visible = False
+            PanelAgregar.SendToBack()
+
             PanelBusqueda.Enabled = True
             btnFiltros.Enabled = True
             txtCotizacion.Enabled = True
@@ -545,6 +548,8 @@ Public Class Inicio
         '------------------------------------------
         'Muestro panel
         PanelEditarProducto.Visible = True
+        PanelEditarProducto.BringToFront()
+
         '------------------------------------------
         'Relleno campos
         txtEditarTipo.Text = ProTipo
@@ -577,10 +582,16 @@ Public Class Inicio
         '------------------------------------------
         'Oculto panel
         PanelEditarProducto.Visible = False
+        PanelEditarProducto.SendToBack()
+
     End Sub
 
     Private Sub cmbEditarMoneda_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbEditarMoneda.SelectedIndexChanged
         txtPrecioUnitario.Focus()
+    End Sub
+
+    Private Sub PanelBusqueda_Paint(sender As Object, e As PaintEventArgs) Handles PanelBusqueda.Paint
+
     End Sub
 
     Private Sub btnGuardarCambios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGuardarCambios.Click

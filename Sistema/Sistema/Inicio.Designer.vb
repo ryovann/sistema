@@ -95,6 +95,13 @@ Partial Class Inicio
         Me.txtEditarDescripcion = New System.Windows.Forms.TextBox()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label15 = New System.Windows.Forms.Label()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.grpProInfo = New System.Windows.Forms.GroupBox()
+        Me.lblCodigo = New System.Windows.Forms.Label()
+        Me.lblTipo = New System.Windows.Forms.Label()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.Label22 = New System.Windows.Forms.Label()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.DataGrid, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Contex1.SuspendLayout()
@@ -104,6 +111,8 @@ Partial Class Inicio
         Me.PanelBusqueda.SuspendLayout()
         Me.PanelEditarProducto.SuspendLayout()
         Me.grpEditarProd.SuspendLayout()
+        Me.Panel1.SuspendLayout()
+        Me.grpProInfo.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnConfig
@@ -263,7 +272,7 @@ Partial Class Inicio
         '
         'btnAgregar
         '
-        Me.btnAgregar.Location = New System.Drawing.Point(309, 251)
+        Me.btnAgregar.Location = New System.Drawing.Point(309, 243)
         Me.btnAgregar.Name = "btnAgregar"
         Me.btnAgregar.Size = New System.Drawing.Size(75, 23)
         Me.btnAgregar.TabIndex = 7
@@ -272,7 +281,7 @@ Partial Class Inicio
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(308, 222)
+        Me.Button1.Location = New System.Drawing.Point(308, 218)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 8
@@ -301,16 +310,16 @@ Partial Class Inicio
         Me.grpAgregarProductos.Controls.Add(Me.txtDescripccion)
         Me.grpAgregarProductos.Controls.Add(Me.Label3)
         Me.grpAgregarProductos.Controls.Add(Me.Label4)
-        Me.grpAgregarProductos.Location = New System.Drawing.Point(13, 1)
+        Me.grpAgregarProductos.Location = New System.Drawing.Point(13, 6)
         Me.grpAgregarProductos.Name = "grpAgregarProductos"
-        Me.grpAgregarProductos.Size = New System.Drawing.Size(393, 287)
+        Me.grpAgregarProductos.Size = New System.Drawing.Size(393, 278)
         Me.grpAgregarProductos.TabIndex = 19
         Me.grpAgregarProductos.TabStop = False
         Me.grpAgregarProductos.Text = "Agregar Productos"
         '
         'txtFlete
         '
-        Me.txtFlete.Location = New System.Drawing.Point(188, 253)
+        Me.txtFlete.Location = New System.Drawing.Point(188, 246)
         Me.txtFlete.Name = "txtFlete"
         Me.txtFlete.Size = New System.Drawing.Size(54, 20)
         Me.txtFlete.TabIndex = 33
@@ -318,7 +327,7 @@ Partial Class Inicio
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(149, 256)
+        Me.Label18.Location = New System.Drawing.Point(149, 250)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(30, 13)
         Me.Label18.TabIndex = 32
@@ -326,7 +335,7 @@ Partial Class Inicio
         '
         'txtPorcentaje
         '
-        Me.txtPorcentaje.Location = New System.Drawing.Point(89, 253)
+        Me.txtPorcentaje.Location = New System.Drawing.Point(89, 246)
         Me.txtPorcentaje.Name = "txtPorcentaje"
         Me.txtPorcentaje.Size = New System.Drawing.Size(54, 20)
         Me.txtPorcentaje.TabIndex = 31
@@ -334,7 +343,7 @@ Partial Class Inicio
         'Label19
         '
         Me.Label19.AutoSize = True
-        Me.Label19.Location = New System.Drawing.Point(9, 256)
+        Me.Label19.Location = New System.Drawing.Point(9, 249)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(61, 13)
         Me.Label19.TabIndex = 30
@@ -394,17 +403,19 @@ Partial Class Inicio
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(1024, 478)
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(814, 329)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(52, 13)
+        Me.Label5.Size = New System.Drawing.Size(65, 16)
         Me.Label5.TabIndex = 21
         Me.Label5.Text = "Cantidad:"
         '
         'txtCantidadProd
         '
-        Me.txtCantidadProd.Location = New System.Drawing.Point(1082, 475)
+        Me.txtCantidadProd.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCantidadProd.Location = New System.Drawing.Point(883, 326)
         Me.txtCantidadProd.Name = "txtCantidadProd"
-        Me.txtCantidadProd.Size = New System.Drawing.Size(100, 20)
+        Me.txtCantidadProd.Size = New System.Drawing.Size(33, 22)
         Me.txtCantidadProd.TabIndex = 1
         '
         'PanelAgregar
@@ -412,7 +423,7 @@ Partial Class Inicio
         Me.PanelAgregar.Controls.Add(Me.grpAgregarProductos)
         Me.PanelAgregar.Location = New System.Drawing.Point(817, 34)
         Me.PanelAgregar.Name = "PanelAgregar"
-        Me.PanelAgregar.Size = New System.Drawing.Size(423, 294)
+        Me.PanelAgregar.Size = New System.Drawing.Size(424, 294)
         Me.PanelAgregar.TabIndex = 23
         Me.PanelAgregar.Visible = False
         '
@@ -440,6 +451,7 @@ Partial Class Inicio
         'PanelBusqueda
         '
         Me.PanelBusqueda.BackColor = System.Drawing.Color.Transparent
+        Me.PanelBusqueda.Controls.Add(Me.Panel1)
         Me.PanelBusqueda.Controls.Add(Me.Button2)
         Me.PanelBusqueda.Controls.Add(Me.lblTotalPesos)
         Me.PanelBusqueda.Controls.Add(Me.lblCantidadDisponible)
@@ -466,9 +478,10 @@ Partial Class Inicio
         Me.Button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White
         Me.Button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White
         Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Button2.Location = New System.Drawing.Point(1160, 475)
+        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.Location = New System.Drawing.Point(908, 326)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(22, 20)
+        Me.Button2.Size = New System.Drawing.Size(19, 22)
         Me.Button2.TabIndex = 29
         Me.Button2.Text = "X"
         Me.Button2.UseVisualStyleBackColor = False
@@ -486,9 +499,10 @@ Partial Class Inicio
         'lblCantidadDisponible
         '
         Me.lblCantidadDisponible.AutoSize = True
-        Me.lblCantidadDisponible.Location = New System.Drawing.Point(1182, 478)
+        Me.lblCantidadDisponible.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCantidadDisponible.Location = New System.Drawing.Point(931, 329)
         Me.lblCantidadDisponible.Name = "lblCantidadDisponible"
-        Me.lblCantidadDisponible.Size = New System.Drawing.Size(0, 13)
+        Me.lblCantidadDisponible.Size = New System.Drawing.Size(0, 16)
         Me.lblCantidadDisponible.TabIndex = 27
         '
         'btnSeleccionar
@@ -522,27 +536,30 @@ Partial Class Inicio
         'lblPrecioUnitario
         '
         Me.lblPrecioUnitario.AutoSize = True
+        Me.lblPrecioUnitario.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblPrecioUnitario.Location = New System.Drawing.Point(814, 433)
         Me.lblPrecioUnitario.Name = "lblPrecioUnitario"
-        Me.lblPrecioUnitario.Size = New System.Drawing.Size(79, 13)
+        Me.lblPrecioUnitario.Size = New System.Drawing.Size(159, 25)
         Me.lblPrecioUnitario.TabIndex = 25
         Me.lblPrecioUnitario.Text = "Precio Unitario:"
         '
         'lblFlete
         '
         Me.lblFlete.AutoSize = True
+        Me.lblFlete.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblFlete.Location = New System.Drawing.Point(814, 398)
         Me.lblFlete.Name = "lblFlete"
-        Me.lblFlete.Size = New System.Drawing.Size(86, 13)
+        Me.lblFlete.Size = New System.Drawing.Size(176, 25)
         Me.lblFlete.TabIndex = 24
         Me.lblFlete.Text = "Costes por Flete:"
         '
         'lblPorcentaje
         '
         Me.lblPorcentaje.AutoSize = True
+        Me.lblPorcentaje.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblPorcentaje.Location = New System.Drawing.Point(814, 363)
         Me.lblPorcentaje.Name = "lblPorcentaje"
-        Me.lblPorcentaje.Size = New System.Drawing.Size(125, 13)
+        Me.lblPorcentaje.Size = New System.Drawing.Size(249, 25)
         Me.lblPorcentaje.TabIndex = 23
         Me.lblPorcentaje.Text = "Porcentaje de Ganancia:"
         '
@@ -788,6 +805,73 @@ Partial Class Inicio
         Me.Label15.TabIndex = 13
         Me.Label15.Text = "Precio unitario:"
         '
+        'Panel1
+        '
+        Me.Panel1.Controls.Add(Me.grpProInfo)
+        Me.Panel1.Location = New System.Drawing.Point(811, 5)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(438, 140)
+        Me.Panel1.TabIndex = 30
+        '
+        'grpProInfo
+        '
+        Me.grpProInfo.Controls.Add(Me.Label22)
+        Me.grpProInfo.Controls.Add(Me.Label21)
+        Me.grpProInfo.Controls.Add(Me.Label20)
+        Me.grpProInfo.Controls.Add(Me.lblTipo)
+        Me.grpProInfo.Controls.Add(Me.lblCodigo)
+        Me.grpProInfo.Location = New System.Drawing.Point(9, 5)
+        Me.grpProInfo.Name = "grpProInfo"
+        Me.grpProInfo.Size = New System.Drawing.Size(421, 119)
+        Me.grpProInfo.TabIndex = 0
+        Me.grpProInfo.TabStop = False
+        Me.grpProInfo.Text = "Informacion de Producto:"
+        '
+        'lblCodigo
+        '
+        Me.lblCodigo.AutoSize = True
+        Me.lblCodigo.Location = New System.Drawing.Point(8, 89)
+        Me.lblCodigo.Name = "lblCodigo"
+        Me.lblCodigo.Size = New System.Drawing.Size(46, 13)
+        Me.lblCodigo.TabIndex = 0
+        Me.lblCodigo.Text = "Codigo: "
+        '
+        'lblTipo
+        '
+        Me.lblTipo.AutoSize = True
+        Me.lblTipo.Location = New System.Drawing.Point(8, 19)
+        Me.lblTipo.Name = "lblTipo"
+        Me.lblTipo.Size = New System.Drawing.Size(34, 13)
+        Me.lblTipo.TabIndex = 1
+        Me.lblTipo.Text = "Tipo: "
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Location = New System.Drawing.Point(145, 19)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(40, 13)
+        Me.Label20.TabIndex = 2
+        Me.Label20.Text = "Marca:"
+        '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.Location = New System.Drawing.Point(288, 19)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(45, 13)
+        Me.Label21.TabIndex = 3
+        Me.Label21.Text = "Modelo:"
+        '
+        'Label22
+        '
+        Me.Label22.AutoSize = True
+        Me.Label22.Location = New System.Drawing.Point(8, 53)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(66, 13)
+        Me.Label22.TabIndex = 4
+        Me.Label22.Text = "Descripcion:"
+        '
         'Inicio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -796,8 +880,6 @@ Partial Class Inicio
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1264, 681)
         Me.Controls.Add(Me.PanelFiltros)
-        Me.Controls.Add(Me.PanelAgregar)
-        Me.Controls.Add(Me.PanelEditarProducto)
         Me.Controls.Add(Me.btnOKCotizacion)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.btnAgregarMostrar)
@@ -809,6 +891,8 @@ Partial Class Inicio
         Me.Controls.Add(Me.btnConfig)
         Me.Controls.Add(Me.btnBuscar)
         Me.Controls.Add(Me.PanelBusqueda)
+        Me.Controls.Add(Me.PanelAgregar)
+        Me.Controls.Add(Me.PanelEditarProducto)
         Me.Name = "Inicio"
         Me.Text = "Inicio"
         Me.StatusStrip1.ResumeLayout(False)
@@ -824,6 +908,9 @@ Partial Class Inicio
         Me.PanelEditarProducto.ResumeLayout(False)
         Me.grpEditarProd.ResumeLayout(False)
         Me.grpEditarProd.PerformLayout()
+        Me.Panel1.ResumeLayout(False)
+        Me.grpProInfo.ResumeLayout(False)
+        Me.grpProInfo.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -900,4 +987,11 @@ Partial Class Inicio
     Friend WithEvents Label18 As System.Windows.Forms.Label
     Friend WithEvents txtPorcentaje As System.Windows.Forms.TextBox
     Friend WithEvents Label19 As System.Windows.Forms.Label
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents grpProInfo As GroupBox
+    Friend WithEvents Label22 As Label
+    Friend WithEvents Label21 As Label
+    Friend WithEvents Label20 As Label
+    Friend WithEvents lblTipo As Label
+    Friend WithEvents lblCodigo As Label
 End Class
