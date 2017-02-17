@@ -14,9 +14,17 @@ Public Class Inicio
     Public Dir, User, Pass As String
 
 
-
+    Protected Overrides Sub OnPaint(ByVal e As System.Windows.Forms.PaintEventArgs)
+        MyBase.OnPaint(e)
+        For Each MyObject As PictureBox In Me.Controls.OfType(Of PictureBox)()
+            If Not IsNothing(MyObject.Image) And MyObject.Visible = True Then
+                e.Graphics.DrawImageUnscaled(New Bitmap(MyObject.Image), MyObject.Left, MyObject.Top)
+            End If
+        Next
+    End Sub
 
     Public Sub Inicio_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
         Dim path As String = "C:\Sistema\Data\Config\config.dat"
         ChbClienteFinal.Checked = True
 
@@ -526,14 +534,12 @@ Public Class Inicio
         Comando.CommandText = "UPDATE `productos` SET `ProCant` = '" & CantidadActual - CantidadVenta & "' WHERE `productos`.`ProCod` = " & Index
 
 
-        If (ChbClienteFinal.Checked = True) Then
-
-            PanelBloqueoDeVentana.SetBounds(0, 0, Me.Width, Me.Height)
-
+        Dim ConfirmacionVenta As New ConfirmacionVenta
+        ConfirmacionVenta.Visible = True
 
 
 
-        End If
+
 
 
         'Try
@@ -628,9 +634,6 @@ Public Class Inicio
         txtPrecioUnitario.Focus()
     End Sub
 
-    Private Sub PanelBusqueda_Paint(sender As Object, e As PaintEventArgs) Handles PanelBusqueda.Paint
-
-    End Sub
 
     Private Sub ChbClienteFinal_CheckedChanged(sender As Object, e As EventArgs) Handles ChbClienteFinal.CheckedChanged
         If (ChbClienteFinal.Checked = True) Then
@@ -733,7 +736,7 @@ Public Class Inicio
 
     End Sub
 
-    Private Sub ElementHost1_ChildChanged(sender As Object, e As Integration.ChildChangedEventArgs) Handles ElementHost1.ChildChanged
+    Private Sub ElementHost1_ChildChanged(sender As Object, e As Integration.ChildChangedEventArgs)
 
     End Sub
 

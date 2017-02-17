@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Inicio
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,11 +20,11 @@ Partial Class Inicio
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnConfig = New System.Windows.Forms.Button()
         Me.btnConectar = New System.Windows.Forms.Button()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
@@ -117,9 +117,6 @@ Partial Class Inicio
         Me.txtEditarDescripcion = New System.Windows.Forms.TextBox()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label15 = New System.Windows.Forms.Label()
-        Me.PanelBloqueoDeVentana = New System.Windows.Forms.Panel()
-        Me.ElementHost1 = New System.Windows.Forms.Integration.ElementHost()
-        Me.UserControl11 = New Sistema.UserControl1()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.DataGrid, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Contex1.SuspendLayout()
@@ -135,7 +132,6 @@ Partial Class Inicio
         Me.PanelDatosCliente.SuspendLayout()
         Me.PanelEditarProducto.SuspendLayout()
         Me.grpEditarProd.SuspendLayout()
-        Me.PanelBloqueoDeVentana.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnConfig
@@ -480,7 +476,6 @@ Partial Class Inicio
         '
         Me.PanelBusqueda.BackColor = System.Drawing.Color.Transparent
         Me.PanelBusqueda.Controls.Add(Me.lstUsuarios)
-        Me.PanelBusqueda.Controls.Add(Me.PanelBloqueoDeVentana)
         Me.PanelBusqueda.Controls.Add(Me.PanelFiltros)
         Me.PanelBusqueda.Controls.Add(Me.Button2)
         Me.PanelBusqueda.Controls.Add(Me.lblTotalPesos)
@@ -517,18 +512,18 @@ Partial Class Inicio
         Me.lstUsuarios.MultiSelect = False
         Me.lstUsuarios.Name = "lstUsuarios"
         Me.lstUsuarios.ReadOnly = True
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.lstUsuarios.RowHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.lstUsuarios.RowHeadersDefaultCellStyle = DataGridViewCellStyle9
         Me.lstUsuarios.RowHeadersVisible = False
         Me.lstUsuarios.RowHeadersWidth = 10
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lstUsuarios.RowsDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lstUsuarios.RowsDefaultCellStyle = DataGridViewCellStyle10
         Me.lstUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.lstUsuarios.Size = New System.Drawing.Size(139, 101)
         Me.lstUsuarios.TabIndex = 17
@@ -1048,25 +1043,6 @@ Partial Class Inicio
         Me.Label15.TabIndex = 13
         Me.Label15.Text = "Precio unitario:"
         '
-        'PanelBloqueoDeVentana
-        '
-        Me.PanelBloqueoDeVentana.BackColor = System.Drawing.Color.Transparent
-        Me.PanelBloqueoDeVentana.Controls.Add(Me.ElementHost1)
-        Me.PanelBloqueoDeVentana.Location = New System.Drawing.Point(321, 259)
-        Me.PanelBloqueoDeVentana.Name = "PanelBloqueoDeVentana"
-        Me.PanelBloqueoDeVentana.Size = New System.Drawing.Size(341, 264)
-        Me.PanelBloqueoDeVentana.TabIndex = 32
-        '
-        'ElementHost1
-        '
-        Me.ElementHost1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ElementHost1.Location = New System.Drawing.Point(0, 0)
-        Me.ElementHost1.Name = "ElementHost1"
-        Me.ElementHost1.Size = New System.Drawing.Size(341, 264)
-        Me.ElementHost1.TabIndex = 0
-        Me.ElementHost1.Text = "ElementHost1"
-        Me.ElementHost1.Child = Me.UserControl11
-        '
         'Inicio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1112,7 +1088,6 @@ Partial Class Inicio
         Me.PanelEditarProducto.ResumeLayout(False)
         Me.grpEditarProd.ResumeLayout(False)
         Me.grpEditarProd.PerformLayout()
-        Me.PanelBloqueoDeVentana.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1209,7 +1184,4 @@ Partial Class Inicio
     Friend WithEvents Label22 As Label
     Friend WithEvents Label21 As Label
     Friend WithEvents lstUsuarios As DataGridView
-    Friend WithEvents PanelBloqueoDeVentana As Panel
-    Friend WithEvents ElementHost1 As Integration.ElementHost
-    Friend UserControl11 As UserControl1
 End Class
