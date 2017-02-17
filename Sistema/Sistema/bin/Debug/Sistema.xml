@@ -22,9 +22,29 @@ Sistema
   búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
 </summary>
 </member>
+<member name="P:Sistema.My.Resources.Resources._3px_tile">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Sistema.My.Resources.Resources._60_lines">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:Sistema.My.Resources.Resources.MainBackground1">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="T:Sistema.UserControl1">
+<summary>
+UserControl1
+</summary>
+</member>
+<member name="M:Sistema.UserControl1.InitializeComponent">
+<summary>
+InitializeComponent
 </summary>
 </member>
 </members>

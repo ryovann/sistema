@@ -23,6 +23,8 @@ Partial Class Inicio
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnConfig = New System.Windows.Forms.Button()
         Me.btnConectar = New System.Windows.Forms.Button()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
@@ -60,6 +62,15 @@ Partial Class Inicio
         Me.PanelFiltros = New System.Windows.Forms.Panel()
         Me.btnFiltros = New System.Windows.Forms.Button()
         Me.PanelBusqueda = New System.Windows.Forms.Panel()
+        Me.lstUsuarios = New System.Windows.Forms.DataGridView()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.lblTotalPesos = New System.Windows.Forms.Label()
+        Me.lblCantidadDisponible = New System.Windows.Forms.Label()
+        Me.btnVender = New System.Windows.Forms.Button()
+        Me.lblTotal = New System.Windows.Forms.Label()
+        Me.lblPrecioUnitario = New System.Windows.Forms.Label()
+        Me.lblFlete = New System.Windows.Forms.Label()
+        Me.lblPorcentaje = New System.Windows.Forms.Label()
         Me.PanelInfoProducto = New System.Windows.Forms.Panel()
         Me.grpProInfo = New System.Windows.Forms.GroupBox()
         Me.lblDescripcion = New System.Windows.Forms.Label()
@@ -67,15 +78,19 @@ Partial Class Inicio
         Me.lblMarca = New System.Windows.Forms.Label()
         Me.lblTipo = New System.Windows.Forms.Label()
         Me.lblCodigo = New System.Windows.Forms.Label()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.lblTotalPesos = New System.Windows.Forms.Label()
-        Me.lblCantidadDisponible = New System.Windows.Forms.Label()
+        Me.PanelClientes = New System.Windows.Forms.Panel()
+        Me.grpClientes = New System.Windows.Forms.GroupBox()
+        Me.PanelDatosCliente = New System.Windows.Forms.Panel()
+        Me.txtNombreCliente = New System.Windows.Forms.TextBox()
+        Me.txtNumeroCliente = New System.Windows.Forms.TextBox()
+        Me.txtApellidoCliente = New System.Windows.Forms.TextBox()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.chbClienteOtro = New System.Windows.Forms.CheckBox()
+        Me.ChbClienteFinal = New System.Windows.Forms.CheckBox()
+        Me.Label20 = New System.Windows.Forms.Label()
         Me.btnSeleccionar = New System.Windows.Forms.Button()
-        Me.btnVender = New System.Windows.Forms.Button()
-        Me.lblTotal = New System.Windows.Forms.Label()
-        Me.lblPrecioUnitario = New System.Windows.Forms.Label()
-        Me.lblFlete = New System.Windows.Forms.Label()
-        Me.lblPorcentaje = New System.Windows.Forms.Label()
         Me.btnAgregarMostrar = New System.Windows.Forms.Button()
         Me.txtCotizacion = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -102,18 +117,9 @@ Partial Class Inicio
         Me.txtEditarDescripcion = New System.Windows.Forms.TextBox()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label15 = New System.Windows.Forms.Label()
-        Me.PanelClientes = New System.Windows.Forms.Panel()
-        Me.grpClientes = New System.Windows.Forms.GroupBox()
-        Me.Label20 = New System.Windows.Forms.Label()
-        Me.ChbClienteFinal = New System.Windows.Forms.CheckBox()
-        Me.chbClienteOtro = New System.Windows.Forms.CheckBox()
-        Me.PanelDatosCliente = New System.Windows.Forms.Panel()
-        Me.txtNombreCliente = New System.Windows.Forms.TextBox()
-        Me.txtNumeroCliente = New System.Windows.Forms.TextBox()
-        Me.txtApellidoCliente = New System.Windows.Forms.TextBox()
-        Me.Label23 = New System.Windows.Forms.Label()
-        Me.Label22 = New System.Windows.Forms.Label()
-        Me.Label21 = New System.Windows.Forms.Label()
+        Me.PanelBloqueoDeVentana = New System.Windows.Forms.Panel()
+        Me.ElementHost1 = New System.Windows.Forms.Integration.ElementHost()
+        Me.UserControl11 = New Sistema.UserControl1()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.DataGrid, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Contex1.SuspendLayout()
@@ -121,13 +127,15 @@ Partial Class Inicio
         Me.PanelAgregar.SuspendLayout()
         Me.PanelFiltros.SuspendLayout()
         Me.PanelBusqueda.SuspendLayout()
+        CType(Me.lstUsuarios, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelInfoProducto.SuspendLayout()
         Me.grpProInfo.SuspendLayout()
-        Me.PanelEditarProducto.SuspendLayout()
-        Me.grpEditarProd.SuspendLayout()
         Me.PanelClientes.SuspendLayout()
         Me.grpClientes.SuspendLayout()
         Me.PanelDatosCliente.SuspendLayout()
+        Me.PanelEditarProducto.SuspendLayout()
+        Me.grpEditarProd.SuspendLayout()
+        Me.PanelBloqueoDeVentana.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnConfig
@@ -471,6 +479,8 @@ Partial Class Inicio
         'PanelBusqueda
         '
         Me.PanelBusqueda.BackColor = System.Drawing.Color.Transparent
+        Me.PanelBusqueda.Controls.Add(Me.lstUsuarios)
+        Me.PanelBusqueda.Controls.Add(Me.PanelBloqueoDeVentana)
         Me.PanelBusqueda.Controls.Add(Me.PanelFiltros)
         Me.PanelBusqueda.Controls.Add(Me.Button2)
         Me.PanelBusqueda.Controls.Add(Me.lblTotalPesos)
@@ -490,6 +500,123 @@ Partial Class Inicio
         Me.PanelBusqueda.Name = "PanelBusqueda"
         Me.PanelBusqueda.Size = New System.Drawing.Size(1252, 572)
         Me.PanelBusqueda.TabIndex = 26
+        '
+        'lstUsuarios
+        '
+        Me.lstUsuarios.AllowUserToAddRows = False
+        Me.lstUsuarios.AllowUserToDeleteRows = False
+        Me.lstUsuarios.AllowUserToResizeColumns = False
+        Me.lstUsuarios.AllowUserToResizeRows = False
+        Me.lstUsuarios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.lstUsuarios.BackgroundColor = System.Drawing.SystemColors.ActiveCaption
+        Me.lstUsuarios.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
+        Me.lstUsuarios.ColumnHeadersHeight = 10
+        Me.lstUsuarios.ColumnHeadersVisible = False
+        Me.lstUsuarios.GridColor = System.Drawing.Color.CornflowerBlue
+        Me.lstUsuarios.Location = New System.Drawing.Point(874, 219)
+        Me.lstUsuarios.MultiSelect = False
+        Me.lstUsuarios.Name = "lstUsuarios"
+        Me.lstUsuarios.ReadOnly = True
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.lstUsuarios.RowHeadersDefaultCellStyle = DataGridViewCellStyle1
+        Me.lstUsuarios.RowHeadersVisible = False
+        Me.lstUsuarios.RowHeadersWidth = 10
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lstUsuarios.RowsDefaultCellStyle = DataGridViewCellStyle2
+        Me.lstUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.lstUsuarios.Size = New System.Drawing.Size(139, 101)
+        Me.lstUsuarios.TabIndex = 17
+        Me.lstUsuarios.Visible = False
+        '
+        'Button2
+        '
+        Me.Button2.BackColor = System.Drawing.Color.White
+        Me.Button2.FlatAppearance.BorderColor = System.Drawing.Color.White
+        Me.Button2.FlatAppearance.BorderSize = 0
+        Me.Button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White
+        Me.Button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.Location = New System.Drawing.Point(908, 326)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(19, 22)
+        Me.Button2.TabIndex = 29
+        Me.Button2.Text = "X"
+        Me.Button2.UseVisualStyleBackColor = False
+        '
+        'lblTotalPesos
+        '
+        Me.lblTotalPesos.AutoSize = True
+        Me.lblTotalPesos.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTotalPesos.Location = New System.Drawing.Point(812, 533)
+        Me.lblTotalPesos.Name = "lblTotalPesos"
+        Me.lblTotalPesos.Size = New System.Drawing.Size(66, 25)
+        Me.lblTotalPesos.TabIndex = 28
+        Me.lblTotalPesos.Text = "Total:"
+        '
+        'lblCantidadDisponible
+        '
+        Me.lblCantidadDisponible.AutoSize = True
+        Me.lblCantidadDisponible.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCantidadDisponible.Location = New System.Drawing.Point(931, 329)
+        Me.lblCantidadDisponible.Name = "lblCantidadDisponible"
+        Me.lblCantidadDisponible.Size = New System.Drawing.Size(0, 16)
+        Me.lblCantidadDisponible.TabIndex = 27
+        '
+        'btnVender
+        '
+        Me.btnVender.Location = New System.Drawing.Point(1082, 516)
+        Me.btnVender.Name = "btnVender"
+        Me.btnVender.Size = New System.Drawing.Size(155, 42)
+        Me.btnVender.TabIndex = 2
+        Me.btnVender.Text = "Vender Producto"
+        Me.btnVender.UseVisualStyleBackColor = True
+        '
+        'lblTotal
+        '
+        Me.lblTotal.AutoSize = True
+        Me.lblTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTotal.Location = New System.Drawing.Point(811, 498)
+        Me.lblTotal.Name = "lblTotal"
+        Me.lblTotal.Size = New System.Drawing.Size(66, 25)
+        Me.lblTotal.TabIndex = 26
+        Me.lblTotal.Text = "Total:"
+        '
+        'lblPrecioUnitario
+        '
+        Me.lblPrecioUnitario.AutoSize = True
+        Me.lblPrecioUnitario.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblPrecioUnitario.Location = New System.Drawing.Point(814, 433)
+        Me.lblPrecioUnitario.Name = "lblPrecioUnitario"
+        Me.lblPrecioUnitario.Size = New System.Drawing.Size(159, 25)
+        Me.lblPrecioUnitario.TabIndex = 25
+        Me.lblPrecioUnitario.Text = "Precio Unitario:"
+        '
+        'lblFlete
+        '
+        Me.lblFlete.AutoSize = True
+        Me.lblFlete.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFlete.Location = New System.Drawing.Point(814, 398)
+        Me.lblFlete.Name = "lblFlete"
+        Me.lblFlete.Size = New System.Drawing.Size(176, 25)
+        Me.lblFlete.TabIndex = 24
+        Me.lblFlete.Text = "Costes por Flete:"
+        '
+        'lblPorcentaje
+        '
+        Me.lblPorcentaje.AutoSize = True
+        Me.lblPorcentaje.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblPorcentaje.Location = New System.Drawing.Point(814, 363)
+        Me.lblPorcentaje.Name = "lblPorcentaje"
+        Me.lblPorcentaje.Size = New System.Drawing.Size(249, 25)
+        Me.lblPorcentaje.TabIndex = 23
+        Me.lblPorcentaje.Text = "Porcentaje de Ganancia:"
         '
         'PanelInfoProducto
         '
@@ -558,40 +685,116 @@ Partial Class Inicio
         Me.lblCodigo.TabIndex = 0
         Me.lblCodigo.Text = "Codigo: "
         '
-        'Button2
+        'PanelClientes
         '
-        Me.Button2.BackColor = System.Drawing.Color.White
-        Me.Button2.FlatAppearance.BorderColor = System.Drawing.Color.White
-        Me.Button2.FlatAppearance.BorderSize = 0
-        Me.Button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White
-        Me.Button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(908, 326)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(19, 22)
-        Me.Button2.TabIndex = 29
-        Me.Button2.Text = "X"
-        Me.Button2.UseVisualStyleBackColor = False
+        Me.PanelClientes.Controls.Add(Me.grpClientes)
+        Me.PanelClientes.Location = New System.Drawing.Point(811, 155)
+        Me.PanelClientes.Name = "PanelClientes"
+        Me.PanelClientes.Size = New System.Drawing.Size(438, 140)
+        Me.PanelClientes.TabIndex = 31
         '
-        'lblTotalPesos
+        'grpClientes
         '
-        Me.lblTotalPesos.AutoSize = True
-        Me.lblTotalPesos.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTotalPesos.Location = New System.Drawing.Point(812, 533)
-        Me.lblTotalPesos.Name = "lblTotalPesos"
-        Me.lblTotalPesos.Size = New System.Drawing.Size(66, 25)
-        Me.lblTotalPesos.TabIndex = 28
-        Me.lblTotalPesos.Text = "Total:"
+        Me.grpClientes.Controls.Add(Me.PanelDatosCliente)
+        Me.grpClientes.Controls.Add(Me.chbClienteOtro)
+        Me.grpClientes.Controls.Add(Me.ChbClienteFinal)
+        Me.grpClientes.Controls.Add(Me.Label20)
+        Me.grpClientes.Location = New System.Drawing.Point(9, 5)
+        Me.grpClientes.Name = "grpClientes"
+        Me.grpClientes.Size = New System.Drawing.Size(421, 119)
+        Me.grpClientes.TabIndex = 0
+        Me.grpClientes.TabStop = False
+        Me.grpClientes.Text = "Cliente"
         '
-        'lblCantidadDisponible
+        'PanelDatosCliente
         '
-        Me.lblCantidadDisponible.AutoSize = True
-        Me.lblCantidadDisponible.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCantidadDisponible.Location = New System.Drawing.Point(931, 329)
-        Me.lblCantidadDisponible.Name = "lblCantidadDisponible"
-        Me.lblCantidadDisponible.Size = New System.Drawing.Size(0, 16)
-        Me.lblCantidadDisponible.TabIndex = 27
+        Me.PanelDatosCliente.Controls.Add(Me.txtNombreCliente)
+        Me.PanelDatosCliente.Controls.Add(Me.txtNumeroCliente)
+        Me.PanelDatosCliente.Controls.Add(Me.txtApellidoCliente)
+        Me.PanelDatosCliente.Controls.Add(Me.Label23)
+        Me.PanelDatosCliente.Controls.Add(Me.Label22)
+        Me.PanelDatosCliente.Controls.Add(Me.Label21)
+        Me.PanelDatosCliente.Location = New System.Drawing.Point(6, 34)
+        Me.PanelDatosCliente.Name = "PanelDatosCliente"
+        Me.PanelDatosCliente.Size = New System.Drawing.Size(409, 79)
+        Me.PanelDatosCliente.TabIndex = 8
+        '
+        'txtNombreCliente
+        '
+        Me.txtNombreCliente.Location = New System.Drawing.Point(47, 6)
+        Me.txtNombreCliente.Name = "txtNombreCliente"
+        Me.txtNombreCliente.Size = New System.Drawing.Size(100, 20)
+        Me.txtNombreCliente.TabIndex = 16
+        '
+        'txtNumeroCliente
+        '
+        Me.txtNumeroCliente.Location = New System.Drawing.Point(236, 6)
+        Me.txtNumeroCliente.Name = "txtNumeroCliente"
+        Me.txtNumeroCliente.Size = New System.Drawing.Size(100, 20)
+        Me.txtNumeroCliente.TabIndex = 15
+        '
+        'txtApellidoCliente
+        '
+        Me.txtApellidoCliente.Location = New System.Drawing.Point(47, 35)
+        Me.txtApellidoCliente.Name = "txtApellidoCliente"
+        Me.txtApellidoCliente.Size = New System.Drawing.Size(100, 20)
+        Me.txtApellidoCliente.TabIndex = 14
+        '
+        'Label23
+        '
+        Me.Label23.AutoSize = True
+        Me.Label23.Location = New System.Drawing.Point(180, 10)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(52, 13)
+        Me.Label23.TabIndex = 13
+        Me.Label23.Text = "Telefono:"
+        '
+        'Label22
+        '
+        Me.Label22.AutoSize = True
+        Me.Label22.Location = New System.Drawing.Point(1, 38)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(47, 13)
+        Me.Label22.TabIndex = 12
+        Me.Label22.Text = "Apellido:"
+        '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.Location = New System.Drawing.Point(1, 9)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(47, 13)
+        Me.Label21.TabIndex = 11
+        Me.Label21.Text = "Nombre:"
+        '
+        'chbClienteOtro
+        '
+        Me.chbClienteOtro.AutoSize = True
+        Me.chbClienteOtro.Location = New System.Drawing.Point(199, 17)
+        Me.chbClienteOtro.Name = "chbClienteOtro"
+        Me.chbClienteOtro.Size = New System.Drawing.Size(46, 17)
+        Me.chbClienteOtro.TabIndex = 7
+        Me.chbClienteOtro.Text = "Otro"
+        Me.chbClienteOtro.UseVisualStyleBackColor = True
+        '
+        'ChbClienteFinal
+        '
+        Me.ChbClienteFinal.AutoSize = True
+        Me.ChbClienteFinal.Location = New System.Drawing.Point(87, 17)
+        Me.ChbClienteFinal.Name = "ChbClienteFinal"
+        Me.ChbClienteFinal.Size = New System.Drawing.Size(106, 17)
+        Me.ChbClienteFinal.TabIndex = 6
+        Me.ChbClienteFinal.Text = "Consumidor Final"
+        Me.ChbClienteFinal.UseVisualStyleBackColor = True
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Location = New System.Drawing.Point(6, 18)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(83, 13)
+        Me.Label20.TabIndex = 0
+        Me.Label20.Text = "Tipo de cliente: "
         '
         'btnSeleccionar
         '
@@ -603,59 +806,10 @@ Partial Class Inicio
         Me.btnSeleccionar.Text = "Seleccionar Producto"
         Me.btnSeleccionar.UseVisualStyleBackColor = True
         '
-        'btnVender
-        '
-        Me.btnVender.Location = New System.Drawing.Point(1082, 516)
-        Me.btnVender.Name = "btnVender"
-        Me.btnVender.Size = New System.Drawing.Size(155, 42)
-        Me.btnVender.TabIndex = 2
-        Me.btnVender.Text = "Vender Producto"
-        Me.btnVender.UseVisualStyleBackColor = True
-        '
-        'lblTotal
-        '
-        Me.lblTotal.AutoSize = True
-        Me.lblTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTotal.Location = New System.Drawing.Point(811, 498)
-        Me.lblTotal.Name = "lblTotal"
-        Me.lblTotal.Size = New System.Drawing.Size(66, 25)
-        Me.lblTotal.TabIndex = 26
-        Me.lblTotal.Text = "Total:"
-        '
-        'lblPrecioUnitario
-        '
-        Me.lblPrecioUnitario.AutoSize = True
-        Me.lblPrecioUnitario.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPrecioUnitario.Location = New System.Drawing.Point(814, 433)
-        Me.lblPrecioUnitario.Name = "lblPrecioUnitario"
-        Me.lblPrecioUnitario.Size = New System.Drawing.Size(159, 25)
-        Me.lblPrecioUnitario.TabIndex = 25
-        Me.lblPrecioUnitario.Text = "Precio Unitario:"
-        '
-        'lblFlete
-        '
-        Me.lblFlete.AutoSize = True
-        Me.lblFlete.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFlete.Location = New System.Drawing.Point(814, 398)
-        Me.lblFlete.Name = "lblFlete"
-        Me.lblFlete.Size = New System.Drawing.Size(176, 25)
-        Me.lblFlete.TabIndex = 24
-        Me.lblFlete.Text = "Costes por Flete:"
-        '
-        'lblPorcentaje
-        '
-        Me.lblPorcentaje.AutoSize = True
-        Me.lblPorcentaje.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPorcentaje.Location = New System.Drawing.Point(814, 363)
-        Me.lblPorcentaje.Name = "lblPorcentaje"
-        Me.lblPorcentaje.Size = New System.Drawing.Size(249, 25)
-        Me.lblPorcentaje.TabIndex = 23
-        Me.lblPorcentaje.Text = "Porcentaje de Ganancia:"
-        '
         'btnAgregarMostrar
         '
         Me.btnAgregarMostrar.Enabled = False
-        Me.btnAgregarMostrar.Location = New System.Drawing.Point(9, 633)
+        Me.btnAgregarMostrar.Location = New System.Drawing.Point(1041, 3)
         Me.btnAgregarMostrar.Name = "btnAgregarMostrar"
         Me.btnAgregarMostrar.Size = New System.Drawing.Size(109, 23)
         Me.btnAgregarMostrar.TabIndex = 1
@@ -894,116 +1048,24 @@ Partial Class Inicio
         Me.Label15.TabIndex = 13
         Me.Label15.Text = "Precio unitario:"
         '
-        'PanelClientes
+        'PanelBloqueoDeVentana
         '
-        Me.PanelClientes.Controls.Add(Me.grpClientes)
-        Me.PanelClientes.Location = New System.Drawing.Point(811, 155)
-        Me.PanelClientes.Name = "PanelClientes"
-        Me.PanelClientes.Size = New System.Drawing.Size(438, 140)
-        Me.PanelClientes.TabIndex = 31
+        Me.PanelBloqueoDeVentana.BackColor = System.Drawing.Color.Transparent
+        Me.PanelBloqueoDeVentana.Controls.Add(Me.ElementHost1)
+        Me.PanelBloqueoDeVentana.Location = New System.Drawing.Point(321, 259)
+        Me.PanelBloqueoDeVentana.Name = "PanelBloqueoDeVentana"
+        Me.PanelBloqueoDeVentana.Size = New System.Drawing.Size(341, 264)
+        Me.PanelBloqueoDeVentana.TabIndex = 32
         '
-        'grpClientes
+        'ElementHost1
         '
-        Me.grpClientes.Controls.Add(Me.PanelDatosCliente)
-        Me.grpClientes.Controls.Add(Me.chbClienteOtro)
-        Me.grpClientes.Controls.Add(Me.ChbClienteFinal)
-        Me.grpClientes.Controls.Add(Me.Label20)
-        Me.grpClientes.Location = New System.Drawing.Point(9, 5)
-        Me.grpClientes.Name = "grpClientes"
-        Me.grpClientes.Size = New System.Drawing.Size(421, 119)
-        Me.grpClientes.TabIndex = 0
-        Me.grpClientes.TabStop = False
-        Me.grpClientes.Text = "Cliente"
-        '
-        'Label20
-        '
-        Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(6, 18)
-        Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(83, 13)
-        Me.Label20.TabIndex = 0
-        Me.Label20.Text = "Tipo de cliente: "
-        '
-        'ChbClienteFinal
-        '
-        Me.ChbClienteFinal.AutoSize = True
-        Me.ChbClienteFinal.Location = New System.Drawing.Point(87, 17)
-        Me.ChbClienteFinal.Name = "ChbClienteFinal"
-        Me.ChbClienteFinal.Size = New System.Drawing.Size(106, 17)
-        Me.ChbClienteFinal.TabIndex = 6
-        Me.ChbClienteFinal.Text = "Consumidor Final"
-        Me.ChbClienteFinal.UseVisualStyleBackColor = True
-        '
-        'chbClienteOtro
-        '
-        Me.chbClienteOtro.AutoSize = True
-        Me.chbClienteOtro.Location = New System.Drawing.Point(199, 17)
-        Me.chbClienteOtro.Name = "chbClienteOtro"
-        Me.chbClienteOtro.Size = New System.Drawing.Size(46, 17)
-        Me.chbClienteOtro.TabIndex = 7
-        Me.chbClienteOtro.Text = "Otro"
-        Me.chbClienteOtro.UseVisualStyleBackColor = True
-        '
-        'PanelDatosCliente
-        '
-        Me.PanelDatosCliente.Controls.Add(Me.txtNombreCliente)
-        Me.PanelDatosCliente.Controls.Add(Me.txtNumeroCliente)
-        Me.PanelDatosCliente.Controls.Add(Me.txtApellidoCliente)
-        Me.PanelDatosCliente.Controls.Add(Me.Label23)
-        Me.PanelDatosCliente.Controls.Add(Me.Label22)
-        Me.PanelDatosCliente.Controls.Add(Me.Label21)
-        Me.PanelDatosCliente.Location = New System.Drawing.Point(6, 34)
-        Me.PanelDatosCliente.Name = "PanelDatosCliente"
-        Me.PanelDatosCliente.Size = New System.Drawing.Size(409, 79)
-        Me.PanelDatosCliente.TabIndex = 8
-        '
-        'txtNombreCliente
-        '
-        Me.txtNombreCliente.Location = New System.Drawing.Point(47, 6)
-        Me.txtNombreCliente.Name = "txtNombreCliente"
-        Me.txtNombreCliente.Size = New System.Drawing.Size(100, 20)
-        Me.txtNombreCliente.TabIndex = 16
-        '
-        'txtNumeroCliente
-        '
-        Me.txtNumeroCliente.Location = New System.Drawing.Point(236, 6)
-        Me.txtNumeroCliente.Name = "txtNumeroCliente"
-        Me.txtNumeroCliente.Size = New System.Drawing.Size(100, 20)
-        Me.txtNumeroCliente.TabIndex = 15
-        '
-        'txtApellidoCliente
-        '
-        Me.txtApellidoCliente.Location = New System.Drawing.Point(47, 35)
-        Me.txtApellidoCliente.Name = "txtApellidoCliente"
-        Me.txtApellidoCliente.Size = New System.Drawing.Size(100, 20)
-        Me.txtApellidoCliente.TabIndex = 14
-        '
-        'Label23
-        '
-        Me.Label23.AutoSize = True
-        Me.Label23.Location = New System.Drawing.Point(180, 10)
-        Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(52, 13)
-        Me.Label23.TabIndex = 13
-        Me.Label23.Text = "Telefono:"
-        '
-        'Label22
-        '
-        Me.Label22.AutoSize = True
-        Me.Label22.Location = New System.Drawing.Point(1, 38)
-        Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(47, 13)
-        Me.Label22.TabIndex = 12
-        Me.Label22.Text = "Apellido:"
-        '
-        'Label21
-        '
-        Me.Label21.AutoSize = True
-        Me.Label21.Location = New System.Drawing.Point(1, 9)
-        Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(47, 13)
-        Me.Label21.TabIndex = 11
-        Me.Label21.Text = "Nombre:"
+        Me.ElementHost1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ElementHost1.Location = New System.Drawing.Point(0, 0)
+        Me.ElementHost1.Name = "ElementHost1"
+        Me.ElementHost1.Size = New System.Drawing.Size(341, 264)
+        Me.ElementHost1.TabIndex = 0
+        Me.ElementHost1.Text = "ElementHost1"
+        Me.ElementHost1.Child = Me.UserControl11
         '
         'Inicio
         '
@@ -1012,9 +1074,9 @@ Partial Class Inicio
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1264, 681)
+        Me.Controls.Add(Me.btnAgregarMostrar)
         Me.Controls.Add(Me.btnOKCotizacion)
         Me.Controls.Add(Me.Label6)
-        Me.Controls.Add(Me.btnAgregarMostrar)
         Me.Controls.Add(Me.btnSeleccionar)
         Me.Controls.Add(Me.txtCotizacion)
         Me.Controls.Add(Me.btnFiltros)
@@ -1038,17 +1100,19 @@ Partial Class Inicio
         Me.PanelFiltros.ResumeLayout(False)
         Me.PanelBusqueda.ResumeLayout(False)
         Me.PanelBusqueda.PerformLayout()
+        CType(Me.lstUsuarios, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelInfoProducto.ResumeLayout(False)
         Me.grpProInfo.ResumeLayout(False)
         Me.grpProInfo.PerformLayout()
-        Me.PanelEditarProducto.ResumeLayout(False)
-        Me.grpEditarProd.ResumeLayout(False)
-        Me.grpEditarProd.PerformLayout()
         Me.PanelClientes.ResumeLayout(False)
         Me.grpClientes.ResumeLayout(False)
         Me.grpClientes.PerformLayout()
         Me.PanelDatosCliente.ResumeLayout(False)
         Me.PanelDatosCliente.PerformLayout()
+        Me.PanelEditarProducto.ResumeLayout(False)
+        Me.grpEditarProd.ResumeLayout(False)
+        Me.grpEditarProd.PerformLayout()
+        Me.PanelBloqueoDeVentana.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1144,4 +1208,8 @@ Partial Class Inicio
     Friend WithEvents Label23 As Label
     Friend WithEvents Label22 As Label
     Friend WithEvents Label21 As Label
+    Friend WithEvents lstUsuarios As DataGridView
+    Friend WithEvents PanelBloqueoDeVentana As Panel
+    Friend WithEvents ElementHost1 As Integration.ElementHost
+    Friend UserControl11 As UserControl1
 End Class

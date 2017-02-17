@@ -9,6 +9,8 @@ Public Class Inicio
     Dim DataGridOk As Boolean
     Dim ProGanancia
     Dim ProFlete
+    Dim IdCliente
+
     Public Dir, User, Pass As String
 
 
@@ -524,17 +526,26 @@ Public Class Inicio
         Comando.CommandText = "UPDATE `productos` SET `ProCant` = '" & CantidadActual - CantidadVenta & "' WHERE `productos`.`ProCod` = " & Index
 
 
+        If (ChbClienteFinal.Checked = True) Then
 
-        Try
-            conn.Open()
-            Comando.ExecuteReader()
-            MessageBox.Show("Venta correctamente realizada", "Sistema")
-            conn.Close()
-            btnBuscar_Click(Nothing, Nothing)
-        Catch ex As Exception
-            MessageBox.Show("Error al concretar la venta. Codigo de error:" & ex.Message, "Sistema")
-        End Try
-       
+            PanelBloqueoDeVentana.SetBounds(0, 0, Me.Width, Me.Height)
+
+
+
+
+        End If
+
+
+        'Try
+        '        conn.Open()
+        '        Comando.ExecuteReader()
+        '        MessageBox.Show("Venta correctamente realizada", "Sistema")
+        '        conn.Close()
+        '        btnBuscar_Click(Nothing, Nothing)
+        '    Catch ex As Exception
+        '        MessageBox.Show("Error al concretar la venta. Codigo de error:" & ex.Message, "Sistema")
+        'End Try
+
 
 
 
@@ -651,6 +662,57 @@ Public Class Inicio
         End If
     End Sub
 
+    Private Sub txtNombreCliente_TextChanged(sender As Object, e As EventArgs) Handles txtNombreCliente.TextChanged
+        If (txtNombreCliente.Text = "") Then
+
+            lstUsuarios.DataSource = Nothing
+            lstUsuarios.Visible = False
+        Else
+            Comando.Connection = conn
+            Comando.CommandText = "SELECT * From clientes where NombreCliente LIKE '%" & txtNombreCliente.Text & "%';"
+            Try
+                lstUsuarios.DataSource = Nothing
+
+
+                conn.Open()
+                Dim a As New DataTable
+                a.Load(Comando.ExecuteReader())
+                conn.Close()
+
+                Dim Nombre, Apellido, ID As String
+
+
+                If (a.Rows.Count = 0) Then
+                    lstUsuarios.Visible = False
+                    lstUsuarios.DataSource = Nothing
+
+                Else
+                    lstUsuarios.DataSource = a
+                    lstUsuarios.Columns.Item(0).Visible = False
+                    lstUsuarios.Columns.Item(3).Visible = False
+                    lstUsuarios.Visible = True
+                End If
+
+
+
+
+
+
+
+
+            Catch ex As Exception
+                MessageBox.Show(ex.Message)
+                conn.Close()
+
+            End Try
+        End If
+
+
+
+
+
+    End Sub
+
     Private Sub btnGuardarCambios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGuardarCambios.Click
         Comando.Connection = conn
         Dim Moneda As String = cmbEditarMoneda.SelectedItem.ToString
@@ -671,10 +733,26 @@ Public Class Inicio
 
     End Sub
 
+    Private Sub ElementHost1_ChildChanged(sender As Object, e As Integration.ChildChangedEventArgs) Handles ElementHost1.ChildChanged
+
+    End Sub
+
     Private Sub DataGrid_KeyUp(sender As Object, e As KeyEventArgs) Handles DataGrid.KeyUp
         If (e.KeyCode = Keys.Enter) Then
             DataGrid_SelectionChanged(Nothing, Nothing)
 
+        End If
+    End Sub
+
+    Private Sub txtNombreCliente_KeyUp(sender As Object, e As KeyEventArgs) Handles txtNombreCliente.KeyUp
+        If (e.KeyCode = Keys.Enter Or e.KeyCode = Keys.Tab) Then
+            If (lstUsuarios.Rows.Count > 0) Then
+                txtApellidoCliente.Text = lstUsuarios.SelectedRows.Item(0).Cells(2).Value
+                txtNombreCliente.Text = lstUsuarios.SelectedRows.Item(0).Cells(1).Value
+                txtNumeroCliente.Text = lstUsuarios.SelectedRows.Item(0).Cells(3).Value
+                IdCliente = lstUsuarios.SelectedRows.Item(0).Cells(0).Value
+                lstUsuarios.Visible = False
+            End If
         End If
     End Sub
 End Class
