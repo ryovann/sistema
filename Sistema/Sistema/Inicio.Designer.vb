@@ -23,13 +23,13 @@ Partial Class Inicio
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnConfig = New System.Windows.Forms.Button()
         Me.btnConectar = New System.Windows.Forms.Button()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.lblConEstado = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.DataGrid = New System.Windows.Forms.DataGridView()
+        Me.DataGridProductos = New System.Windows.Forms.DataGridView()
         Me.Contex1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.btnActualizarProducto = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnBuscar = New System.Windows.Forms.Button()
@@ -117,8 +117,16 @@ Partial Class Inicio
         Me.txtEditarDescripcion = New System.Windows.Forms.TextBox()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label15 = New System.Windows.Forms.Label()
+        Me.PanelConfirmacionVenta = New System.Windows.Forms.Panel()
+        Me.lblApellidoCliente = New System.Windows.Forms.Label()
+        Me.lblTelefonoCliente = New System.Windows.Forms.Label()
+        Me.lblNombreCliente = New System.Windows.Forms.Label()
+        Me.btnCancelarVenta = New System.Windows.Forms.Button()
+        Me.btnConfirmarVenta = New System.Windows.Forms.Button()
+        Me.Label24 = New System.Windows.Forms.Label()
+        Me.DataGridConfirmacionVenta = New System.Windows.Forms.DataGridView()
         Me.StatusStrip1.SuspendLayout()
-        CType(Me.DataGrid, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridProductos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Contex1.SuspendLayout()
         Me.grpAgregarProductos.SuspendLayout()
         Me.PanelAgregar.SuspendLayout()
@@ -132,6 +140,8 @@ Partial Class Inicio
         Me.PanelDatosCliente.SuspendLayout()
         Me.PanelEditarProducto.SuspendLayout()
         Me.grpEditarProd.SuspendLayout()
+        Me.PanelConfirmacionVenta.SuspendLayout()
+        CType(Me.DataGridConfirmacionVenta, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnConfig
@@ -169,25 +179,25 @@ Partial Class Inicio
         Me.lblConEstado.Size = New System.Drawing.Size(82, 17)
         Me.lblConEstado.Text = "Desconectado"
         '
-        'DataGrid
+        'DataGridProductos
         '
-        Me.DataGrid.AllowUserToAddRows = False
-        Me.DataGrid.AllowUserToDeleteRows = False
-        Me.DataGrid.AllowUserToOrderColumns = True
-        Me.DataGrid.AllowUserToResizeColumns = False
-        Me.DataGrid.AllowUserToResizeRows = False
-        Me.DataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DataGrid.BackgroundColor = System.Drawing.SystemColors.ActiveCaption
-        Me.DataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.DataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGrid.Location = New System.Drawing.Point(3, 5)
-        Me.DataGrid.MultiSelect = False
-        Me.DataGrid.Name = "DataGrid"
-        Me.DataGrid.ReadOnly = True
-        Me.DataGrid.RowHeadersVisible = False
-        Me.DataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGrid.Size = New System.Drawing.Size(802, 441)
-        Me.DataGrid.TabIndex = 3
+        Me.DataGridProductos.AllowUserToAddRows = False
+        Me.DataGridProductos.AllowUserToDeleteRows = False
+        Me.DataGridProductos.AllowUserToOrderColumns = True
+        Me.DataGridProductos.AllowUserToResizeColumns = False
+        Me.DataGridProductos.AllowUserToResizeRows = False
+        Me.DataGridProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.DataGridProductos.BackgroundColor = System.Drawing.SystemColors.ActiveCaption
+        Me.DataGridProductos.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.DataGridProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridProductos.Location = New System.Drawing.Point(3, 5)
+        Me.DataGridProductos.MultiSelect = False
+        Me.DataGridProductos.Name = "DataGridProductos"
+        Me.DataGridProductos.ReadOnly = True
+        Me.DataGridProductos.RowHeadersVisible = False
+        Me.DataGridProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DataGridProductos.Size = New System.Drawing.Size(802, 441)
+        Me.DataGridProductos.TabIndex = 3
         '
         'Contex1
         '
@@ -487,7 +497,7 @@ Partial Class Inicio
         Me.PanelBusqueda.Controls.Add(Me.lblPorcentaje)
         Me.PanelBusqueda.Controls.Add(Me.txtCantidadProd)
         Me.PanelBusqueda.Controls.Add(Me.Label5)
-        Me.PanelBusqueda.Controls.Add(Me.DataGrid)
+        Me.PanelBusqueda.Controls.Add(Me.DataGridProductos)
         Me.PanelBusqueda.Controls.Add(Me.PanelInfoProducto)
         Me.PanelBusqueda.Controls.Add(Me.PanelClientes)
         Me.PanelBusqueda.Enabled = False
@@ -508,22 +518,22 @@ Partial Class Inicio
         Me.lstUsuarios.ColumnHeadersHeight = 10
         Me.lstUsuarios.ColumnHeadersVisible = False
         Me.lstUsuarios.GridColor = System.Drawing.Color.CornflowerBlue
-        Me.lstUsuarios.Location = New System.Drawing.Point(874, 219)
+        Me.lstUsuarios.Location = New System.Drawing.Point(873, 219)
         Me.lstUsuarios.MultiSelect = False
         Me.lstUsuarios.Name = "lstUsuarios"
         Me.lstUsuarios.ReadOnly = True
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.lstUsuarios.RowHeadersDefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.lstUsuarios.RowHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.lstUsuarios.RowHeadersVisible = False
         Me.lstUsuarios.RowHeadersWidth = 10
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lstUsuarios.RowsDefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lstUsuarios.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.lstUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.lstUsuarios.Size = New System.Drawing.Size(139, 101)
         Me.lstUsuarios.TabIndex = 17
@@ -1043,6 +1053,98 @@ Partial Class Inicio
         Me.Label15.TabIndex = 13
         Me.Label15.Text = "Precio unitario:"
         '
+        'PanelConfirmacionVenta
+        '
+        Me.PanelConfirmacionVenta.BackColor = System.Drawing.SystemColors.ActiveBorder
+        Me.PanelConfirmacionVenta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PanelConfirmacionVenta.Controls.Add(Me.lblApellidoCliente)
+        Me.PanelConfirmacionVenta.Controls.Add(Me.lblTelefonoCliente)
+        Me.PanelConfirmacionVenta.Controls.Add(Me.lblNombreCliente)
+        Me.PanelConfirmacionVenta.Controls.Add(Me.btnCancelarVenta)
+        Me.PanelConfirmacionVenta.Controls.Add(Me.btnConfirmarVenta)
+        Me.PanelConfirmacionVenta.Controls.Add(Me.Label24)
+        Me.PanelConfirmacionVenta.Controls.Add(Me.DataGridConfirmacionVenta)
+        Me.PanelConfirmacionVenta.Location = New System.Drawing.Point(320, 115)
+        Me.PanelConfirmacionVenta.Name = "PanelConfirmacionVenta"
+        Me.PanelConfirmacionVenta.Size = New System.Drawing.Size(630, 387)
+        Me.PanelConfirmacionVenta.TabIndex = 32
+        Me.PanelConfirmacionVenta.Visible = False
+        '
+        'lblApellidoCliente
+        '
+        Me.lblApellidoCliente.AutoSize = True
+        Me.lblApellidoCliente.Location = New System.Drawing.Point(256, 7)
+        Me.lblApellidoCliente.Name = "lblApellidoCliente"
+        Me.lblApellidoCliente.Size = New System.Drawing.Size(45, 13)
+        Me.lblApellidoCliente.TabIndex = 38
+        Me.lblApellidoCliente.Text = "Label25"
+        '
+        'lblTelefonoCliente
+        '
+        Me.lblTelefonoCliente.AutoSize = True
+        Me.lblTelefonoCliente.Location = New System.Drawing.Point(498, 7)
+        Me.lblTelefonoCliente.Name = "lblTelefonoCliente"
+        Me.lblTelefonoCliente.Size = New System.Drawing.Size(45, 13)
+        Me.lblTelefonoCliente.TabIndex = 37
+        Me.lblTelefonoCliente.Text = "Label25"
+        '
+        'lblNombreCliente
+        '
+        Me.lblNombreCliente.AutoSize = True
+        Me.lblNombreCliente.Location = New System.Drawing.Point(14, 7)
+        Me.lblNombreCliente.Name = "lblNombreCliente"
+        Me.lblNombreCliente.Size = New System.Drawing.Size(45, 13)
+        Me.lblNombreCliente.TabIndex = 36
+        Me.lblNombreCliente.Text = "Label25"
+        '
+        'btnCancelarVenta
+        '
+        Me.btnCancelarVenta.Location = New System.Drawing.Point(527, 357)
+        Me.btnCancelarVenta.Name = "btnCancelarVenta"
+        Me.btnCancelarVenta.Size = New System.Drawing.Size(75, 23)
+        Me.btnCancelarVenta.TabIndex = 35
+        Me.btnCancelarVenta.Text = "Cancelar"
+        Me.btnCancelarVenta.UseVisualStyleBackColor = True
+        '
+        'btnConfirmarVenta
+        '
+        Me.btnConfirmarVenta.Location = New System.Drawing.Point(446, 357)
+        Me.btnConfirmarVenta.Name = "btnConfirmarVenta"
+        Me.btnConfirmarVenta.Size = New System.Drawing.Size(75, 23)
+        Me.btnConfirmarVenta.TabIndex = 34
+        Me.btnConfirmarVenta.Text = "Confirmar"
+        Me.btnConfirmarVenta.UseVisualStyleBackColor = True
+        '
+        'Label24
+        '
+        Me.Label24.AutoSize = True
+        Me.Label24.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label24.Location = New System.Drawing.Point(3, 360)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(437, 16)
+        Me.Label24.TabIndex = 33
+        Me.Label24.Text = "¿Desea confirmar la venta de los produtos mencionados anteriormente?"
+        '
+        'DataGridConfirmacionVenta
+        '
+        Me.DataGridConfirmacionVenta.AllowUserToAddRows = False
+        Me.DataGridConfirmacionVenta.AllowUserToDeleteRows = False
+        Me.DataGridConfirmacionVenta.AllowUserToOrderColumns = True
+        Me.DataGridConfirmacionVenta.AllowUserToResizeColumns = False
+        Me.DataGridConfirmacionVenta.AllowUserToResizeRows = False
+        Me.DataGridConfirmacionVenta.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.DataGridConfirmacionVenta.BackgroundColor = System.Drawing.SystemColors.ActiveCaption
+        Me.DataGridConfirmacionVenta.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.DataGridConfirmacionVenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridConfirmacionVenta.Location = New System.Drawing.Point(3, 26)
+        Me.DataGridConfirmacionVenta.MultiSelect = False
+        Me.DataGridConfirmacionVenta.Name = "DataGridConfirmacionVenta"
+        Me.DataGridConfirmacionVenta.ReadOnly = True
+        Me.DataGridConfirmacionVenta.RowHeadersVisible = False
+        Me.DataGridConfirmacionVenta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DataGridConfirmacionVenta.Size = New System.Drawing.Size(622, 280)
+        Me.DataGridConfirmacionVenta.TabIndex = 32
+        '
         'Inicio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1050,6 +1152,7 @@ Partial Class Inicio
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1264, 681)
+        Me.Controls.Add(Me.PanelConfirmacionVenta)
         Me.Controls.Add(Me.btnAgregarMostrar)
         Me.Controls.Add(Me.btnOKCotizacion)
         Me.Controls.Add(Me.Label6)
@@ -1065,10 +1168,11 @@ Partial Class Inicio
         Me.Controls.Add(Me.PanelAgregar)
         Me.Controls.Add(Me.PanelEditarProducto)
         Me.Name = "Inicio"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Inicio"
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
-        CType(Me.DataGrid, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridProductos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Contex1.ResumeLayout(False)
         Me.grpAgregarProductos.ResumeLayout(False)
         Me.grpAgregarProductos.PerformLayout()
@@ -1088,6 +1192,9 @@ Partial Class Inicio
         Me.PanelEditarProducto.ResumeLayout(False)
         Me.grpEditarProd.ResumeLayout(False)
         Me.grpEditarProd.PerformLayout()
+        Me.PanelConfirmacionVenta.ResumeLayout(False)
+        Me.PanelConfirmacionVenta.PerformLayout()
+        CType(Me.DataGridConfirmacionVenta, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1096,7 +1203,7 @@ Partial Class Inicio
     Friend WithEvents btnConectar As System.Windows.Forms.Button
     Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
     Friend WithEvents lblConEstado As System.Windows.Forms.ToolStripStatusLabel
-    Friend WithEvents DataGrid As System.Windows.Forms.DataGridView
+    Friend WithEvents DataGridProductos As System.Windows.Forms.DataGridView
     Friend WithEvents btnBuscar As System.Windows.Forms.Button
     Friend WithEvents txtBusqueda As System.Windows.Forms.TextBox
     Friend WithEvents grpFiltros As System.Windows.Forms.GroupBox
@@ -1184,4 +1291,12 @@ Partial Class Inicio
     Friend WithEvents Label22 As Label
     Friend WithEvents Label21 As Label
     Friend WithEvents lstUsuarios As DataGridView
+    Friend WithEvents PanelConfirmacionVenta As Panel
+    Friend WithEvents lblApellidoCliente As Label
+    Friend WithEvents lblTelefonoCliente As Label
+    Friend WithEvents lblNombreCliente As Label
+    Friend WithEvents btnCancelarVenta As Button
+    Friend WithEvents btnConfirmarVenta As Button
+    Friend WithEvents Label24 As Label
+    Friend WithEvents DataGridConfirmacionVenta As DataGridView
 End Class

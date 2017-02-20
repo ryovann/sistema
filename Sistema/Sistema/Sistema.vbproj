@@ -114,12 +114,6 @@
     <Compile Include="Splash.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ConfirmacionVenta.Designer.vb">
-      <DependentUpon>ConfirmacionVenta.vb</DependentUpon>
-    </Compile>
-    <Compile Include="ConfirmacionVenta.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Cfg.resx">
@@ -138,9 +132,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Splash.resx">
       <DependentUpon>Splash.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ConfirmacionVenta.resx">
-      <DependentUpon>ConfirmacionVenta.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

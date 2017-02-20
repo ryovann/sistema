@@ -10,6 +10,8 @@ Public Class Inicio
     Dim ProGanancia
     Dim ProFlete
     Dim IdCliente
+    Public me_state As Boolean = True
+
 
     Public Dir, User, Pass As String
 
@@ -69,7 +71,7 @@ Public Class Inicio
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnConectar.Click
-        
+
 
 
 
@@ -112,7 +114,7 @@ Public Class Inicio
 
         End Try
 
-      
+
     End Sub
 
     Private Sub btnConfig_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnConfig.Click
@@ -141,25 +143,25 @@ Public Class Inicio
                 a.Columns.Item(5).ColumnName = "Moneda"
                 a.Columns.Item(6).ColumnName = "Precio Unitario"
                 a.Columns.Item(7).ColumnName = "Descripción"
-                DataGrid.DataSource = a
-                DataGrid.Columns.Item(0).Visible = False
-                DataGrid.Columns.Item(8).Visible = False
-                DataGrid.Columns.Item(9).Visible = False
+                DataGridProductos.DataSource = a
+                DataGridProductos.Columns.Item(0).Visible = False
+                DataGridProductos.Columns.Item(8).Visible = False
+                DataGridProductos.Columns.Item(9).Visible = False
                 DataGridOk = True
-                DataGrid.Rows.Item(0).Selected = True
+                DataGridProductos.Rows.Item(0).Selected = True
 
 
                 Dim c As Integer = 0
-                For Each f As DataGridViewRow In DataGrid.Rows
-                    DataGrid.Rows.Item(c).ContextMenuStrip = Contex1
+                For Each f As DataGridViewRow In DataGridProductos.Rows
+                    DataGridProductos.Rows.Item(c).ContextMenuStrip = Contex1
 
 
                     If (f.Cells.Item(4).Value() < 3 And f.Cells.Item(4).Value() > 0) Then
-                        DataGrid.Rows.Item(c).DefaultCellStyle.BackColor = Color.Yellow
+                        DataGridProductos.Rows.Item(c).DefaultCellStyle.BackColor = Color.Yellow
                     ElseIf (f.Cells.Item(4).Value = 0) Then
-                        DataGrid.Rows.Item(c).DefaultCellStyle.BackColor = Color.Red
+                        DataGridProductos.Rows.Item(c).DefaultCellStyle.BackColor = Color.Red
                     Else
-                        DataGrid.Rows.Item(c).DefaultCellStyle.BackColor = Color.Green
+                        DataGridProductos.Rows.Item(c).DefaultCellStyle.BackColor = Color.Green
 
                     End If
                     c += 1
@@ -180,7 +182,7 @@ Public Class Inicio
 
         Else
             Dim Busqueda As String = txtBusqueda.Text
-            DataGrid.DataSource = Nothing
+            DataGridProductos.DataSource = Nothing
 
 
 
@@ -197,20 +199,20 @@ Public Class Inicio
                 a.Columns.Item(5).ColumnName = "Moneda"
                 a.Columns.Item(6).ColumnName = "Precio Unitario"
                 a.Columns.Item(7).ColumnName = "Descripción"
-                DataGrid.DataSource = a
-                DataGrid.Columns.Item(0).Visible = False
+                DataGridProductos.DataSource = a
+                DataGridProductos.Columns.Item(0).Visible = False
                 DataGridOk = True
 
 
                 Dim c As Integer = 0
-                For Each f As DataGridViewRow In DataGrid.Rows
+                For Each f As DataGridViewRow In DataGridProductos.Rows
 
                     If (f.Cells.Item(4).Value() < 3) Then
-                        DataGrid.Rows.Item(c).DefaultCellStyle.BackColor = Color.Yellow
+                        DataGridProductos.Rows.Item(c).DefaultCellStyle.BackColor = Color.Yellow
                     ElseIf (f.Cells.Item(4).Value = 0) Then
-                        DataGrid.Rows.Item(c).DefaultCellStyle.BackColor = Color.Red
+                        DataGridProductos.Rows.Item(c).DefaultCellStyle.BackColor = Color.Red
                     Else
-                        DataGrid.Rows.Item(c).DefaultCellStyle.BackColor = Color.Green
+                        DataGridProductos.Rows.Item(c).DefaultCellStyle.BackColor = Color.Green
 
                     End If
                     c += 1
@@ -272,7 +274,7 @@ Public Class Inicio
 
     End Sub
 
-   
+
     Private Sub btnFiltros_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnFiltros.Click
         If (PanelFiltros.Visible = False) Then
             PanelFiltros.Visible = True
@@ -320,18 +322,18 @@ Public Class Inicio
         End If
     End Sub
 
-    Private Sub DataGrid_ColumnHeaderMouseClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles DataGrid.ColumnHeaderMouseClick
+    Private Sub DataGrid_ColumnHeaderMouseClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles DataGridProductos.ColumnHeaderMouseClick
 
 
         Dim c As Integer = 0
-        For Each f As DataGridViewRow In DataGrid.Rows
+        For Each f As DataGridViewRow In DataGridProductos.Rows
 
             If (f.Cells.Item(4).Value() < 3 And f.Cells.Item(4).Value > 0) Then
-                DataGrid.Rows.Item(c).DefaultCellStyle.BackColor = Color.Yellow
+                DataGridProductos.Rows.Item(c).DefaultCellStyle.BackColor = Color.Yellow
             ElseIf (f.Cells.Item(4).Value = 0) Then
-                DataGrid.Rows.Item(c).DefaultCellStyle.BackColor = Color.Red
+                DataGridProductos.Rows.Item(c).DefaultCellStyle.BackColor = Color.Red
             Else
-                DataGrid.Rows.Item(c).DefaultCellStyle.BackColor = Color.Green
+                DataGridProductos.Rows.Item(c).DefaultCellStyle.BackColor = Color.Green
 
             End If
             c += 1
@@ -339,17 +341,17 @@ Public Class Inicio
         Next
     End Sub
 
-    Private Sub DataGrid_RowContextMenuStripNeeded(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewRowContextMenuStripNeededEventArgs) Handles DataGrid.RowContextMenuStripNeeded
-        DataGrid.Rows.Item(e.RowIndex).Selected = True
+    Private Sub DataGrid_RowContextMenuStripNeeded(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewRowContextMenuStripNeededEventArgs) Handles DataGridProductos.RowContextMenuStripNeeded
+        DataGridProductos.Rows.Item(e.RowIndex).Selected = True
     End Sub
 
 
 
-    Private Sub DataGrid_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGrid.SelectionChanged
+    Private Sub DataGrid_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridProductos.SelectionChanged
 
         Try
             If (DataGridOk = True) Then
-                If (DataGrid.SelectedRows.Item(0).Cells.Item(4).Value = 0) Then
+                If (DataGridProductos.SelectedRows.Item(0).Cells.Item(4).Value = 0) Then
                     lblCantidadDisponible.Text = "Sin Stock"
                     lblCantidadDisponible.ForeColor = Color.Red
                     lblTotal.Text = "Total:"
@@ -357,8 +359,8 @@ Public Class Inicio
                     btnVender.Enabled = False
 
 
-                ElseIf (txtCantidadProd.Text > DataGrid.SelectedRows.Item(0).Cells.Item(4).Value) Then
-                    lblCantidadDisponible.Text = " /  " & DataGrid.SelectedRows.Item(0).Cells.Item(4).Value
+                ElseIf (txtCantidadProd.Text > DataGridProductos.SelectedRows.Item(0).Cells.Item(4).Value) Then
+                    lblCantidadDisponible.Text = " /  " & DataGridProductos.SelectedRows.Item(0).Cells.Item(4).Value
                     lblCantidadDisponible.ForeColor = Color.Black
                     MessageBox.Show("No se dispone de productos suficientes")
                     txtCantidadProd.ForeColor = Color.Red
@@ -376,10 +378,10 @@ Public Class Inicio
                         Try
                             Dim total As Double
 
-                            Dim PrecioUnitario As Integer = DataGrid.SelectedRows.Item(0).Cells.Item(6).Value
-                            Dim Moneda As String = DataGrid.SelectedRows.Item(0).Cells.Item(5).Value
-                            ProGanancia = DataGrid.SelectedRows.Item(0).Cells.Item(9).Value
-                            ProFlete = DataGrid.SelectedRows.Item(0).Cells.Item(8).Value
+                            Dim PrecioUnitario As Integer = DataGridProductos.SelectedRows.Item(0).Cells.Item(6).Value
+                            Dim Moneda As String = DataGridProductos.SelectedRows.Item(0).Cells.Item(5).Value
+                            ProGanancia = DataGridProductos.SelectedRows.Item(0).Cells.Item(9).Value
+                            ProFlete = DataGridProductos.SelectedRows.Item(0).Cells.Item(8).Value
                             lblPrecioUnitario.Text = "Precio Unitario:  " & PrecioUnitario & " " & Moneda
 
                             lblPorcentaje.Text = "Porcentaje de Ganancia: " & ProGanancia & "%"
@@ -392,7 +394,7 @@ Public Class Inicio
                             Else
                                 Cantidad = txtCantidadProd.Text
                             End If
-                            lblCantidadDisponible.Text = " /  " & DataGrid.SelectedRows.Item(0).Cells.Item(4).Value
+                            lblCantidadDisponible.Text = " /  " & DataGridProductos.SelectedRows.Item(0).Cells.Item(4).Value
 
                             '------------DOLARES------------------
                             If (Moneda = "Dolares") Then
@@ -446,11 +448,11 @@ Public Class Inicio
 
                             '''SE MUESTRA LA INFORMACION EN EL GRP
 
-                            lblCodigo.Text = "Codigo: " & DataGrid.SelectedRows.Item(0).Cells.Item(0).Value
-                            lblTipo.Text = "Tipo: " & DataGrid.SelectedRows.Item(0).Cells.Item(1).Value
-                            lblMarca.Text = "Marca: " & DataGrid.SelectedRows.Item(0).Cells.Item(2).Value
-                            lblModelo.Text = "Modelo: " & DataGrid.SelectedRows.Item(0).Cells.Item(3).Value
-                            lblDescripcion.Text = "Descripcion: " & DataGrid.SelectedRows.Item(0).Cells.Item(7).Value
+                            lblCodigo.Text = "Codigo: " & DataGridProductos.SelectedRows.Item(0).Cells.Item(0).Value
+                            lblTipo.Text = "Tipo: " & DataGridProductos.SelectedRows.Item(0).Cells.Item(1).Value
+                            lblMarca.Text = "Marca: " & DataGridProductos.SelectedRows.Item(0).Cells.Item(2).Value
+                            lblModelo.Text = "Modelo: " & DataGridProductos.SelectedRows.Item(0).Cells.Item(3).Value
+                            lblDescripcion.Text = "Descripcion: " & DataGridProductos.SelectedRows.Item(0).Cells.Item(7).Value
                         Catch ex As Exception
                             MessageBox.Show(ex.Message)
                         End Try
@@ -480,7 +482,7 @@ Public Class Inicio
                     a = txtCantidadProd.Text
                 End If
 
-                If (a > DataGrid.SelectedRows.Item(0).Cells.Item(4).Value) Then
+                If (a > DataGridProductos.SelectedRows.Item(0).Cells.Item(4).Value) Then
                     MessageBox.Show("No se dispone de productos suficientes")
                     txtCantidadProd.ForeColor = Color.Red
                     lblTotal.Text = "Total:"
@@ -497,7 +499,7 @@ Public Class Inicio
         Catch ex As Exception
             MessageBox.Show(ex.Message & "ISDISAJDI")
         End Try
-      
+
     End Sub
 
     Private Sub btnSeleccionar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSeleccionar.Click
@@ -523,35 +525,98 @@ Public Class Inicio
         txtCantidadProd.Focus()
     End Sub
 
+
     Private Sub btnVender_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnVender.Click
         'UPDATE `productos` SET `ProCant` = '0' WHERE `productos`.`ProCod` = 7
-        Dim CantidadActual As Integer = DataGrid.SelectedRows.Item(0).Cells.Item(4).Value
-        Dim Index As Integer = DataGrid.SelectedRows.Item(0).Cells.Item(0).Value
-        Dim FechaDeVenta As Date = Now.Date
-        Dim CantidadVenta As Integer = txtCantidadProd.Text
-        '------------------------------------------------------------------
         Comando.Connection = conn
-        Comando.CommandText = "UPDATE `productos` SET `ProCant` = '" & CantidadActual - CantidadVenta & "' WHERE `productos`.`ProCod` = " & Index
+
+        Dim Index As Integer = DataGridProductos.SelectedRows.Item(0).Cells.Item(0).Value
+        Dim FechaDeVenta As Date = Now.Date
+
+        Dim itsOkay As Boolean = False
+        If (chbClienteOtro.Checked = True) Then
+            If (txtNombreCliente.Text = "" Or txtApellidoCliente.Text = "") Then
+                MessageBox.Show("Debe ingresar un nombre y apellido de cliente" & vbCrLf & "De lo contrario seleccione 'Cliente Final'")
+            Else
+                itsOkay = True
+
+            End If
+        Else
+            itsOkay = True
+        End If
+
+        If (itsOkay = True) Then
+
+            '------------------------------------------------------------------
+            'MUESTRO EL PANEL
+
+            PanelConfirmacionVenta.Visible = True
+
+            'DESACTIVO LO DEMAS
+            PanelBusqueda.Enabled = False
+                btnBuscar.Enabled = False
+                btnAgregarMostrar.Enabled = False
+                btnFiltros.Enabled = False
+                btnSeleccionar.Enabled = False
+                btnConfig.Enabled = False
+                txtBusqueda.Enabled = False
+                txtCotizacion.Enabled = False
+                btnOKCotizacion.Enabled = False
+
+            '--------------------------------------------------------------------
+            'Relleno el formulario
+
+            If (ChbClienteFinal.Checked = True) Then
+                lblNombreCliente.Text = "Nombre: Consumidor Final"
+                lblTelefonoCliente.Visible = False
+                lblApellidoCliente.Visible = False
+
+            Else
 
 
-        Dim ConfirmacionVenta As New ConfirmacionVenta
-        ConfirmacionVenta.Visible = True
+
+                lblApellidoCliente.Visible = True
+                lblTelefonoCliente.Visible = True
+
+                lblNombreCliente.Text = "Nombre: " & txtNombreCliente.Text
+                lblApellidoCliente.Text = "Apellido: " & txtApellidoCliente.Text
+                lblTelefonoCliente.Text = "Telefono: " & txtNumeroCliente.Text
+            End If
+
+            DataGridConfirmacionVenta.Rows.Clear()
+
+            DataGridConfirmacionVenta.Columns.Clear()
+
+
+            Dim aFilasSelec As DataGridViewSelectedRowCollection = Me.DataGridProductos.SelectedRows
+
+            Dim nContador As Integer
+
+            For nContador = 0 To Me.DataGridProductos.Columns.Count - 1
+
+                Me.DataGridConfirmacionVenta.Columns.Add(Me.DataGridProductos.Columns(nContador).Clone())
+
+            Next
+
+
+            For Each oFila As DataGridViewRow In aFilasSelec
+                    Dim nIndiceFila As Integer
+                    nIndiceFila = Me.DataGridConfirmacionVenta.Rows.Add()
+
+                    For Each oCelda As DataGridViewCell In oFila.Cells
+                        Me.DataGridConfirmacionVenta.Rows(nIndiceFila).Cells(oCelda.ColumnIndex).Value = oCelda.Value
+                    Next
+                Next
+                DataGridConfirmacionVenta.Rows.Item(0).Cells.Item(4).Value = txtCantidadProd.Text
+                DataGridConfirmacionVenta.Columns.Item(5).Visible = False
 
 
 
 
 
 
-        'Try
-        '        conn.Open()
-        '        Comando.ExecuteReader()
-        '        MessageBox.Show("Venta correctamente realizada", "Sistema")
-        '        conn.Close()
-        '        btnBuscar_Click(Nothing, Nothing)
-        '    Catch ex As Exception
-        '        MessageBox.Show("Error al concretar la venta. Codigo de error:" & ex.Message, "Sistema")
-        'End Try
 
+        End If
 
 
 
@@ -560,16 +625,16 @@ Public Class Inicio
     End Sub
 
     Private Sub btnActualizarProducto_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActualizarProducto.Click
-        Dim ProCodigo As Integer = DataGrid.SelectedRows.Item(0).Cells.Item(0).Value
-        Dim ProTipo As String = DataGrid.SelectedRows.Item(0).Cells.Item(1).Value
-        Dim ProMarca As String = DataGrid.SelectedRows.Item(0).Cells.Item(2).Value
-        Dim ProModelo As String = DataGrid.SelectedRows.Item(0).Cells.Item(3).Value
-        Dim ProCantidad As Integer = DataGrid.SelectedRows.Item(0).Cells.Item(4).Value
-        Dim Moneda As String = DataGrid.SelectedRows.Item(0).Cells.Item(5).Value
-        Dim ProPrecioUnitario As Integer = DataGrid.SelectedRows.Item(0).Cells.Item(6).Value
-        Dim ProDescripccion As String = DataGrid.SelectedRows.Item(0).Cells.Item(7).Value
-        Dim ProFlete As Integer = DataGrid.SelectedRows.Item(0).Cells.Item(8).Value
-        Dim ProGanancia As Integer = DataGrid.SelectedRows.Item(0).Cells.Item(9).Value
+        Dim ProCodigo As Integer = DataGridProductos.SelectedRows.Item(0).Cells.Item(0).Value
+        Dim ProTipo As String = DataGridProductos.SelectedRows.Item(0).Cells.Item(1).Value
+        Dim ProMarca As String = DataGridProductos.SelectedRows.Item(0).Cells.Item(2).Value
+        Dim ProModelo As String = DataGridProductos.SelectedRows.Item(0).Cells.Item(3).Value
+        Dim ProCantidad As Integer = DataGridProductos.SelectedRows.Item(0).Cells.Item(4).Value
+        Dim Moneda As String = DataGridProductos.SelectedRows.Item(0).Cells.Item(5).Value
+        Dim ProPrecioUnitario As Integer = DataGridProductos.SelectedRows.Item(0).Cells.Item(6).Value
+        Dim ProDescripccion As String = DataGridProductos.SelectedRows.Item(0).Cells.Item(7).Value
+        Dim ProFlete As Integer = DataGridProductos.SelectedRows.Item(0).Cells.Item(8).Value
+        Dim ProGanancia As Integer = DataGridProductos.SelectedRows.Item(0).Cells.Item(9).Value
 
 
         'Bloqueo otros paneles
@@ -712,14 +777,17 @@ Public Class Inicio
 
 
 
-
+        If (txtNombreCliente.Text = "Consumidor") Then
+            ChbClienteFinal.Checked = True
+            lstUsuarios.Visible = False
+        End If
 
     End Sub
 
     Private Sub btnGuardarCambios_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGuardarCambios.Click
         Comando.Connection = conn
         Dim Moneda As String = cmbEditarMoneda.SelectedItem.ToString
-        Dim ProCodigo As Integer = DataGrid.SelectedRows.Item(0).Cells.Item(0).Value
+        Dim ProCodigo As Integer = DataGridProductos.SelectedRows.Item(0).Cells.Item(0).Value
         Comando.CommandText = "UPDATE PRODUCTOS SET ProTipo = '" & txtEditarTipo.Text & "' , ProMarca = '" & txtEditarMarca.Text & "' , ProModelo = '" & txtEditarModelo.Text & "' , ProCant=" & txtEditarCantidad.Text & " , Moneda='" & Moneda & "' , ProPrecioUnitario=" & txtEditarPrecioUnitario.Text & " , ProDescripccion='" & txtEditarDescripcion.Text & "', ProFlete=" & txtFleteNew.Text & ", ProGanancia=" & txtPorcentajeNew.Text & " where ProCod=" & ProCodigo
         Try
             conn.Open()
@@ -735,16 +803,111 @@ Public Class Inicio
         End Try
 
     End Sub
-
-    Private Sub ElementHost1_ChildChanged(sender As Object, e As Integration.ChildChangedEventArgs)
-
-    End Sub
-
-    Private Sub DataGrid_KeyUp(sender As Object, e As KeyEventArgs) Handles DataGrid.KeyUp
+    Private Sub DataGrid_KeyUp(sender As Object, e As KeyEventArgs) Handles DataGridProductos.KeyUp
         If (e.KeyCode = Keys.Enter) Then
             DataGrid_SelectionChanged(Nothing, Nothing)
 
         End If
+    End Sub
+
+    Private Sub btnCancelarVenta_Click(sender As Object, e As EventArgs) Handles btnCancelarVenta.Click
+
+
+        'MUESTRO EL PANEL
+
+        PanelConfirmacionVenta.Visible = False
+
+
+
+        'DESACTIVO LO DEMAS
+        PanelBusqueda.Enabled = True
+        btnBuscar.Enabled = True
+        btnAgregarMostrar.Enabled = True
+        btnFiltros.Enabled = True
+        btnSeleccionar.Enabled = True
+        btnConfig.Enabled = True
+        txtBusqueda.Enabled = True
+        txtCotizacion.Enabled = True
+        btnOKCotizacion.Enabled = True
+
+
+    End Sub
+
+    Private Sub btnConfirmarVenta_Click(sender As Object, e As EventArgs) Handles btnConfirmarVenta.Click
+        Dim CantidadActual As Integer = DataGridProductos.SelectedRows.Item(0).Cells.Item(4).Value
+        Dim CantidadVenta As Integer = txtCantidadProd.Text
+        Dim Cliente As String
+
+        Dim ClienteRegistrado As Boolean
+
+        If (ChbClienteFinal.Checked = True) Then
+            Cliente = "Final"
+        Else
+            Cliente = "Otro"
+        End If
+
+
+        If (Cliente = "Otro") Then
+            If (IdCliente = 0) Then
+                ClienteRegistrado = False
+            Else
+                ClienteRegistrado = True
+            End If
+
+        Else
+            ClienteRegistrado = True
+        End If
+
+        If (ClienteRegistrado = False) Then
+
+
+
+            Comando.CommandText = "INSERT INTO CLIENTES VALUES(0,'" & txtNombreCliente.Text & "','" & txtApellidoCliente.Text & "'," & txtNumeroCliente.Text & ");"
+            Try
+                conn.Open()
+                Comando.ExecuteReader()
+                conn.Close()
+                'Si se ingresa el usuario correctamente
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            Catch ex As Exception
+                MessageBox.Show(ex.Message)
+            End Try
+        End If
+
+
+
+
+
+
+        Comando.CommandText = "UPDATE `productos` Set `ProCant` = '" & CantidadActual - CantidadVenta & "' WHERE `productos`.`ProCod` = " & Index
+
+
+
+
+
+
+        'Try
+        '        conn.Open()
+        '        Comando.ExecuteReader()
+        '        MessageBox.Show("Venta correctamente realizada", "Sistema")
+        '        conn.Close()
+        '        btnBuscar_Click(Nothing, Nothing)
+        '    Catch ex As Exception
+        '        MessageBox.Show("Error al concretar la venta. Codigo de error:" & ex.Message, "Sistema")
+        'End Try
     End Sub
 
     Private Sub txtNombreCliente_KeyUp(sender As Object, e As KeyEventArgs) Handles txtNombreCliente.KeyUp
@@ -758,4 +921,13 @@ Public Class Inicio
             End If
         End If
     End Sub
+
+    Private Sub Inicio_GotFocus(sender As Object, e As EventArgs) Handles Me.GotFocus
+        If (me_state = False) Then
+            Me.me_state = True
+            Me.Enabled = True
+
+        End If
+    End Sub
+
 End Class
