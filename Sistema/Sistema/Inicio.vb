@@ -1,4 +1,5 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports System.Net.NetworkInformation
+Imports MySql.Data.MySqlClient
 Imports scripting
 
 
@@ -11,9 +12,40 @@ Public Class Inicio
     Dim ProFlete
     Dim IdCliente
     Public me_state As Boolean = True
+    Dim VentaMonto As Double
 
 
     Public Dir, User, Pass As String
+    Function getMacAddress()
+        Dim nics() As NetworkInterface = NetworkInterface.GetAllNetworkInterfaces
+        Return nics(1).GetPhysicalAddress.ToString
+
+
+    End Function
+
+
+
+
+    Function ENCRIPTAR(ByVal string_encriptar As String) As String
+        Dim R As Integer
+        Dim I As Integer
+        R = Len(Trim(string_encriptar))
+        For I = 1 To R
+            Mid(string_encriptar, I, 1) = Chr(Asc(Mid(string_encriptar, I, 1)) - 1)
+        Next I
+        Return string_encriptar
+    End Function
+
+    Function DESENCRIPTAR(ByVal string_desencriptar As String) As String
+        Dim R As Integer
+        Dim i As Integer
+        R = Len(Trim(string_desencriptar))
+        For i = 1 To R
+            Mid(string_desencriptar, i, 1) = Chr(Asc(Mid(string_desencriptar, i, 1)) + 1)
+        Next i
+        Return string_desencriptar
+    End Function
+
 
 
     Protected Overrides Sub OnPaint(ByVal e As System.Windows.Forms.PaintEventArgs)
@@ -26,6 +58,13 @@ Public Class Inicio
     End Sub
 
     Public Sub Inicio_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+
+
+
+
+
+
 
         Dim path As String = "C:\Sistema\Data\Config\config.dat"
         ChbClienteFinal.Checked = True
@@ -66,6 +105,42 @@ Public Class Inicio
         data.GSPassword = Pass
         file.Close()
 
+        conn.ConnectionString = "server=" & data.GSDireccion & ";" & "user id=" & data.GSUsuario & ";" & "password=" & data.GSPassword & "; database='prueba';"
+        Comando.Connection = conn
+
+        Dim EncryptedMac As String = ENCRIPTAR(getMacAddress() & "sdiasjd")
+        Comando.CommandText = "SELECT * From state"
+        Dim info As new DataTable
+        Try
+            conn.Open()
+            info.Load(Comando.ExecuteReader())
+            conn.Close()
+            If (info.Rows.Count = 0) Then
+                Comando.CommandText = "INSERT INTO STATE VALUES('" & EncryptedMac & "');"
+                Try
+                    conn.Open()
+                    Comando.ExecuteReader()
+                    conn.Close()
+                Catch ex As Exception
+                    MessageBox.Show(ex.Message)
+                End Try
+            Else
+                Dim dbmacaddress As String = info.Rows.Item(0).Item(0)
+                If (dbmacaddress = DESENCRIPTAR(EncryptedMac)) Then
+                    MessageBox.Show("Bienvenido")
+                Else
+                    Me.Close()
+                End If
+
+
+
+
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+
+        End Try
 
 
     End Sub
@@ -420,7 +495,7 @@ Public Class Inicio
 
                                 lblTotal.Text = "Total: " & total & " " & Moneda
                                 lblTotalPesos.Text = "Total: " & total * txtCotizacion.Text & " Pesos"
-
+                                VentaMonto = total * txtCotizacion.Text
 
 
 
@@ -437,6 +512,7 @@ Public Class Inicio
 
                                 lblTotal.Text = "Total: " & total / txtCotizacion.Text & " Dolares"
                                 lblTotalPesos.Text = "Total: " & total & " " & Moneda
+                                VentaMonto = total
 
 
 
@@ -530,8 +606,8 @@ Public Class Inicio
         'UPDATE `productos` SET `ProCant` = '0' WHERE `productos`.`ProCod` = 7
         Comando.Connection = conn
 
-        Dim Index As Integer = DataGridProductos.SelectedRows.Item(0).Cells.Item(0).Value
-        Dim FechaDeVenta As Date = Now.Date
+
+
 
         Dim itsOkay As Boolean = False
         If (chbClienteOtro.Checked = True) Then
@@ -554,14 +630,14 @@ Public Class Inicio
 
             'DESACTIVO LO DEMAS
             PanelBusqueda.Enabled = False
-                btnBuscar.Enabled = False
-                btnAgregarMostrar.Enabled = False
-                btnFiltros.Enabled = False
-                btnSeleccionar.Enabled = False
-                btnConfig.Enabled = False
-                txtBusqueda.Enabled = False
-                txtCotizacion.Enabled = False
-                btnOKCotizacion.Enabled = False
+            btnBuscar.Enabled = False
+            btnAgregarMostrar.Enabled = False
+            btnFiltros.Enabled = False
+            btnSeleccionar.Enabled = False
+            btnConfig.Enabled = False
+            txtBusqueda.Enabled = False
+            txtCotizacion.Enabled = False
+            btnOKCotizacion.Enabled = False
 
             '--------------------------------------------------------------------
             'Relleno el formulario
@@ -600,15 +676,15 @@ Public Class Inicio
 
 
             For Each oFila As DataGridViewRow In aFilasSelec
-                    Dim nIndiceFila As Integer
-                    nIndiceFila = Me.DataGridConfirmacionVenta.Rows.Add()
+                Dim nIndiceFila As Integer
+                nIndiceFila = Me.DataGridConfirmacionVenta.Rows.Add()
 
-                    For Each oCelda As DataGridViewCell In oFila.Cells
-                        Me.DataGridConfirmacionVenta.Rows(nIndiceFila).Cells(oCelda.ColumnIndex).Value = oCelda.Value
-                    Next
+                For Each oCelda As DataGridViewCell In oFila.Cells
+                    Me.DataGridConfirmacionVenta.Rows(nIndiceFila).Cells(oCelda.ColumnIndex).Value = oCelda.Value
                 Next
-                DataGridConfirmacionVenta.Rows.Item(0).Cells.Item(4).Value = txtCantidadProd.Text
-                DataGridConfirmacionVenta.Columns.Item(5).Visible = False
+            Next
+            DataGridConfirmacionVenta.Rows.Item(0).Cells.Item(4).Value = txtCantidadProd.Text
+            DataGridConfirmacionVenta.Columns.Item(5).Visible = False
 
 
 
@@ -704,6 +780,9 @@ Public Class Inicio
         If (ChbClienteFinal.Checked = True) Then
             chbClienteOtro.Checked = False
             PanelDatosCliente.Visible = False
+            txtApellidoCliente.Text = ""
+            txtNombreCliente.Text = ""
+            txtNumeroCliente.Text = ""
 
 
 
@@ -837,8 +916,11 @@ Public Class Inicio
         Dim CantidadActual As Integer = DataGridProductos.SelectedRows.Item(0).Cells.Item(4).Value
         Dim CantidadVenta As Integer = txtCantidadProd.Text
         Dim Cliente As String
+        Dim Index As Integer = DataGridProductos.SelectedRows.Item(0).Cells.Item(0).Value
 
         Dim ClienteRegistrado As Boolean
+        Dim IDCliente As Integer
+
 
         If (ChbClienteFinal.Checked = True) Then
             Cliente = "Final"
@@ -848,7 +930,7 @@ Public Class Inicio
 
 
         If (Cliente = "Otro") Then
-            If (IdCliente = 0) Then
+            If (IDCliente = 0) Then
                 ClienteRegistrado = False
             Else
                 ClienteRegistrado = True
@@ -859,15 +941,78 @@ Public Class Inicio
         End If
 
         If (ClienteRegistrado = False) Then
-
-
-
             Comando.CommandText = "INSERT INTO CLIENTES VALUES(0,'" & txtNombreCliente.Text & "','" & txtApellidoCliente.Text & "'," & txtNumeroCliente.Text & ");"
             Try
                 conn.Open()
                 Comando.ExecuteReader()
                 conn.Close()
                 'Si se ingresa el usuario correctamente
+                'Obtengo su id
+                Comando.CommandText = "SELECT CodCliente from clientes where NombreCliente='" & txtNombreCliente.Text & "' and ApellidoCliente ='" & txtApellidoCliente.Text & "' and TelefonoCliente=" & txtNumeroCliente.Text & ";"
+
+                Dim Datos As New DataTable
+                Try
+                    conn.Open()
+                    Datos.Load(Comando.ExecuteReader)
+                    conn.Close()
+                    IDCliente = Datos.Rows.Item(0).Item(0).ToString
+                    'Despues de obtener el idcliente realizo la venta en producto
+                    Comando.CommandText = "UPDATE `productos` Set `ProCant` = '" & CantidadActual - CantidadVenta & "' WHERE `productos`.`ProCod` = " & Index
+                    Try
+                        conn.Open()
+                        Comando.ExecuteReader()
+                        conn.Close()
+                        'Despues de restar ingreso la venta a la relacion en la bd
+                        Dim month, day As Integer
+
+                        If (Now.Month <= 9) Then
+                            month = 0 & "" & Now.Month
+                        Else
+                            month = Now.Month
+                        End If
+                        If (Now.Day <= 9) Then
+                            day = 0 & "" & Now.Day
+                        Else
+                            day = Now.Day
+                        End If
+
+                        Comando.CommandText = "INSERT INTO clientescompranprodserv VALUES(0," & IDCliente & "," & Index & ",1," & VentaMonto & "," & CantidadVenta & ",'" & Now.Year & "-" & month & "-" & day & " " & Now.Hour & ":" & Now.Minute & ":" & Now.Second & "');"
+                        Try
+                            conn.Open()
+                            Comando.ExecuteReader()
+                            conn.Close()
+                            MessageBox.Show("Venta correctamente realizada", "Sistema")
+                            btnCancelarVenta_Click(Nothing, Nothing)
+                            btnBuscar_Click(Nothing, Nothing)
+                            txtNombreCliente.Text = ""
+                            txtApellidoCliente.Text = ""
+                            txtNumeroCliente.Text = ""
+                            ChbClienteFinal.Checked = True
+
+                        Catch ex As Exception
+                            MessageBox.Show(ex.Message)
+                            conn.Close()
+                        End Try
+
+
+
+
+
+
+
+                        conn.Close()
+
+                    Catch ex As Exception
+                        MessageBox.Show("Error al concretar la venta. Codigo de error:" & ex.Message, "Sistema")
+                        conn.Close()
+                    End Try
+
+
+
+                Catch ex As Exception
+                    MessageBox.Show(ex.Message)
+                    conn.Close()
+                End Try
 
 
 
@@ -885,6 +1030,80 @@ Public Class Inicio
             Catch ex As Exception
                 MessageBox.Show(ex.Message)
             End Try
+
+
+
+
+
+
+
+
+
+
+
+        Else
+            IDCliente = 1
+
+            Comando.CommandText = "UPDATE `productos` Set `ProCant` = '" & CantidadActual - CantidadVenta & "' WHERE `productos`.`ProCod` = " & Index
+            Try
+                conn.Open()
+                Comando.ExecuteReader()
+                conn.Close()
+                'Despues de restar ingreso la venta a la relacion en la bd
+                Dim month, day As Integer
+
+                If (Now.Month <= 9) Then
+                    month = 0 & "" & Now.Month
+                Else
+                    month = Now.Month
+                End If
+                If (Now.Day <= 9) Then
+                    day = 0 & "" & Now.Day
+                Else
+                    day = Now.Day
+                End If
+
+                Comando.CommandText = "INSERT INTO clientescompranprodserv VALUES(0," & IDCliente & "," & Index & ",1," & VentaMonto & "," & CantidadVenta & ",'" & Now.Year & "-" & month & "-" & day & " " & Now.Hour & ":" & Now.Minute & ":" & Now.Second & "');"
+                Try
+                    conn.Open()
+                    Comando.ExecuteReader()
+                    conn.Close()
+                    MessageBox.Show("Venta correctamente realizada", "Sistema")
+                    btnCancelarVenta_Click(Nothing, Nothing)
+                    btnBuscar_Click(Nothing, Nothing)
+                    txtNombreCliente.Text = ""
+                    txtApellidoCliente.Text = ""
+                    txtNumeroCliente.Text = ""
+                    ChbClienteFinal.Checked = True
+
+                Catch ex As Exception
+                    MessageBox.Show(ex.Message)
+                    conn.Close()
+                End Try
+
+
+
+
+
+
+
+                conn.Close()
+
+            Catch ex As Exception
+                MessageBox.Show("Error al concretar la venta. Codigo de error:" & ex.Message, "Sistema")
+                conn.Close()
+            End Try
+
+
+
+
+
+
+
+
+
+
+
         End If
 
 
@@ -892,22 +1111,7 @@ Public Class Inicio
 
 
 
-        Comando.CommandText = "UPDATE `productos` Set `ProCant` = '" & CantidadActual - CantidadVenta & "' WHERE `productos`.`ProCod` = " & Index
 
-
-
-
-
-
-        'Try
-        '        conn.Open()
-        '        Comando.ExecuteReader()
-        '        MessageBox.Show("Venta correctamente realizada", "Sistema")
-        '        conn.Close()
-        '        btnBuscar_Click(Nothing, Nothing)
-        '    Catch ex As Exception
-        '        MessageBox.Show("Error al concretar la venta. Codigo de error:" & ex.Message, "Sistema")
-        'End Try
     End Sub
 
     Private Sub txtNombreCliente_KeyUp(sender As Object, e As KeyEventArgs) Handles txtNombreCliente.KeyUp
@@ -928,6 +1132,27 @@ Public Class Inicio
             Me.Enabled = True
 
         End If
+    End Sub
+
+    Private Sub lstUsuarios_CellMouseDoubleClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles lstUsuarios.CellMouseDoubleClick
+        If (lstUsuarios.SelectedRows.Item(0).Cells.Item(1).Value = "Consumidor") Then
+
+            ChbClienteFinal.Checked = True
+            lstUsuarios.Visible = False
+
+
+        Else
+
+            If (lstUsuarios.Rows.Count > 0) Then
+                txtApellidoCliente.Text = lstUsuarios.SelectedRows.Item(0).Cells(2).Value
+                txtNombreCliente.Text = lstUsuarios.SelectedRows.Item(0).Cells(1).Value
+                txtNumeroCliente.Text = lstUsuarios.SelectedRows.Item(0).Cells(3).Value
+                IdCliente = lstUsuarios.SelectedRows.Item(0).Cells(0).Value
+                lstUsuarios.Visible = False
+            End If
+
+        End If
+
     End Sub
 
 End Class
