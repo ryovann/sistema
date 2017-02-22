@@ -36,3 +36,7 @@ C:\Users\Ryovann\Documents\GitHub\sistema\Sistema\Sistema\obj\Debug\Sistema.Inic
 C:\Users\Ryovann\Documents\GitHub\sistema\Sistema\Sistema\obj\Debug\Sistema.Resources.resources
 C:\Users\Ryovann\Documents\GitHub\sistema\Sistema\Sistema\obj\Debug\Sistema.vbproj.GenerateResource.Cache
 C:\Users\Ryovann\Documents\GitHub\sistema\Sistema\Sistema\obj\Debug\Sistema.Splash.resources
+C:\Users\Ryovann\Documents\GitHub\sistema\Sistema\Sistema\bin\Debug\Sistema.exe.manifest
+C:\Users\Ryovann\Documents\GitHub\sistema\Sistema\Sistema\bin\Debug\Sistema.application
+C:\Users\Ryovann\Documents\GitHub\sistema\Sistema\Sistema\obj\Debug\Sistema.exe.manifest
+C:\Users\Ryovann\Documents\GitHub\sistema\Sistema\Sistema\obj\Debug\Sistema.application

@@ -108,7 +108,7 @@ Public Class Inicio
         conn.ConnectionString = "server=" & data.GSDireccion & ";" & "user id=" & data.GSUsuario & ";" & "password=" & data.GSPassword & "; database='prueba';"
         Comando.Connection = conn
 
-        Dim EncryptedMac As String = ENCRIPTAR(getMacAddress() & "sdiasjd")
+        Dim EncryptedMac As String = ENCRIPTAR(getMacAddress())
         Comando.CommandText = "SELECT * From state"
         Dim info As new DataTable
         Try
@@ -126,6 +126,8 @@ Public Class Inicio
                 End Try
             Else
                 Dim dbmacaddress As String = info.Rows.Item(0).Item(0)
+                dbmacaddress = DESENCRIPTAR(dbmacaddress)
+
                 If (dbmacaddress = DESENCRIPTAR(EncryptedMac)) Then
                     MessageBox.Show("Bienvenido")
                 Else
@@ -1116,12 +1118,22 @@ Public Class Inicio
 
     Private Sub txtNombreCliente_KeyUp(sender As Object, e As KeyEventArgs) Handles txtNombreCliente.KeyUp
         If (e.KeyCode = Keys.Enter Or e.KeyCode = Keys.Tab) Then
-            If (lstUsuarios.Rows.Count > 0) Then
-                txtApellidoCliente.Text = lstUsuarios.SelectedRows.Item(0).Cells(2).Value
-                txtNombreCliente.Text = lstUsuarios.SelectedRows.Item(0).Cells(1).Value
-                txtNumeroCliente.Text = lstUsuarios.SelectedRows.Item(0).Cells(3).Value
-                IdCliente = lstUsuarios.SelectedRows.Item(0).Cells(0).Value
+            If (lstUsuarios.SelectedRows.Item(0).Cells.Item(1).Value = "Consumidor") Then
+
+                ChbClienteFinal.Checked = True
                 lstUsuarios.Visible = False
+
+
+            Else
+
+                If (lstUsuarios.Rows.Count > 0) Then
+                    txtApellidoCliente.Text = lstUsuarios.SelectedRows.Item(0).Cells(2).Value
+                    txtNombreCliente.Text = lstUsuarios.SelectedRows.Item(0).Cells(1).Value
+                    txtNumeroCliente.Text = lstUsuarios.SelectedRows.Item(0).Cells(3).Value
+                    IdCliente = lstUsuarios.SelectedRows.Item(0).Cells(0).Value
+                    lstUsuarios.Visible = False
+                End If
+
             End If
         End If
     End Sub
