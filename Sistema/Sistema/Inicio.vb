@@ -13,6 +13,9 @@ Public Class Inicio
     Dim IdCliente
     Public me_state As Boolean = True
     Dim VentaMonto As Double
+    Dim firstTime As Boolean = True
+    Dim itsok As Boolean = True
+
 
 
     Public Dir, User, Pass As String
@@ -48,14 +51,14 @@ Public Class Inicio
 
 
 
-    Protected Overrides Sub OnPaint(ByVal e As System.Windows.Forms.PaintEventArgs)
-        MyBase.OnPaint(e)
-        For Each MyObject As PictureBox In Me.Controls.OfType(Of PictureBox)()
-            If Not IsNothing(MyObject.Image) And MyObject.Visible = True Then
-                e.Graphics.DrawImageUnscaled(New Bitmap(MyObject.Image), MyObject.Left, MyObject.Top)
-            End If
-        Next
-    End Sub
+    'Protected Overrides Sub OnPaint(ByVal e As System.Windows.Forms.PaintEventArgs)
+    '    MyBase.OnPaint(e)
+    '    For Each MyObject As PictureBox In Me.Controls.OfType(Of PictureBox)()
+    '        If Not IsNothing(MyObject.Image) And MyObject.Visible = True Then
+    '            e.Graphics.DrawImageUnscaled(New Bitmap(MyObject.Image), MyObject.Left, MyObject.Top)
+    '        End If
+    '    Next
+    'End Sub
 
     Public Sub Inicio_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
@@ -129,8 +132,9 @@ Public Class Inicio
                 dbmacaddress = DESENCRIPTAR(dbmacaddress)
 
                 If (dbmacaddress = DESENCRIPTAR(EncryptedMac)) Then
-                    MessageBox.Show("Bienvenido")
+
                 Else
+                    MessageBox.Show("Licencia de aplicacion no adquirida para trabajar en este equipo, Contactarse con proveedor del sistema")
                     Me.Close()
                 End If
 
@@ -144,10 +148,11 @@ Public Class Inicio
 
         End Try
 
+        BtnConectar_Click(Nothing, Nothing)
 
     End Sub
 
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnConectar.Click
+    Private Sub BtnConectar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnConectar.Click
 
 
 
@@ -160,7 +165,7 @@ Public Class Inicio
                 lblConEstado.ForeColor = Color.Blue
                 PanelBusqueda.Enabled = True
                 btnAgregarMostrar.Enabled = True
-                btnFiltros.Enabled = True
+
                 txtCotizacion.Enabled = True
                 btnOKCotizacion.Enabled = True
                 txtBusqueda.Enabled = True
@@ -224,8 +229,13 @@ Public Class Inicio
                 DataGridProductos.Columns.Item(0).Visible = False
                 DataGridProductos.Columns.Item(8).Visible = False
                 DataGridProductos.Columns.Item(9).Visible = False
+                DataGridProductos.Columns.Item(4).Visible = False
+                DataGridProductos.Columns.Item(5).Visible = False
+                DataGridProductos.Columns.Item(6).Visible = False
                 DataGridOk = True
                 DataGridProductos.Rows.Item(0).Selected = True
+
+
 
 
                 Dim c As Integer = 0
@@ -254,6 +264,7 @@ Public Class Inicio
                 conn.Close()
                 DataGridOk = False
                 btnSeleccionar.Enabled = False
+                DataGridProductos.DataSource = Nothing
 
             End Try
 
@@ -278,23 +289,34 @@ Public Class Inicio
                 a.Columns.Item(7).ColumnName = "Descripción"
                 DataGridProductos.DataSource = a
                 DataGridProductos.Columns.Item(0).Visible = False
+                DataGridProductos.Columns.Item(8).Visible = False
+                DataGridProductos.Columns.Item(9).Visible = False
+                DataGridProductos.Columns.Item(4).Visible = False
+                DataGridProductos.Columns.Item(5).Visible = False
+                DataGridProductos.Columns.Item(6).Visible = False
                 DataGridOk = True
+                If (DataGridProductos.RowCount > 0) Then
+                    DataGridProductos.Rows.Item(0).Selected = True
+
+                    Dim c As Integer = 0
+                    For Each f As DataGridViewRow In DataGridProductos.Rows
+
+                        If (f.Cells.Item(4).Value() < 3) Then
+                            DataGridProductos.Rows.Item(c).DefaultCellStyle.BackColor = Color.Yellow
+                        ElseIf (f.Cells.Item(4).Value = 0) Then
+                            DataGridProductos.Rows.Item(c).DefaultCellStyle.BackColor = Color.Red
+                        Else
+                            DataGridProductos.Rows.Item(c).DefaultCellStyle.BackColor = Color.Green
+
+                        End If
+                        c += 1
+
+                    Next
+                End If
 
 
-                Dim c As Integer = 0
-                For Each f As DataGridViewRow In DataGridProductos.Rows
 
-                    If (f.Cells.Item(4).Value() < 3) Then
-                        DataGridProductos.Rows.Item(c).DefaultCellStyle.BackColor = Color.Yellow
-                    ElseIf (f.Cells.Item(4).Value = 0) Then
-                        DataGridProductos.Rows.Item(c).DefaultCellStyle.BackColor = Color.Red
-                    Else
-                        DataGridProductos.Rows.Item(c).DefaultCellStyle.BackColor = Color.Green
 
-                    End If
-                    c += 1
-
-                Next
 
             Catch ex As Exception
                 MessageBox.Show(ex.Message)
@@ -352,19 +374,7 @@ Public Class Inicio
     End Sub
 
 
-    Private Sub btnFiltros_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnFiltros.Click
-        If (PanelFiltros.Visible = False) Then
-            PanelFiltros.Visible = True
-            btnAgregarMostrar.Enabled = False
-            PanelBusqueda.Enabled = False
 
-        Else
-            PanelFiltros.Visible = False
-            btnAgregarMostrar.Enabled = True
-            PanelBusqueda.Enabled = True
-
-        End If
-    End Sub
 
     Private Sub btnAgregarMostrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAgregarMostrar.Click
         If (PanelAgregar.Visible = False) Then
@@ -373,7 +383,7 @@ Public Class Inicio
             PanelAgregar.BringToFront()
             'Oculto lo demas
             PanelBusqueda.Enabled = False
-            btnFiltros.Enabled = False
+
             txtCotizacion.Enabled = False
             btnOKCotizacion.Enabled = False
             PanelInfoProducto.Visible = False
@@ -390,7 +400,7 @@ Public Class Inicio
             PanelBusqueda.Enabled = True
             btnBuscar.Enabled = True
             txtBusqueda.Enabled = True
-            btnFiltros.Enabled = True
+
             txtCotizacion.Enabled = True
             btnOKCotizacion.Enabled = True
             PanelClientes.Visible = True
@@ -423,7 +433,7 @@ Public Class Inicio
     End Sub
 
 
-
+    'EVENTO DE CAMBIO DE SELECCION EN DATAGRID
     Private Sub DataGrid_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridProductos.SelectionChanged
 
         Try
@@ -434,19 +444,22 @@ Public Class Inicio
                     lblTotal.Text = "Total:"
                     lblTotalPesos.Text = "Total:"
                     btnVender.Enabled = False
+                    btnAgregarOrden.Enabled = False
 
 
                 ElseIf (txtCantidadProd.Text > DataGridProductos.SelectedRows.Item(0).Cells.Item(4).Value) Then
                     lblCantidadDisponible.Text = " /  " & DataGridProductos.SelectedRows.Item(0).Cells.Item(4).Value
                     lblCantidadDisponible.ForeColor = Color.Black
                     MessageBox.Show("No se dispone de productos suficientes")
+                    btnAgregarOrden.Enabled = False
+
                     txtCantidadProd.ForeColor = Color.Red
                     lblTotal.Text = "Total:"
                     btnVender.Enabled = False
 
                 Else
                     lblCantidadDisponible.ForeColor = Color.Black
-
+                    btnAgregarOrden.Enabled = True
                     btnVender.Enabled = True
                     txtCantidadProd.ForeColor = Color.Black
 
@@ -477,14 +490,14 @@ Public Class Inicio
                             If (Moneda = "Dolares") Then
                                 Dim a1 As Double = PrecioUnitario * Cantidad
                                 total = a1
-                                Dim PorcentajeDeGananciaTotal = ProGanancia * Cantidad
+                                Dim PorcentajeDeGananciaTotal = ProGanancia
 
                                 total = total + ((total * PorcentajeDeGananciaTotal) / 100)
 
 
 
 
-                                total = total + ((ProFlete * Cantidad) / txtCotizacion.Text)
+                                total = total + ((ProFlete) / txtCotizacion.Text) * Cantidad
 
 
 
@@ -495,8 +508,8 @@ Public Class Inicio
 
 
 
-                                lblTotal.Text = "Total: " & total & " " & Moneda
-                                lblTotalPesos.Text = "Total: " & total * txtCotizacion.Text & " Pesos"
+                                lblTotal.Text = "Coste Producto : " & total & " " & Moneda
+                                lblTotalPesos.Text = "Coste Producto : " & total * txtCotizacion.Text & " Pesos"
                                 VentaMonto = total * txtCotizacion.Text
 
 
@@ -508,12 +521,12 @@ Public Class Inicio
                                 '-------------------PESOS---------------------------------------
                                 Dim a1 As Double = PrecioUnitario * Cantidad
                                 total = a1
-                                Dim PorcentajeDeGananciaTotal = ProGanancia * Cantidad
+                                Dim PorcentajeDeGananciaTotal = ProGanancia
                                 total = total + ((total * PorcentajeDeGananciaTotal) / 100)
-                                total = total + (ProFlete * Cantidad)
+                                total = total + (ProFlete) * Cantidad
 
-                                lblTotal.Text = "Total: " & total / txtCotizacion.Text & " Dolares"
-                                lblTotalPesos.Text = "Total: " & total & " " & Moneda
+                                lblTotal.Text = "Coste Producto : " & total / txtCotizacion.Text & " Dolares"
+                                lblTotalPesos.Text = "Coste Producto : " & total & " " & Moneda
                                 VentaMonto = total
 
 
@@ -565,10 +578,20 @@ Public Class Inicio
                     txtCantidadProd.ForeColor = Color.Red
                     lblTotal.Text = "Total:"
                     lblTotalPesos.Text = "Total:"
+                    btnAgregarOrden.Enabled = False
 
                     btnVender.Enabled = False
+                ElseIf (a = 0) Then
+                    txtCantidadProd.ForeColor = Color.Red
+                    lblTotal.Text = "Total: 0 Dolares"
+                    lblTotalPesos.Text = "Total: 0 Pesos"
+                    btnAgregarOrden.Enabled = False
+
+                    btnVender.Enabled = False
+
                 Else
                     btnVender.Enabled = True
+                    btnAgregarOrden.Enabled = True
                     txtCantidadProd.ForeColor = Color.Black
                     DataGrid_SelectionChanged(Nothing, Nothing)
                 End If
@@ -583,8 +606,6 @@ Public Class Inicio
     Private Sub btnSeleccionar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSeleccionar.Click
         DataGrid_SelectionChanged(Nothing, Nothing)
     End Sub
-
-
 
     Private Sub txtBusqueda_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtBusqueda.KeyUp
         If (e.KeyData = Keys.Enter) Then
@@ -634,7 +655,7 @@ Public Class Inicio
             PanelBusqueda.Enabled = False
             btnBuscar.Enabled = False
             btnAgregarMostrar.Enabled = False
-            btnFiltros.Enabled = False
+
             btnSeleccionar.Enabled = False
             btnConfig.Enabled = False
             txtBusqueda.Enabled = False
@@ -661,9 +682,9 @@ Public Class Inicio
                 lblTelefonoCliente.Text = "Telefono: " & txtNumeroCliente.Text
             End If
 
-            DataGridConfirmacionVenta.Rows.Clear()
+            Orden.Rows.Clear()
 
-            DataGridConfirmacionVenta.Columns.Clear()
+            Orden.Columns.Clear()
 
 
             Dim aFilasSelec As DataGridViewSelectedRowCollection = Me.DataGridProductos.SelectedRows
@@ -672,21 +693,28 @@ Public Class Inicio
 
             For nContador = 0 To Me.DataGridProductos.Columns.Count - 1
 
-                Me.DataGridConfirmacionVenta.Columns.Add(Me.DataGridProductos.Columns(nContador).Clone())
+                Me.Orden.Columns.Add(Me.DataGridProductos.Columns(nContador).Clone())
 
             Next
 
 
             For Each oFila As DataGridViewRow In aFilasSelec
                 Dim nIndiceFila As Integer
-                nIndiceFila = Me.DataGridConfirmacionVenta.Rows.Add()
+                nIndiceFila = Me.Orden.Rows.Add()
 
                 For Each oCelda As DataGridViewCell In oFila.Cells
-                    Me.DataGridConfirmacionVenta.Rows(nIndiceFila).Cells(oCelda.ColumnIndex).Value = oCelda.Value
+                    Me.Orden.Rows(nIndiceFila).Cells(oCelda.ColumnIndex).Value = oCelda.Value
                 Next
             Next
-            DataGridConfirmacionVenta.Rows.Item(0).Cells.Item(4).Value = txtCantidadProd.Text
-            DataGridConfirmacionVenta.Columns.Item(5).Visible = False
+            Dim a As DataGridViewColumn = New DataGridViewColumn
+
+
+
+
+
+
+            Orden.Rows.Item(0).Cells.Item(4).Value = txtCantidadProd.Text
+            Orden.Columns.Item(5).Visible = False
 
 
 
@@ -717,7 +745,7 @@ Public Class Inicio
 
         'Bloqueo otros paneles
         PanelBusqueda.Enabled = False
-        btnFiltros.Enabled = False
+
         btnAgregarMostrar.Enabled = False
         txtCotizacion.Enabled = False
         btnOKCotizacion.Enabled = False
@@ -757,7 +785,7 @@ Public Class Inicio
     Private Sub btnCancelarEdicion_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancelarEdicion.Click
         'Activo otros paneles
         PanelBusqueda.Enabled = True
-        btnFiltros.Enabled = True
+
         btnAgregarMostrar.Enabled = True
         txtCotizacion.Enabled = True
         btnOKCotizacion.Enabled = True
@@ -904,7 +932,7 @@ Public Class Inicio
         PanelBusqueda.Enabled = True
         btnBuscar.Enabled = True
         btnAgregarMostrar.Enabled = True
-        btnFiltros.Enabled = True
+
         btnSeleccionar.Enabled = True
         btnConfig.Enabled = True
         txtBusqueda.Enabled = True
@@ -1136,6 +1164,120 @@ Public Class Inicio
 
             End If
         End If
+    End Sub
+
+
+    Private Sub btnAgregarOrden_Click(sender As Object, e As EventArgs) Handles btnAgregarOrden.Click
+
+
+
+        For Each a As DataGridViewRow In Orden.Rows
+            If (DataGridProductos.SelectedRows.Item(0).Cells.Item(0).Value = a.Cells.Item(0).Value) Then
+                itsok = False
+
+            Else
+                itsok = True
+
+
+
+            End If
+
+        Next
+
+
+
+
+
+
+
+
+        If (firstTime) Then
+            If (itsok) Then
+
+
+                Dim aFilasSelec As DataGridViewSelectedRowCollection = Me.DataGridProductos.SelectedRows
+
+                Dim nContador As Integer
+
+                For nContador = 0 To Me.DataGridProductos.Columns.Count - 1
+
+                    Me.Orden.Columns.Add(Me.DataGridProductos.Columns(nContador).Clone())
+
+                Next
+
+
+                For Each oFila As DataGridViewRow In aFilasSelec
+                    Dim nIndiceFila As Integer
+                    nIndiceFila = Me.Orden.Rows.Add()
+
+                    For Each oCelda As DataGridViewCell In oFila.Cells
+                        Me.Orden.Rows(nIndiceFila).Cells(oCelda.ColumnIndex).Value = oCelda.Value
+                    Next
+                Next
+                For a As Integer = 0 To Orden.Columns.Count - 1
+                    Orden.Columns.Item(a).Visible = True
+                Next
+
+                Orden.Columns.Item(0).Visible = False
+                Orden.Columns.Item(8).Visible = False
+                Orden.Columns.Item(9).Visible = False
+
+                Orden.Columns.Item(5).Visible = False
+                Orden.Rows.Item(Orden.Rows.Count - 1).Cells(4).Value = txtCantidadProd.Text
+                Orden.Rows.Item(Orden.Rows.Count - 1).Cells(6).Value = VentaMonto
+                Orden.Columns.Item(6).HeaderText = "Costo"
+                firstTime = False
+            End If
+        Else
+            If (itsok) Then
+
+
+                Dim aFilasSelec As DataGridViewSelectedRowCollection = Me.DataGridProductos.SelectedRows
+
+                'Dim nContador As Integer
+
+                'For nContador = 0 To Me.DataGridProductos.Columns.Count - 1
+
+                '    Me.DataGridConfirmacionVenta.Columns.Add(Me.DataGridProductos.Columns(nContador).Clone())
+
+                'Next
+
+
+                For Each oFila As DataGridViewRow In aFilasSelec
+                    Dim nIndiceFila As Integer
+                    nIndiceFila = Me.Orden.Rows.Add()
+
+                    For Each oCelda As DataGridViewCell In oFila.Cells
+                        Me.Orden.Rows(nIndiceFila).Cells(oCelda.ColumnIndex).Value = oCelda.Value
+                    Next
+                Next
+                For a As Integer = 0 To Orden.Columns.Count - 1
+                    Orden.Columns.Item(a).Visible = True
+                Next
+
+                Orden.Columns.Item(0).Visible = False
+                Orden.Columns.Item(8).Visible = False
+                Orden.Columns.Item(9).Visible = False
+
+                Orden.Columns.Item(5).Visible = False
+                Orden.Rows.Item(Orden.Rows.Count - 1).Cells(4).Value = txtCantidadProd.Text
+                Orden.Rows.Item(Orden.Rows.Count - 1).Cells(6).Value = VentaMonto
+                Orden.Columns.Item(6).HeaderText = "Costo"
+
+            End If
+        End If
+
+
+
+
+
+
+
+        'DataGridConfirmacionVenta.Rows.Item(0).Cells.Item(4).Value = txtCantidadProd.Text
+        'DataGridConfirmacionVenta.Columns.Item(5).Visible = False
+
+
+
     End Sub
 
     Private Sub Inicio_GotFocus(sender As Object, e As EventArgs) Handles Me.GotFocus

@@ -23,8 +23,8 @@ Partial Class Inicio
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnConfig = New System.Windows.Forms.Button()
         Me.btnConectar = New System.Windows.Forms.Button()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
@@ -34,7 +34,6 @@ Partial Class Inicio
         Me.btnActualizarProducto = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnBuscar = New System.Windows.Forms.Button()
         Me.txtBusqueda = New System.Windows.Forms.TextBox()
-        Me.grpFiltros = New System.Windows.Forms.GroupBox()
         Me.txtPrecioUnitario = New System.Windows.Forms.TextBox()
         Me.txtCantidad = New System.Windows.Forms.TextBox()
         Me.txtDescripccion = New System.Windows.Forms.TextBox()
@@ -59,14 +58,14 @@ Partial Class Inicio
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtCantidadProd = New System.Windows.Forms.TextBox()
         Me.PanelAgregar = New System.Windows.Forms.Panel()
-        Me.PanelFiltros = New System.Windows.Forms.Panel()
-        Me.btnFiltros = New System.Windows.Forms.Button()
         Me.PanelBusqueda = New System.Windows.Forms.Panel()
+        Me.btnAgregarOrden = New System.Windows.Forms.Button()
         Me.lstUsuarios = New System.Windows.Forms.DataGridView()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.lblTotalPesos = New System.Windows.Forms.Label()
         Me.lblCantidadDisponible = New System.Windows.Forms.Label()
         Me.btnVender = New System.Windows.Forms.Button()
+        Me.Orden = New System.Windows.Forms.DataGridView()
         Me.lblTotal = New System.Windows.Forms.Label()
         Me.lblPrecioUnitario = New System.Windows.Forms.Label()
         Me.lblFlete = New System.Windows.Forms.Label()
@@ -90,6 +89,13 @@ Partial Class Inicio
         Me.chbClienteOtro = New System.Windows.Forms.CheckBox()
         Me.ChbClienteFinal = New System.Windows.Forms.CheckBox()
         Me.Label20 = New System.Windows.Forms.Label()
+        Me.PanelConfirmacionVenta = New System.Windows.Forms.Panel()
+        Me.lblApellidoCliente = New System.Windows.Forms.Label()
+        Me.lblTelefonoCliente = New System.Windows.Forms.Label()
+        Me.lblNombreCliente = New System.Windows.Forms.Label()
+        Me.btnCancelarVenta = New System.Windows.Forms.Button()
+        Me.btnConfirmarVenta = New System.Windows.Forms.Button()
+        Me.Label24 = New System.Windows.Forms.Label()
         Me.btnSeleccionar = New System.Windows.Forms.Button()
         Me.btnAgregarMostrar = New System.Windows.Forms.Button()
         Me.txtCotizacion = New System.Windows.Forms.TextBox()
@@ -117,36 +123,27 @@ Partial Class Inicio
         Me.txtEditarDescripcion = New System.Windows.Forms.TextBox()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label15 = New System.Windows.Forms.Label()
-        Me.PanelConfirmacionVenta = New System.Windows.Forms.Panel()
-        Me.lblApellidoCliente = New System.Windows.Forms.Label()
-        Me.lblTelefonoCliente = New System.Windows.Forms.Label()
-        Me.lblNombreCliente = New System.Windows.Forms.Label()
-        Me.btnCancelarVenta = New System.Windows.Forms.Button()
-        Me.btnConfirmarVenta = New System.Windows.Forms.Button()
-        Me.Label24 = New System.Windows.Forms.Label()
-        Me.DataGridConfirmacionVenta = New System.Windows.Forms.DataGridView()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.DataGridProductos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Contex1.SuspendLayout()
         Me.grpAgregarProductos.SuspendLayout()
         Me.PanelAgregar.SuspendLayout()
-        Me.PanelFiltros.SuspendLayout()
         Me.PanelBusqueda.SuspendLayout()
         CType(Me.lstUsuarios, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Orden, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelInfoProducto.SuspendLayout()
         Me.grpProInfo.SuspendLayout()
         Me.PanelClientes.SuspendLayout()
         Me.grpClientes.SuspendLayout()
         Me.PanelDatosCliente.SuspendLayout()
+        Me.PanelConfirmacionVenta.SuspendLayout()
         Me.PanelEditarProducto.SuspendLayout()
         Me.grpEditarProd.SuspendLayout()
-        Me.PanelConfirmacionVenta.SuspendLayout()
-        CType(Me.DataGridConfirmacionVenta, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnConfig
         '
-        Me.btnConfig.Location = New System.Drawing.Point(1156, 3)
+        Me.btnConfig.Location = New System.Drawing.Point(1041, 3)
         Me.btnConfig.Name = "btnConfig"
         Me.btnConfig.Size = New System.Drawing.Size(96, 23)
         Me.btnConfig.TabIndex = 2
@@ -196,7 +193,7 @@ Partial Class Inicio
         Me.DataGridProductos.ReadOnly = True
         Me.DataGridProductos.RowHeadersVisible = False
         Me.DataGridProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridProductos.Size = New System.Drawing.Size(802, 441)
+        Me.DataGridProductos.Size = New System.Drawing.Size(560, 418)
         Me.DataGridProductos.TabIndex = 3
         '
         'Contex1
@@ -229,16 +226,6 @@ Partial Class Inicio
         Me.txtBusqueda.Name = "txtBusqueda"
         Me.txtBusqueda.Size = New System.Drawing.Size(378, 20)
         Me.txtBusqueda.TabIndex = 0
-        '
-        'grpFiltros
-        '
-        Me.grpFiltros.BackColor = System.Drawing.Color.Transparent
-        Me.grpFiltros.Location = New System.Drawing.Point(7, 7)
-        Me.grpFiltros.Name = "grpFiltros"
-        Me.grpFiltros.Size = New System.Drawing.Size(422, 133)
-        Me.grpFiltros.TabIndex = 6
-        Me.grpFiltros.TabStop = False
-        Me.grpFiltros.Text = "Filtros de busqueda"
         '
         'txtPrecioUnitario
         '
@@ -438,7 +425,7 @@ Partial Class Inicio
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(814, 329)
+        Me.Label5.Location = New System.Drawing.Point(1018, 107)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(65, 16)
         Me.Label5.TabIndex = 21
@@ -447,7 +434,7 @@ Partial Class Inicio
         'txtCantidadProd
         '
         Me.txtCantidadProd.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCantidadProd.Location = New System.Drawing.Point(883, 326)
+        Me.txtCantidadProd.Location = New System.Drawing.Point(1087, 104)
         Me.txtCantidadProd.Name = "txtCantidadProd"
         Me.txtCantidadProd.Size = New System.Drawing.Size(33, 22)
         Me.txtCantidadProd.TabIndex = 1
@@ -461,36 +448,16 @@ Partial Class Inicio
         Me.PanelAgregar.TabIndex = 23
         Me.PanelAgregar.Visible = False
         '
-        'PanelFiltros
-        '
-        Me.PanelFiltros.BackColor = System.Drawing.Color.Transparent
-        Me.PanelFiltros.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.PanelFiltros.Controls.Add(Me.grpFiltros)
-        Me.PanelFiltros.Location = New System.Drawing.Point(811, 0)
-        Me.PanelFiltros.Name = "PanelFiltros"
-        Me.PanelFiltros.Size = New System.Drawing.Size(438, 145)
-        Me.PanelFiltros.TabIndex = 24
-        Me.PanelFiltros.Visible = False
-        '
-        'btnFiltros
-        '
-        Me.btnFiltros.Enabled = False
-        Me.btnFiltros.Location = New System.Drawing.Point(569, 3)
-        Me.btnFiltros.Name = "btnFiltros"
-        Me.btnFiltros.Size = New System.Drawing.Size(108, 23)
-        Me.btnFiltros.TabIndex = 0
-        Me.btnFiltros.Text = "Filtros de busqueda"
-        Me.btnFiltros.UseVisualStyleBackColor = True
-        '
         'PanelBusqueda
         '
         Me.PanelBusqueda.BackColor = System.Drawing.Color.Transparent
+        Me.PanelBusqueda.Controls.Add(Me.btnAgregarOrden)
         Me.PanelBusqueda.Controls.Add(Me.lstUsuarios)
-        Me.PanelBusqueda.Controls.Add(Me.PanelFiltros)
         Me.PanelBusqueda.Controls.Add(Me.Button2)
         Me.PanelBusqueda.Controls.Add(Me.lblTotalPesos)
         Me.PanelBusqueda.Controls.Add(Me.lblCantidadDisponible)
         Me.PanelBusqueda.Controls.Add(Me.btnVender)
+        Me.PanelBusqueda.Controls.Add(Me.Orden)
         Me.PanelBusqueda.Controls.Add(Me.lblTotal)
         Me.PanelBusqueda.Controls.Add(Me.lblPrecioUnitario)
         Me.PanelBusqueda.Controls.Add(Me.lblFlete)
@@ -503,8 +470,17 @@ Partial Class Inicio
         Me.PanelBusqueda.Enabled = False
         Me.PanelBusqueda.Location = New System.Drawing.Point(0, 27)
         Me.PanelBusqueda.Name = "PanelBusqueda"
-        Me.PanelBusqueda.Size = New System.Drawing.Size(1252, 572)
+        Me.PanelBusqueda.Size = New System.Drawing.Size(1252, 629)
         Me.PanelBusqueda.TabIndex = 26
+        '
+        'btnAgregarOrden
+        '
+        Me.btnAgregarOrden.Location = New System.Drawing.Point(1171, 103)
+        Me.btnAgregarOrden.Name = "btnAgregarOrden"
+        Me.btnAgregarOrden.Size = New System.Drawing.Size(75, 23)
+        Me.btnAgregarOrden.TabIndex = 33
+        Me.btnAgregarOrden.Text = "Agregar"
+        Me.btnAgregarOrden.UseVisualStyleBackColor = True
         '
         'lstUsuarios
         '
@@ -518,22 +494,22 @@ Partial Class Inicio
         Me.lstUsuarios.ColumnHeadersHeight = 10
         Me.lstUsuarios.ColumnHeadersVisible = False
         Me.lstUsuarios.GridColor = System.Drawing.Color.CornflowerBlue
-        Me.lstUsuarios.Location = New System.Drawing.Point(873, 219)
+        Me.lstUsuarios.Location = New System.Drawing.Point(739, 179)
         Me.lstUsuarios.MultiSelect = False
         Me.lstUsuarios.Name = "lstUsuarios"
         Me.lstUsuarios.ReadOnly = True
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.lstUsuarios.RowHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.lstUsuarios.RowHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.lstUsuarios.RowHeadersVisible = False
         Me.lstUsuarios.RowHeadersWidth = 10
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lstUsuarios.RowsDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lstUsuarios.RowsDefaultCellStyle = DataGridViewCellStyle6
         Me.lstUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.lstUsuarios.Size = New System.Drawing.Size(139, 101)
         Me.lstUsuarios.TabIndex = 17
@@ -548,7 +524,7 @@ Partial Class Inicio
         Me.Button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White
         Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(908, 326)
+        Me.Button2.Location = New System.Drawing.Point(1112, 104)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(19, 22)
         Me.Button2.TabIndex = 29
@@ -559,7 +535,7 @@ Partial Class Inicio
         '
         Me.lblTotalPesos.AutoSize = True
         Me.lblTotalPesos.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTotalPesos.Location = New System.Drawing.Point(812, 533)
+        Me.lblTotalPesos.Location = New System.Drawing.Point(569, 99)
         Me.lblTotalPesos.Name = "lblTotalPesos"
         Me.lblTotalPesos.Size = New System.Drawing.Size(66, 25)
         Me.lblTotalPesos.TabIndex = 28
@@ -569,25 +545,44 @@ Partial Class Inicio
         '
         Me.lblCantidadDisponible.AutoSize = True
         Me.lblCantidadDisponible.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCantidadDisponible.Location = New System.Drawing.Point(931, 329)
+        Me.lblCantidadDisponible.Location = New System.Drawing.Point(1134, 107)
         Me.lblCantidadDisponible.Name = "lblCantidadDisponible"
         Me.lblCantidadDisponible.Size = New System.Drawing.Size(0, 16)
         Me.lblCantidadDisponible.TabIndex = 27
         '
         'btnVender
         '
-        Me.btnVender.Location = New System.Drawing.Point(1082, 516)
+        Me.btnVender.Location = New System.Drawing.Point(1086, 577)
         Me.btnVender.Name = "btnVender"
         Me.btnVender.Size = New System.Drawing.Size(155, 42)
         Me.btnVender.TabIndex = 2
-        Me.btnVender.Text = "Vender Producto"
+        Me.btnVender.Text = "Finalizar Venta"
         Me.btnVender.UseVisualStyleBackColor = True
+        '
+        'Orden
+        '
+        Me.Orden.AllowUserToAddRows = False
+        Me.Orden.AllowUserToDeleteRows = False
+        Me.Orden.AllowUserToOrderColumns = True
+        Me.Orden.AllowUserToResizeRows = False
+        Me.Orden.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.Orden.BackgroundColor = System.Drawing.SystemColors.ControlDark
+        Me.Orden.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.Orden.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.Orden.Location = New System.Drawing.Point(862, 145)
+        Me.Orden.MultiSelect = False
+        Me.Orden.Name = "Orden"
+        Me.Orden.ReadOnly = True
+        Me.Orden.RowHeadersVisible = False
+        Me.Orden.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.Orden.Size = New System.Drawing.Size(379, 308)
+        Me.Orden.TabIndex = 32
         '
         'lblTotal
         '
         Me.lblTotal.AutoSize = True
         Me.lblTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTotal.Location = New System.Drawing.Point(811, 498)
+        Me.lblTotal.Location = New System.Drawing.Point(569, 66)
         Me.lblTotal.Name = "lblTotal"
         Me.lblTotal.Size = New System.Drawing.Size(66, 25)
         Me.lblTotal.TabIndex = 26
@@ -597,7 +592,7 @@ Partial Class Inicio
         '
         Me.lblPrecioUnitario.AutoSize = True
         Me.lblPrecioUnitario.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPrecioUnitario.Location = New System.Drawing.Point(814, 433)
+        Me.lblPrecioUnitario.Location = New System.Drawing.Point(902, 2)
         Me.lblPrecioUnitario.Name = "lblPrecioUnitario"
         Me.lblPrecioUnitario.Size = New System.Drawing.Size(159, 25)
         Me.lblPrecioUnitario.TabIndex = 25
@@ -607,7 +602,7 @@ Partial Class Inicio
         '
         Me.lblFlete.AutoSize = True
         Me.lblFlete.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFlete.Location = New System.Drawing.Point(814, 398)
+        Me.lblFlete.Location = New System.Drawing.Point(569, 33)
         Me.lblFlete.Name = "lblFlete"
         Me.lblFlete.Size = New System.Drawing.Size(176, 25)
         Me.lblFlete.TabIndex = 24
@@ -617,7 +612,7 @@ Partial Class Inicio
         '
         Me.lblPorcentaje.AutoSize = True
         Me.lblPorcentaje.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPorcentaje.Location = New System.Drawing.Point(814, 363)
+        Me.lblPorcentaje.Location = New System.Drawing.Point(569, 2)
         Me.lblPorcentaje.Name = "lblPorcentaje"
         Me.lblPorcentaje.Size = New System.Drawing.Size(249, 25)
         Me.lblPorcentaje.TabIndex = 23
@@ -626,10 +621,11 @@ Partial Class Inicio
         'PanelInfoProducto
         '
         Me.PanelInfoProducto.Controls.Add(Me.grpProInfo)
-        Me.PanelInfoProducto.Location = New System.Drawing.Point(811, 5)
+        Me.PanelInfoProducto.Location = New System.Drawing.Point(574, 348)
         Me.PanelInfoProducto.Name = "PanelInfoProducto"
-        Me.PanelInfoProducto.Size = New System.Drawing.Size(438, 140)
+        Me.PanelInfoProducto.Size = New System.Drawing.Size(122, 85)
         Me.PanelInfoProducto.TabIndex = 30
+        Me.PanelInfoProducto.Visible = False
         '
         'grpProInfo
         '
@@ -638,9 +634,9 @@ Partial Class Inicio
         Me.grpProInfo.Controls.Add(Me.lblMarca)
         Me.grpProInfo.Controls.Add(Me.lblTipo)
         Me.grpProInfo.Controls.Add(Me.lblCodigo)
-        Me.grpProInfo.Location = New System.Drawing.Point(9, 5)
+        Me.grpProInfo.Location = New System.Drawing.Point(3, 3)
         Me.grpProInfo.Name = "grpProInfo"
-        Me.grpProInfo.Size = New System.Drawing.Size(421, 119)
+        Me.grpProInfo.Size = New System.Drawing.Size(370, 212)
         Me.grpProInfo.TabIndex = 0
         Me.grpProInfo.TabStop = False
         Me.grpProInfo.Text = "Informacion de Producto:"
@@ -648,7 +644,7 @@ Partial Class Inicio
         'lblDescripcion
         '
         Me.lblDescripcion.AutoSize = True
-        Me.lblDescripcion.Location = New System.Drawing.Point(8, 53)
+        Me.lblDescripcion.Location = New System.Drawing.Point(8, 55)
         Me.lblDescripcion.Name = "lblDescripcion"
         Me.lblDescripcion.Size = New System.Drawing.Size(66, 13)
         Me.lblDescripcion.TabIndex = 4
@@ -657,7 +653,7 @@ Partial Class Inicio
         'lblModelo
         '
         Me.lblModelo.AutoSize = True
-        Me.lblModelo.Location = New System.Drawing.Point(288, 19)
+        Me.lblModelo.Location = New System.Drawing.Point(8, 127)
         Me.lblModelo.Name = "lblModelo"
         Me.lblModelo.Size = New System.Drawing.Size(45, 13)
         Me.lblModelo.TabIndex = 3
@@ -666,7 +662,7 @@ Partial Class Inicio
         'lblMarca
         '
         Me.lblMarca.AutoSize = True
-        Me.lblMarca.Location = New System.Drawing.Point(145, 19)
+        Me.lblMarca.Location = New System.Drawing.Point(8, 91)
         Me.lblMarca.Name = "lblMarca"
         Me.lblMarca.Size = New System.Drawing.Size(40, 13)
         Me.lblMarca.TabIndex = 2
@@ -684,7 +680,7 @@ Partial Class Inicio
         'lblCodigo
         '
         Me.lblCodigo.AutoSize = True
-        Me.lblCodigo.Location = New System.Drawing.Point(8, 89)
+        Me.lblCodigo.Location = New System.Drawing.Point(8, 163)
         Me.lblCodigo.Name = "lblCodigo"
         Me.lblCodigo.Size = New System.Drawing.Size(46, 13)
         Me.lblCodigo.TabIndex = 0
@@ -693,9 +689,9 @@ Partial Class Inicio
         'PanelClientes
         '
         Me.PanelClientes.Controls.Add(Me.grpClientes)
-        Me.PanelClientes.Location = New System.Drawing.Point(811, 155)
+        Me.PanelClientes.Location = New System.Drawing.Point(569, 136)
         Me.PanelClientes.Name = "PanelClientes"
-        Me.PanelClientes.Size = New System.Drawing.Size(438, 140)
+        Me.PanelClientes.Size = New System.Drawing.Size(287, 209)
         Me.PanelClientes.TabIndex = 31
         '
         'grpClientes
@@ -704,9 +700,9 @@ Partial Class Inicio
         Me.grpClientes.Controls.Add(Me.chbClienteOtro)
         Me.grpClientes.Controls.Add(Me.ChbClienteFinal)
         Me.grpClientes.Controls.Add(Me.Label20)
-        Me.grpClientes.Location = New System.Drawing.Point(9, 5)
+        Me.grpClientes.Location = New System.Drawing.Point(5, 3)
         Me.grpClientes.Name = "grpClientes"
-        Me.grpClientes.Size = New System.Drawing.Size(421, 119)
+        Me.grpClientes.Size = New System.Drawing.Size(273, 203)
         Me.grpClientes.TabIndex = 0
         Me.grpClientes.TabStop = False
         Me.grpClientes.Text = "Cliente"
@@ -721,26 +717,26 @@ Partial Class Inicio
         Me.PanelDatosCliente.Controls.Add(Me.Label21)
         Me.PanelDatosCliente.Location = New System.Drawing.Point(6, 34)
         Me.PanelDatosCliente.Name = "PanelDatosCliente"
-        Me.PanelDatosCliente.Size = New System.Drawing.Size(409, 79)
+        Me.PanelDatosCliente.Size = New System.Drawing.Size(261, 163)
         Me.PanelDatosCliente.TabIndex = 8
         '
         'txtNombreCliente
         '
-        Me.txtNombreCliente.Location = New System.Drawing.Point(47, 6)
+        Me.txtNombreCliente.Location = New System.Drawing.Point(59, 6)
         Me.txtNombreCliente.Name = "txtNombreCliente"
         Me.txtNombreCliente.Size = New System.Drawing.Size(100, 20)
         Me.txtNombreCliente.TabIndex = 16
         '
         'txtNumeroCliente
         '
-        Me.txtNumeroCliente.Location = New System.Drawing.Point(236, 6)
+        Me.txtNumeroCliente.Location = New System.Drawing.Point(59, 64)
         Me.txtNumeroCliente.Name = "txtNumeroCliente"
         Me.txtNumeroCliente.Size = New System.Drawing.Size(100, 20)
         Me.txtNumeroCliente.TabIndex = 15
         '
         'txtApellidoCliente
         '
-        Me.txtApellidoCliente.Location = New System.Drawing.Point(47, 35)
+        Me.txtApellidoCliente.Location = New System.Drawing.Point(59, 35)
         Me.txtApellidoCliente.Name = "txtApellidoCliente"
         Me.txtApellidoCliente.Size = New System.Drawing.Size(100, 20)
         Me.txtApellidoCliente.TabIndex = 14
@@ -748,7 +744,7 @@ Partial Class Inicio
         'Label23
         '
         Me.Label23.AutoSize = True
-        Me.Label23.Location = New System.Drawing.Point(180, 10)
+        Me.Label23.Location = New System.Drawing.Point(3, 68)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(52, 13)
         Me.Label23.TabIndex = 13
@@ -801,10 +797,81 @@ Partial Class Inicio
         Me.Label20.TabIndex = 0
         Me.Label20.Text = "Tipo de cliente: "
         '
+        'PanelConfirmacionVenta
+        '
+        Me.PanelConfirmacionVenta.BackColor = System.Drawing.SystemColors.ActiveBorder
+        Me.PanelConfirmacionVenta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PanelConfirmacionVenta.Controls.Add(Me.lblApellidoCliente)
+        Me.PanelConfirmacionVenta.Controls.Add(Me.lblTelefonoCliente)
+        Me.PanelConfirmacionVenta.Controls.Add(Me.lblNombreCliente)
+        Me.PanelConfirmacionVenta.Controls.Add(Me.btnCancelarVenta)
+        Me.PanelConfirmacionVenta.Controls.Add(Me.btnConfirmarVenta)
+        Me.PanelConfirmacionVenta.Controls.Add(Me.Label24)
+        Me.PanelConfirmacionVenta.Location = New System.Drawing.Point(7, 466)
+        Me.PanelConfirmacionVenta.Name = "PanelConfirmacionVenta"
+        Me.PanelConfirmacionVenta.Size = New System.Drawing.Size(630, 187)
+        Me.PanelConfirmacionVenta.TabIndex = 32
+        Me.PanelConfirmacionVenta.Visible = False
+        '
+        'lblApellidoCliente
+        '
+        Me.lblApellidoCliente.AutoSize = True
+        Me.lblApellidoCliente.Location = New System.Drawing.Point(256, 7)
+        Me.lblApellidoCliente.Name = "lblApellidoCliente"
+        Me.lblApellidoCliente.Size = New System.Drawing.Size(45, 13)
+        Me.lblApellidoCliente.TabIndex = 38
+        Me.lblApellidoCliente.Text = "Label25"
+        '
+        'lblTelefonoCliente
+        '
+        Me.lblTelefonoCliente.AutoSize = True
+        Me.lblTelefonoCliente.Location = New System.Drawing.Point(498, 7)
+        Me.lblTelefonoCliente.Name = "lblTelefonoCliente"
+        Me.lblTelefonoCliente.Size = New System.Drawing.Size(45, 13)
+        Me.lblTelefonoCliente.TabIndex = 37
+        Me.lblTelefonoCliente.Text = "Label25"
+        '
+        'lblNombreCliente
+        '
+        Me.lblNombreCliente.AutoSize = True
+        Me.lblNombreCliente.Location = New System.Drawing.Point(14, 7)
+        Me.lblNombreCliente.Name = "lblNombreCliente"
+        Me.lblNombreCliente.Size = New System.Drawing.Size(45, 13)
+        Me.lblNombreCliente.TabIndex = 36
+        Me.lblNombreCliente.Text = "Label25"
+        '
+        'btnCancelarVenta
+        '
+        Me.btnCancelarVenta.Location = New System.Drawing.Point(535, 156)
+        Me.btnCancelarVenta.Name = "btnCancelarVenta"
+        Me.btnCancelarVenta.Size = New System.Drawing.Size(75, 23)
+        Me.btnCancelarVenta.TabIndex = 35
+        Me.btnCancelarVenta.Text = "Cancelar"
+        Me.btnCancelarVenta.UseVisualStyleBackColor = True
+        '
+        'btnConfirmarVenta
+        '
+        Me.btnConfirmarVenta.Location = New System.Drawing.Point(454, 156)
+        Me.btnConfirmarVenta.Name = "btnConfirmarVenta"
+        Me.btnConfirmarVenta.Size = New System.Drawing.Size(75, 23)
+        Me.btnConfirmarVenta.TabIndex = 34
+        Me.btnConfirmarVenta.Text = "Confirmar"
+        Me.btnConfirmarVenta.UseVisualStyleBackColor = True
+        '
+        'Label24
+        '
+        Me.Label24.AutoSize = True
+        Me.Label24.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label24.Location = New System.Drawing.Point(11, 159)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(437, 16)
+        Me.Label24.TabIndex = 33
+        Me.Label24.Text = "¿Desea confirmar la venta de los produtos mencionados anteriormente?"
+        '
         'btnSeleccionar
         '
         Me.btnSeleccionar.Enabled = False
-        Me.btnSeleccionar.Location = New System.Drawing.Point(683, 3)
+        Me.btnSeleccionar.Location = New System.Drawing.Point(569, 3)
         Me.btnSeleccionar.Name = "btnSeleccionar"
         Me.btnSeleccionar.Size = New System.Drawing.Size(122, 23)
         Me.btnSeleccionar.TabIndex = 0
@@ -814,7 +881,7 @@ Partial Class Inicio
         'btnAgregarMostrar
         '
         Me.btnAgregarMostrar.Enabled = False
-        Me.btnAgregarMostrar.Location = New System.Drawing.Point(1041, 3)
+        Me.btnAgregarMostrar.Location = New System.Drawing.Point(1143, 3)
         Me.btnAgregarMostrar.Name = "btnAgregarMostrar"
         Me.btnAgregarMostrar.Size = New System.Drawing.Size(109, 23)
         Me.btnAgregarMostrar.TabIndex = 1
@@ -824,7 +891,7 @@ Partial Class Inicio
         'txtCotizacion
         '
         Me.txtCotizacion.Enabled = False
-        Me.txtCotizacion.Location = New System.Drawing.Point(1171, 636)
+        Me.txtCotizacion.Location = New System.Drawing.Point(1171, 656)
         Me.txtCotizacion.Name = "txtCotizacion"
         Me.txtCotizacion.Size = New System.Drawing.Size(44, 20)
         Me.txtCotizacion.TabIndex = 27
@@ -833,7 +900,7 @@ Partial Class Inicio
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(1064, 639)
+        Me.Label6.Location = New System.Drawing.Point(1064, 659)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(99, 13)
         Me.Label6.TabIndex = 28
@@ -842,7 +909,7 @@ Partial Class Inicio
         'btnOKCotizacion
         '
         Me.btnOKCotizacion.Enabled = False
-        Me.btnOKCotizacion.Location = New System.Drawing.Point(1221, 633)
+        Me.btnOKCotizacion.Location = New System.Drawing.Point(1221, 653)
         Me.btnOKCotizacion.Name = "btnOKCotizacion"
         Me.btnOKCotizacion.Size = New System.Drawing.Size(31, 23)
         Me.btnOKCotizacion.TabIndex = 29
@@ -1053,98 +1120,6 @@ Partial Class Inicio
         Me.Label15.TabIndex = 13
         Me.Label15.Text = "Precio unitario:"
         '
-        'PanelConfirmacionVenta
-        '
-        Me.PanelConfirmacionVenta.BackColor = System.Drawing.SystemColors.ActiveBorder
-        Me.PanelConfirmacionVenta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.PanelConfirmacionVenta.Controls.Add(Me.lblApellidoCliente)
-        Me.PanelConfirmacionVenta.Controls.Add(Me.lblTelefonoCliente)
-        Me.PanelConfirmacionVenta.Controls.Add(Me.lblNombreCliente)
-        Me.PanelConfirmacionVenta.Controls.Add(Me.btnCancelarVenta)
-        Me.PanelConfirmacionVenta.Controls.Add(Me.btnConfirmarVenta)
-        Me.PanelConfirmacionVenta.Controls.Add(Me.Label24)
-        Me.PanelConfirmacionVenta.Controls.Add(Me.DataGridConfirmacionVenta)
-        Me.PanelConfirmacionVenta.Location = New System.Drawing.Point(320, 115)
-        Me.PanelConfirmacionVenta.Name = "PanelConfirmacionVenta"
-        Me.PanelConfirmacionVenta.Size = New System.Drawing.Size(630, 387)
-        Me.PanelConfirmacionVenta.TabIndex = 32
-        Me.PanelConfirmacionVenta.Visible = False
-        '
-        'lblApellidoCliente
-        '
-        Me.lblApellidoCliente.AutoSize = True
-        Me.lblApellidoCliente.Location = New System.Drawing.Point(256, 7)
-        Me.lblApellidoCliente.Name = "lblApellidoCliente"
-        Me.lblApellidoCliente.Size = New System.Drawing.Size(45, 13)
-        Me.lblApellidoCliente.TabIndex = 38
-        Me.lblApellidoCliente.Text = "Label25"
-        '
-        'lblTelefonoCliente
-        '
-        Me.lblTelefonoCliente.AutoSize = True
-        Me.lblTelefonoCliente.Location = New System.Drawing.Point(498, 7)
-        Me.lblTelefonoCliente.Name = "lblTelefonoCliente"
-        Me.lblTelefonoCliente.Size = New System.Drawing.Size(45, 13)
-        Me.lblTelefonoCliente.TabIndex = 37
-        Me.lblTelefonoCliente.Text = "Label25"
-        '
-        'lblNombreCliente
-        '
-        Me.lblNombreCliente.AutoSize = True
-        Me.lblNombreCliente.Location = New System.Drawing.Point(14, 7)
-        Me.lblNombreCliente.Name = "lblNombreCliente"
-        Me.lblNombreCliente.Size = New System.Drawing.Size(45, 13)
-        Me.lblNombreCliente.TabIndex = 36
-        Me.lblNombreCliente.Text = "Label25"
-        '
-        'btnCancelarVenta
-        '
-        Me.btnCancelarVenta.Location = New System.Drawing.Point(527, 357)
-        Me.btnCancelarVenta.Name = "btnCancelarVenta"
-        Me.btnCancelarVenta.Size = New System.Drawing.Size(75, 23)
-        Me.btnCancelarVenta.TabIndex = 35
-        Me.btnCancelarVenta.Text = "Cancelar"
-        Me.btnCancelarVenta.UseVisualStyleBackColor = True
-        '
-        'btnConfirmarVenta
-        '
-        Me.btnConfirmarVenta.Location = New System.Drawing.Point(446, 357)
-        Me.btnConfirmarVenta.Name = "btnConfirmarVenta"
-        Me.btnConfirmarVenta.Size = New System.Drawing.Size(75, 23)
-        Me.btnConfirmarVenta.TabIndex = 34
-        Me.btnConfirmarVenta.Text = "Confirmar"
-        Me.btnConfirmarVenta.UseVisualStyleBackColor = True
-        '
-        'Label24
-        '
-        Me.Label24.AutoSize = True
-        Me.Label24.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label24.Location = New System.Drawing.Point(3, 360)
-        Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(437, 16)
-        Me.Label24.TabIndex = 33
-        Me.Label24.Text = "¿Desea confirmar la venta de los produtos mencionados anteriormente?"
-        '
-        'DataGridConfirmacionVenta
-        '
-        Me.DataGridConfirmacionVenta.AllowUserToAddRows = False
-        Me.DataGridConfirmacionVenta.AllowUserToDeleteRows = False
-        Me.DataGridConfirmacionVenta.AllowUserToOrderColumns = True
-        Me.DataGridConfirmacionVenta.AllowUserToResizeColumns = False
-        Me.DataGridConfirmacionVenta.AllowUserToResizeRows = False
-        Me.DataGridConfirmacionVenta.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DataGridConfirmacionVenta.BackgroundColor = System.Drawing.SystemColors.ActiveCaption
-        Me.DataGridConfirmacionVenta.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.DataGridConfirmacionVenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridConfirmacionVenta.Location = New System.Drawing.Point(3, 26)
-        Me.DataGridConfirmacionVenta.MultiSelect = False
-        Me.DataGridConfirmacionVenta.Name = "DataGridConfirmacionVenta"
-        Me.DataGridConfirmacionVenta.ReadOnly = True
-        Me.DataGridConfirmacionVenta.RowHeadersVisible = False
-        Me.DataGridConfirmacionVenta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridConfirmacionVenta.Size = New System.Drawing.Size(622, 280)
-        Me.DataGridConfirmacionVenta.TabIndex = 32
-        '
         'Inicio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1152,13 +1127,12 @@ Partial Class Inicio
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1264, 681)
-        Me.Controls.Add(Me.PanelConfirmacionVenta)
         Me.Controls.Add(Me.btnAgregarMostrar)
+        Me.Controls.Add(Me.PanelConfirmacionVenta)
         Me.Controls.Add(Me.btnOKCotizacion)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.btnSeleccionar)
         Me.Controls.Add(Me.txtCotizacion)
-        Me.Controls.Add(Me.btnFiltros)
         Me.Controls.Add(Me.btnConectar)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.txtBusqueda)
@@ -1177,10 +1151,10 @@ Partial Class Inicio
         Me.grpAgregarProductos.ResumeLayout(False)
         Me.grpAgregarProductos.PerformLayout()
         Me.PanelAgregar.ResumeLayout(False)
-        Me.PanelFiltros.ResumeLayout(False)
         Me.PanelBusqueda.ResumeLayout(False)
         Me.PanelBusqueda.PerformLayout()
         CType(Me.lstUsuarios, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Orden, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelInfoProducto.ResumeLayout(False)
         Me.grpProInfo.ResumeLayout(False)
         Me.grpProInfo.PerformLayout()
@@ -1189,12 +1163,11 @@ Partial Class Inicio
         Me.grpClientes.PerformLayout()
         Me.PanelDatosCliente.ResumeLayout(False)
         Me.PanelDatosCliente.PerformLayout()
+        Me.PanelConfirmacionVenta.ResumeLayout(False)
+        Me.PanelConfirmacionVenta.PerformLayout()
         Me.PanelEditarProducto.ResumeLayout(False)
         Me.grpEditarProd.ResumeLayout(False)
         Me.grpEditarProd.PerformLayout()
-        Me.PanelConfirmacionVenta.ResumeLayout(False)
-        Me.PanelConfirmacionVenta.PerformLayout()
-        CType(Me.DataGridConfirmacionVenta, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1206,7 +1179,6 @@ Partial Class Inicio
     Friend WithEvents DataGridProductos As System.Windows.Forms.DataGridView
     Friend WithEvents btnBuscar As System.Windows.Forms.Button
     Friend WithEvents txtBusqueda As System.Windows.Forms.TextBox
-    Friend WithEvents grpFiltros As System.Windows.Forms.GroupBox
     Friend WithEvents txtPrecioUnitario As System.Windows.Forms.TextBox
     Friend WithEvents txtCantidad As System.Windows.Forms.TextBox
     Friend WithEvents txtDescripccion As System.Windows.Forms.TextBox
@@ -1227,8 +1199,6 @@ Partial Class Inicio
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents txtCantidadProd As System.Windows.Forms.TextBox
     Friend WithEvents PanelAgregar As System.Windows.Forms.Panel
-    Friend WithEvents PanelFiltros As System.Windows.Forms.Panel
-    Friend WithEvents btnFiltros As System.Windows.Forms.Button
     Friend WithEvents PanelBusqueda As System.Windows.Forms.Panel
     Friend WithEvents btnAgregarMostrar As System.Windows.Forms.Button
     Friend WithEvents btnVender As System.Windows.Forms.Button
@@ -1298,5 +1268,6 @@ Partial Class Inicio
     Friend WithEvents btnCancelarVenta As Button
     Friend WithEvents btnConfirmarVenta As Button
     Friend WithEvents Label24 As Label
-    Friend WithEvents DataGridConfirmacionVenta As DataGridView
+    Friend WithEvents Orden As DataGridView
+    Friend WithEvents btnAgregarOrden As Button
 End Class
